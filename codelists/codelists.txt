@@ -8,3 +8,4 @@ opensafely/pharmacy-first-shingles-treatment-full-dmd-codelist/7098eccd
 opensafely/pharmacy-first-sinusitis-treatment-full-dmd-codelist/78b12caf
 opensafely/pharmacy-first-sore-throat-treatment-full-dmd-codelist/11c09fe5
 opensafely/pharmacy-first-urinary-tract-infection-treatment-full-dmd-codelist/22b7d338
+pharmacy-first-project/no-longer-pregnant-administration-codes-for-pharmacy-first/11f0383d
