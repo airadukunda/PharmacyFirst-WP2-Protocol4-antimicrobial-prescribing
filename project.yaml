@@ -6,3 +6,22 @@ actions:
     outputs:
       highly_sensitive:
         dataset: output/dataset.csv.gz
+
+  analysis_objective_1:
+    run: python: analysis/Objective_1_analysis.py
+    needs: [generate_dataset]
+    outputs:
+      moderately_sensitive:
+        dataset: output/python_obj1_results.csv
+        #figure: figures/survival-plot.png  
+
+  run_model:
+    run: stata-mp:v1 analysis/Objective_1_analysis.do
+    needs: [generate_dataset]
+    outputs:
+      moderately_sensitive:
+        dataset: output/stata_obj1_results.csv
+        #figure: figures/survival-plot.png
+    
+
+  

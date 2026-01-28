@@ -1,11 +1,6 @@
 from ehrql import create_dataset, show
-from ehrql.tables.tpp import (
-    patients, 
-    practice_registrations, 
-    clinical_events
-)
+from ehrql.tables.tpp import patients, practice_registrations, clinical_events
 import codelists
-
 dataset = create_dataset()
 
 start_date = "2024-01-31"
@@ -18,47 +13,18 @@ selected_events = clinical_events.where(
 )
 pf_consultation_events = selected_events.where(selected_events.snomedct_code.is_in(codelists.pf_consultation_events_dict["pf_consultation_services_combined"]))
 
-
+ 
 dataset.has_pf_consultation = pf_consultation_events.exists_for_patient()
-    #add PF condition codes and check consultation ID matches- creates binary outcome for each condition
+    #add PF condition codes and check consultation ID matches
 pf_ids = pf_consultation_events.consultation_id
 selected_pf_id_events = selected_events.where(
     selected_events.consultation_id.is_in(pf_ids)
 )
-def has_event(events, codelist):
-    return events.where(events.snomedct_code.is_in(codelist)).exists_for_patient()
-dataset.uti_numerator = has_event(
-    selected_pf_id_events,
-    codelists.uti_code,
-)
-dataset.sinusitis_numerator = has_event(
-    selected_pf_id_events,
-    codelists.sinusitis_code,
-)
-dataset.insectbite_numerator = has_event(
-    selected_pf_id_events,
-    codelists.insectbite_code,
-)
-dataset.otitismedia_numerator = has_event(
-    selected_pf_id_events,
-    codelists.otitismedia_code,
-)
-dataset.sorethroat_numerator = has_event(
-    selected_pf_id_events,
-    codelists.sorethroat_code,
-)
-dataset.shingles_numerator = has_event(
-    selected_pf_id_events,
-    codelists.shingles_code,
-)
-
-
-
-
 dataset.sex = patients.sex
 dataset.age = patients.age_on(index_date)
 dataset.define_population(
     registration_start.exists_for_patient() | registration_end.exists_for_patient()) 
 
-    #add IMD, ethnicity, STP, region, practice id
+    #add IMD, ethnicity, STP, region
+
 show(dataset)
