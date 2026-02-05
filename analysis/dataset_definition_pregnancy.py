@@ -19,6 +19,12 @@ pregnancy_end = selected_events.where(
     selected_events.snomedct_code.is_in(codelists.end_pregnancy_codelist)
 )
 
+# estimated date of delivery
+# we can use this to estimate the start of pregnancy 9 months earlier
+pregnancy_edd = selected_events.where(
+    selected_events.snomedct_code.is_in(codelists.edd_codes)
+)
+
 dataset.sex = patients.sex
 dataset.age = patients.age_on(index_date)
 dataset.define_population(
