@@ -1,7 +1,7 @@
-# Function to check status of a condition within a specified time window
+# Functions to check status of a condition within a specified time window etc
 # Copy from https://github.com/opensafely/pharmacy-first/blob/main/analysis/pf_variables_library.py
 
-from ehrql import months
+from ehrql import months, days
 
 def check_pregnancy_status(index_date, selected_events, codelist):
     return (
@@ -12,6 +12,54 @@ def check_pregnancy_status(index_date, selected_events, codelist):
         .exists_for_patient()
     )
 
+# Function to check bullous impetigo status within a specified time window
+def check_bullous_impetigo_status(start_date, end_date, selected_events, codelist):
+    """
+    Returns True if a patient has any bullous impetigo code
+    recorded between start_date and end_date (inclusive).
+    """
+
+    return (
+        selected_events.where(selected_events.snomedct_code.is_in(codelist))
+        .where(
+            selected_events.date.is_on_or_between(start_date, end_date)
+        )
+        .exists_for_patient()
+    )
+
+def check_catheter_status(index_date, events, codelist, lookback_months=12):
+    """
+    Returns True if patient has any urinary catheter code
+    within lookback_months before index_date.
+    """
+
+    catheter_events = (
+        events.where(events.snomedct_code.is_in(codelist))
+        .where(events.date.is_on_or_between(index_date - months(lookback_months),index_date))
+    )
+
+    return catheter_events.exists_for_patient()
+
+# Generic recurrent condition checker.
+def check_recurrent_status(
+    index_date,events,codelist,
+    lookback_months,min_episodes,
+):
+    condition_events = (
+        events
+        .where(events.snomedct_code.is_in(codelist))
+        .where(events.date.is_on_or_between(index_date - months(lookback_months),index_date,)
+        )
+    )
+
+    event_count = condition_events.count_for_patient()
+
+    first_date = (condition_events.sort_by(condition_events.date).first_for_patient().date)
+    last_date = (condition_events.sort_by(condition_events.date).last_for_patient().date)
+
+    separated = last_date >= first_date + days(28)
+
+    return (event_count >= min_episodes) & separated
 
 # Function to count number of coded events within a specified time window
 def count_past_events(index_date, selected_events, codelist, num_months):
