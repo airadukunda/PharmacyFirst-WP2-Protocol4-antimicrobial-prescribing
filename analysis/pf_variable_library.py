@@ -35,6 +35,7 @@ def check_code_in_time_window(start_date, end_date, selected_events, codelist):
     )
 
 # Generic recurrent condition checker
+# To ask Helen - debug
 def check_recurrent_status(index_date,events,codelist,lookback_months,gap_weeks=4,min_episodes=2):
     """
     Utilised the function https://docs.opensafely.org/ehrql/reference/language/#DateEventSeries.count_episodes_for_patient
@@ -49,6 +50,7 @@ def check_recurrent_status(index_date,events,codelist,lookback_months,gap_weeks=
     episode_count = (condition_events.count_episodes_for_patient(weeks(gap_weeks)))
 
     return episode_count >= min_episodes
+
 
 # Function to count number of coded events within a specified time window
 def count_past_events(index_date, selected_events, codelist, num_months):

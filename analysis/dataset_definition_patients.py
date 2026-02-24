@@ -22,7 +22,7 @@ Patient table key fields:
 
 Eligibility/clinical characteristics flag for study population denominator:
 - include_patient_otitis_media
-- include_patient_sinusitus
+- include_patient_sinusitis
 - include_patient_sore_throat
 - include_patient_insect_bites
 - include_patient_shingles
@@ -46,27 +46,26 @@ alive = patients.is_alive_on(index_date) # alive at the end of month
 registered_start = practice_registrations.for_patient_on(start_date).exists_for_patient()
 registered_index = practice_registrations.for_patient_on(index_date).exists_for_patient()
 
+# Demographics: sex, age, patient_imd
+sex = patients.sex
+age = patients.age_on(index_date)
+
 # Define population
 # base_population = patients.exists_for_patient()
-base_population = alive & registered_start & registered_index
-dataset.define_population(base_population) # include all patients or the live and registered patients
-# show(dataset) # DEBUG: show the patients in the base population
+age_valid = (patients.age_on(index_date) <= 120) # To confirm with Helen: "Exclude any patients over 120 years old as the date of birth is most likely to be missing"
+base_population = alive & registered_start & registered_index & age_valid
+dataset.define_population(base_population) # include all patients or those alive and registered
 
 dataset.start_date = case(when(base_population).then(start_date))
 dataset.index_date = case(when(base_population).then(index_date))
 dataset.registered_start = registered_start
 dataset.registered_index = registered_index
 dataset.alive = alive
-
-# Demographics: sex, age, patient_imd
-sex = patients.sex
-age = patients.age_on(index_date)
 dataset.sex = sex
 dataset.age = age
 from analysis.pf_variable_library import get_imd, get_latest_ethnicity
 dataset.imd = get_imd(addresses, index_date)
 dataset.ethnicity = get_latest_ethnicity(index_date,clinical_events,codelists.ethnicity_group16_codelist,ethnicity_from_sus,grouping=16,)
-
 # Patient identifiers: practice_id, stp, region
 dataset.practice = practice_registrations.for_patient_on(index_date).practice_pseudo_id
 dataset.stp = practice_registrations.for_patient_on(index_date).practice_stp
@@ -77,13 +76,13 @@ dataset.region = practice_registrations.for_patient_on(index_date).practice_nuts
 # copied from dataset_definition.py
 selected_events = clinical_events.where(clinical_events.date.is_on_or_between(start_date, index_date))
 pf_consultation_events = selected_events.where(selected_events.snomedct_code.is_in(codelists.pf_consultation_events_dict["pf_consultation_services_combined"]))
-dataset.has_pf_consultation = pf_consultation_events.exists_for_patient()
 pf_ids = pf_consultation_events.consultation_id
 selected_pf_id_events = selected_events.where(selected_events.consultation_id.is_in(pf_ids))
 
 def has_event(events, codelist):
     return events.where(events.snomedct_code.is_in(codelist)).exists_for_patient()
 
+dataset.has_pf_consultation = pf_consultation_events.exists_for_patient()
 dataset.uti_numerator = has_event(selected_pf_id_events,codelists.uti_code)
 dataset.sinusitis_numerator = has_event(selected_pf_id_events,codelists.sinusitis_code)
 dataset.insectbite_numerator = has_event(selected_pf_id_events,codelists.insectbite_code)
@@ -102,8 +101,8 @@ Clinical variables for eligible population denominator:
 - recurrent_uti
 """
 
-from analysis.pf_variable_library import check_code_in_time_window, check_recurrent_status # To confirm with Helen
-# [] Flag: pregnancy_status # To confirm with Helen
+from analysis.pf_variable_library import check_code_in_time_window, check_recurrent_status # To confirm with Helen - recurrent check
+# [] Flag: pregnancy_status # To confirm with Helen - any update
 pregnant_this_month = check_code_in_time_window(index_date-months(1),index_date, clinical_events, codelists.pregnancy_codelist)
 dataset.pregnant_this_month = pregnant_this_month
 # show(dataset) # DEBUG: show the patients in the base population
@@ -155,7 +154,7 @@ dataset.recurrent_uti = recurrent_uti
 """
 Eligibility/clinical characteristics flag for study population denominator:
 - include_patient_otitis_media
-- include_patient_sinusitus
+- include_patient_sinusitis
 - include_patient_sore_throat
 - include_patient_insect_bites
 - include_patient_shingles
@@ -176,8 +175,8 @@ dataset.include_patient_otitis_media = include_patient_otitis_media
 # [to-review] Condition: acute sinusitis
 # - inclusion: age >= 12
 # - exclusion: none
-include_patient_sinustitis = (age >= 12)
-dataset.include_patient_sinustitis = include_patient_sinustitis
+include_patient_sinusitis = (age >= 12)
+dataset.include_patient_sinusitis = include_patient_sinusitis
 # show(dataset) # DEBUG: show the patients in the base population
 
 
@@ -240,7 +239,7 @@ dataset.include_patient_uuti = include_patient_uuti
 
 
 # include_patient_all_conditions
-include_patient_overall_eligible = (include_patient_otitis_media|include_patient_sinustitis
+include_patient_overall_eligible = (include_patient_otitis_media|include_patient_sinusitis
                                   |include_patient_sore_throat|include_patient_insect_bites
                                   |include_patient_shingles|include_patient_impetigo|include_patient_uuti)
 dataset.include_patient_overall_eligible = include_patient_overall_eligible
