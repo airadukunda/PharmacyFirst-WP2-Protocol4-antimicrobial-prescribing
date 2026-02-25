@@ -1,73 +1,69 @@
-from ehrql import create_dataset, weeks, show
+from ehrql import create_dataset, weeks, days, show
 from ehrql.tables.tpp import patients, practice_registrations, clinical_events
 import codelists
 dataset = create_dataset()
 
-start_date = "2020-01-31"
-index_date = "2025-11-30"
+start_date = "2022-03-01"
+end_date = "2024-03-31"
 
-# registration is not important here as we want to capture pregnancy regardless
-#registration_start = practice_registrations.for_patient_on(start_date)
-#registration_end = practice_registrations.for_patient_on(index_date)
-
-# find first end-of-pregnancy code
-dataset.pregnancy_end_first = clinical_events.where(
-    clinical_events.snomedct_code.is_in(codelists.end_pregnancy_codelist)).sort_by(clinical_events.date).first_for_patient().date
-
-# get code for end of pregnancy
-# might want to use this to check that short pregnancies are early losses 
-# but would need to classify the codelist
-#dataset.pregnancy_end_cod = clinical_events.where(
-#    clinical_events.snomedct_code.is_in(codelists.end_pregnancy_codelist)).sort_by(clinical_events.date).first_for_patient().snomedct_code
+# Assumptions:
 
 
-# estimated date of delivery
+# look back for recent end-of-pregnancy codes -- assume no longer pregnant
+dataset.pregnancy_end_recent = clinical_events.where(
+    clinical_events.snomedct_code.is_in(codelists.end_pregnancy_codelist)
+    &
+    clinical_events.date.is_on_or_between(start_date - weeks(12), start_date - days(1))
+    ).sort_by(clinical_events.date).last_for_patient().date
+
+# look ahead for end-of-pregnancy codes 
+# look ahead 40 weeks (may not be known at the start but may be longer than 40 weeks, etc)
+dataset.pregnancy_end = clinical_events.where(
+    clinical_events.snomedct_code.is_in(codelists.end_pregnancy_codelist)
+    &
+    clinical_events.date.is_on_or_between(start_date, start_date + weeks(40))
+    ).sort_by(clinical_events.date).first_for_patient().date
+
+
+# estimated date of delivery - very recent or in future
 # we can use this to estimate the known start of pregnancy ~8 months earlier
-# Firstly select all events within a few weeks before / several months after the actual delivery date
-# (Allow end of pregnancy up to 4 weeks "late" or 36 weeks "early")
-selected_events = clinical_events.where(
-    clinical_events.date.is_on_or_between(dataset.pregnancy_end_first - weeks(4), dataset.pregnancy_end_first + weeks(36))
-)
+dataset.pregnancy_edd = clinical_events.where(
+    clinical_events.date.is_on_or_between(start_date - weeks(2), start_date + weeks(40))
+    &
+    clinical_events.snomedct_code.is_in(codelists.edd_codes)
+    ).sort_by(clinical_events.date).first_for_patient().date
     
-# now extract EDD within window of end of pregnancy
-dataset.pregnancy_edd = selected_events.where(
-    selected_events.snomedct_code.is_in(codelists.edd_codes)).sort_by(selected_events.date).last_for_patient().date
-
-
-# calculate gestation at end of pregnancy
-pregnancy_how_early = (dataset.pregnancy_edd - dataset.pregnancy_end_first).weeks
-dataset.pregnancy_length_from_edd = 40 - pregnancy_how_early
-
-
 # for start of pregnancy, assume pregnancy status known from 8 weeks
 dataset.pregnancy_known_date = dataset.pregnancy_edd - weeks(32)
 
-##### next
-# do something when end of pregnancy is missing i.e ongoing pregnancies
-# do something when EDD is missing
 
-### pregnancy 2-10 ####
-for n in range(2, 10):
-    # find next end-of-pregnancy code
-    preg_next_query = pregnancy_end_next = clinical_events.where(
-        clinical_events.snomedct_code.is_in(codelists.end_pregnancy_codelist)
-        &
-        clinical_events.date.is_on_or_after(dataset.pregnancy_end_first + weeks(12))
-        ).sort_by(clinical_events.date).first_for_patient().date
-    
-    dataset.add_column(f"pregnancy_end_{n}", preg_next_query)
-    
-    # now extract EDD within window of end of pregnancy
-    preg_next_edd_query = clinical_events.where(
-        clinical_events.snomedct_code.is_in(codelists.edd_codes)
-        &
-        clinical_events.date.is_on_or_between(preg_next_query - weeks(4), preg_next_query + weeks(36))
-        ).sort_by(clinical_events.date).last_for_patient().date
-    dataset.add_column(f"pregnancy_edd_{n}", preg_next_edd_query)
+# (Allow end of pregnancy up to 4 weeks "late" or 36 weeks "early")
+
+# calculate gestation at end of pregnancy
+# pregnancy_how_early = (dataset.pregnancy_edd - dataset.pregnancy_end_first).weeks
+# dataset.pregnancy_length_from_edd = 40 - pregnancy_how_early
+
+
+# recent "pregnant" codes
+dataset.pregnancy_code = clinical_events.where(
+    clinical_events.snomedct_code.is_in(codelists.pregnancy_codelist)
+    &
+    clinical_events.date.is_on_or_between(start_date - weeks(12), start_date + weeks(2))
+    ).sort_by(clinical_events.date).first_for_patient().date
+
+
+
+# combine criteria:
+# NOT recent delivery 
+# AND one of the following:
+#   delivery in month or next 3 months
+#   EDD in month or next 8 months not preceeded by an end-of-pregnancy has not ended
+#   recent "pregnancy" code
+
 
 
 dataset.sex = patients.sex
-dataset.age = patients.age_on(index_date)
+dataset.age = patients.age_on(start_date)
 dataset.define_population(
     (patients.sex == "female") & (dataset.age <=50) & (dataset.age >=11)
 )
