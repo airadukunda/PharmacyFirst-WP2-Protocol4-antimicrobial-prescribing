@@ -76,7 +76,7 @@ GP_UTI_tx_codelist = codelist_from_csv(
     column="code",
 )  
 GP_impetigo_tx_codelist = codelist_from_csv(
-    "codelists/pharmacy-first-project-uimpetigo-related-conditions-administration-codes-for-pharmacy-first.csv",
+    "codelists/pharmacy-first-project-impetigo-related-conditions-administration-codes-for-pharmacy-first.csv",
     column="code",
 ) 
 GP_sore_throat_tx_codelist = codelist_from_csv(
