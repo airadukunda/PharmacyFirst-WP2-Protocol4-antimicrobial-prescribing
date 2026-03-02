@@ -57,7 +57,7 @@ urinary_tract_infection_tx_codelist = codelist_from_csv(
 )
 #Snomed codes for exclusion criteria
 Urinary_catheter_tx_codelist = codelist_from_csv(
-    "codelists/urinary-catheter-administration-codes-for-pharmacy-first.csv",
+    "codelists/pharmacy-first-project-urinary-catheter-administration-codes-for-pharmacy-first.csv",
     column="code",
 )
     # Import pregnancy codelist
@@ -67,28 +67,28 @@ pregnancy_codelist = codelist_from_csv(
     category_column="term",
 )
 bullous_impetigo_tx_codelist = codelist_from_csv(
-    "codelists/bullous-impetigo-administration-codes-for-pharmacy-first.csv",
+    "codelists/pharmacy-first-project-bullous-impetigo-administration-codes-for-pharmacy-first.csv",
     column="code",
 )
 #Snomed codes used for PF conditions by GPs
 GP_UTI_tx_codelist = codelist_from_csv(
-    "codelists/urinary-tract-infection-and-related-conditions.csv",
+    "codelists/pharmacy-first-project-urinary-tract-infection-and-related-conditions.csv",
     column="code",
 )  
 GP_impetigo_tx_codelist = codelist_from_csv(
-    "codelists/uimpetigo-related-conditions-administration-codes-for-pharmacy-first.csv",
+    "codelists/pharmacy-first-project-uimpetigo-related-conditions-administration-codes-for-pharmacy-first.csv",
     column="code",
 ) 
 GP_sore_throat_tx_codelist = codelist_from_csv(
-    "codelists/Sore-throat-and-related-conditions.csv",
+    "codelists/pharmacy-first-project-Sore-throat-and-related-conditions.csv",
     column="code",
 ) 
 GP_sinusitis_tx_codelist = codelist_from_csv(
-    "codelists/sinusitis-related-conditions-administration-codes-for-pharmacy-first.csv",
+    "codelists/pharmacy-first-project-sinusitis-related-conditions-administration-codes-for-pharmacy-first.csv",
     column="code",
 ) 
 GP_otitis_media_tx_codelist = codelist_from_csv(
-    "codelists/otitis-media-and-related-conditions.csv",
+    "codelists/pharmacy-first-project-otitis-media-and-related-conditions.csv",
     column="code",
 ) 
 #shingles and infected insect bites to be added
