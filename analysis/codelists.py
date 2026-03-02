@@ -105,7 +105,7 @@ pf_med_codelist = (
 )
 """
 # Community Pharmacist Consultation Service for minor illness - 1577041000000109
-#pf_consultation_cp_minorillness = ["1577041000000109"]
+# pf_consultation_cp_minorillness = ["1577041000000109"]
 # Pharmacy First service - 983341000000102
 pf_consultation_service = ["983341000000102"]
 # Community Pharmacy First Service - 2129921000000100
@@ -118,9 +118,8 @@ pf_consultation_events_dict = {
     "pf_consultation_service": pf_consultation_service,
     # Community Pharmacy Pharmacy First Service
     "pf_consultation_cp_service": pf_consultation_cp_service,
-    "pf_consultation_services_combined": pf_consultation_cp_minorillness
-    + pf_consultation_service
-    + pf_consultation_cp_service,
+    "pf_consultation_services_combined": pf_consultation_service + pf_consultation_cp_service,
+    # "pf_consultation_services_combined": pf_consultation_cp_minorillness + pf_consultation_service + pf_consultation_cp_service,
 }
  
 uti_code = ["1090711000000102"]
