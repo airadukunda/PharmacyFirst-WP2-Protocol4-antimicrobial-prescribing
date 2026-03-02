@@ -1,0 +1,276 @@
+code,term
+1064621000000108,Urinary catheter passport given
+1069081000000100,Does not manage urinary catheter care
+1070501000000102,Difficulty managing urinary catheter care
+1073841000000107,Does manage urinary catheter care
+1075371000000109,Unable to manage urinary catheter care
+1141741002,Electronic urodynamic manometric catheter
+1141813008,Fiberoptic light ureteral catheter
+1142021003,Microwave hyperthermia system prostatic ablation catheter
+1142144003,Nelaton polyurethane pre-hydrated male length urethral catheter
+1142148000,Nelaton polyurethane pre-hydrated female length urethral catheter
+1142225001,Foley 2-way silicone male length urethral catheter with water filled syringe
+1142232005,Foley 2-way silicone female length urethral catheter with water filled syringe
+1142238009,Foley 2-way polytetrafluoroethylene coated latex female length urethral catheter with water filled syringe
+1142239001,Foley 2-way hydrogel coated latex female length urethral catheter with water filled syringe
+1142240004,Foley 2-way polytetrafluoroethylene coated latex male length urethral catheter with water filled syringe
+1142241000,Foley 2-way hydrogel coated latex male length urethral catheter with water filled syringe
+1144369009,Neonatal indwelling urethral drainage catheter
+1201856001,Urethral drainage and perfusion monitoring catheter
+1208786009,Realignment posterior urethra over catheter using guide wire
+12197921000119109,Leakage from indwelling urinary catheter
+122565001,Urinary catheter specimen
+1255195003,Urethral irrigation of urinary bladder via catheter
+1285730007,Drug delivery urethral catheter
+1292611000000103,Bilateral nephrostomies using ultrasound guidance
+13391000087100,Left nephrostomy using ultrasonographic guidance
+13401000087102,Right nephrostomy using ultrasonographic guidance
+1359735004,Incision of urinary bladder and percutaneous insertion of suprapubic catheter using ultrasonographic guidance
+1367624009,Percutaneous insertion of nephrostomy tube using imaging guidance
+158221000000101,Bilateral nephrostomies using computed tomography guidance
+158231000000104,Left nephrostomy using computed tomography guidance
+158241000000108,Right nephrostomy using computed tomography guidance
+158631000000101,Removal of bilateral nephrostomy tubes using fluoroscopic guidance
+158641000000105,Removal of left nephrostomy tube using fluoroscopic guidance
+158651000000108,Removal of right nephrostomy tube using fluoroscopic guidance
+16221251000119108,Urine specimen obtained via straight catheter
+16731481000119108,Infection of nephrostomy tube
+16731801000119102,Leakage from nephrostomy catheter
+17006003,Replacement of urinary catheter
+175988004,Nephrostogram
+176136000,Cystostomy and insertion of suprapubic catheter
+176192000,Change of urethral catheter
+176196002,Urethral catheterization for urodynamics
+1771611000000106,Replacement of nephrostomy tube of left kidney using fluoroscopic guidance
+1771621000000100,Replacement of nephrostomy tube of right kidney using fluoroscopic guidance
+1771631000000103,Replacement of nephrostomy tube of bilateral kidneys using fluoroscopic guidance
+182524008,Attention to urinary catheter
+182525009,Clamping of urinary catheter
+1833501000000109,Insertion of nephrostomy tube into transplanted kidney in right iliac fossa region of abdomen using fluoroscopic guidance
+1853531000000104,Insertion of nephrostomy tube into transplanted kidney in left iliac fossa region of abdomen using fluoroscopic guidance
+1892831000000101,Computed tomography left nephrostography
+1892841000000105,Computed tomography right nephrostography
+1892851000000108,Computed tomography bilateral nephrostographies
+1893111000000108,Removal of nephrostomy tube from transplanted left kidney using fluoroscopic guidance
+1893121000000102,Removal of nephrostomy tube from transplanted right kidney using fluoroscopic guidance
+1893131000000100,Removal of nephrostomy tube from transplanted bilateral kidneys using fluoroscopic guidance
+1976521000000104,Percutaneous insertion of nephroureterostomy catheter using fluoroscopic guidance with contrast
+1976531000000102,Percutaneous replacement of nephroureterostomy catheter using fluoroscopic guidance with contrast
+20568009,"Urinary catheter, device"
+217076000,"Urinary catheterization as the cause of abnormal reaction of patient, or of later complication, without mention of misadventure at the time of procedure"
+21904006,Nephrostomy with tube drainage
+223309004,"[X]Urinary catheterization as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+225080005,Spigotting of urinary catheter
+225081009,Draining urinary catheter
+225082002,Emptying urinary catheter
+225084001,Attaching urinary catheter to bag
+225085000,Deflating indwelling urethral catheter balloon
+225086004,Inflating indwelling urethral catheter balloon
+225087008,Urinary catheter appliance procedures
+225088003,Insertion of indwelling urethral catheter
+225092005,Permanent percutaneous nephrostomy
+225101008,Checking patency of urinary catheter tubing
+225102001,Checking urinary catheter tubing
+225103006,Intermittent urethral catheterization
+225104000,Residual catheterization
+225272009,Cleaning around catheter
+225273004,Clamping urethral catheter with intermittent release
+225274005,Releasing urethral catheter clamp
+225275006,Clamping urethral catheter
+225277003,Checking for looping of urinary catheter tubing
+225278008,Checking for kinking of urinary catheter tubing
+225785008,Temporary percutaneous nephrostomy
+225958005,Use of clean technique in urinary catheter bag changing
+225959002,Checking position of urinary catheter
+226012003,Preparation of patient for urinary catheterization
+23214004,Irrigation of ureteral catheter
+23491005,Replacement of nephrostomy tube
+236147004,Open nephrostomy
+236192006,Push-bang operation for ureteric calculus
+236239008,Urethral catheter procedure
+236240005,Clean intermittent self-catheterization
+236693000,Post-catheterization urethral stricture
+236735003,Obstruction of indwelling urinary catheter
+236962003,Cervical ripening with Foley catheter
+23973005,"Indwelling urinary catheter, device"
+243109004,Clean intermittent self-catheterization education
+24429008,Revision of nephrostomy
+251000087100,Left nephrostomy using fluoroscopic guidance with contrast
+257438002,Multiple transducer-bearing catheter
+257454004,Single transducer-bearing catheter
+257898007,Realignment posterior urethra over catheter
+258641000,Urinary catheter tip
+261000087102,Right nephrostomy using fluoroscopic guidance with contrast
+265557005,Attention to nephrostomy tube
+266737003,Indwelling urethral catheter
+271972006,Disorder of urethral catheter
+274311002,Diagnostic catheterization of urinary bladder
+277982003,Transducer-bearing catheter
+278534004,Disorder associated with cystostomy catheter
+281166002,Burst balloon of self-retaining catheter
+283581000000103,Maintenance of urethral catheter in bladder
+286628000,Nephrostomy tube
+286738000,Removal of urinary system catheter
+286861005,Suprapubic catheter
+309785008,Displacement of nephrostomy tube
+311525000,[V] Admission for urinary catheterization
+313270001,Percutaneous insertion of nephrostomy tube
+32975002,Catheterization of urinary bladder
+33533004,Removal of nephrostomy tube
+335406004,Sterile urethral catheters
+34759008,"Urethral catheter, device"
+351571000000101,Changing urinary catheter bag
+359211000000109,Urinary catheter in situ
+359221000000103,Suprapubic urinary catheter in situ
+367059000,Attention to urinary catheter
+371061003,Infection of urinary bladder catheter
+384624000,Drainage of urinary bladder by indwelling suprapubic catheter
+384649001,Catheterization of urinary bladder by indwelling suprapubic catheter
+387598008,Cystourethroscopy with ureteral catheterization
+387632002,Catheterization of urinary bladder
+391691003,Non sterile urethral catheter
+391692005,Stainless steel catheter
+395329008,Silver catheter
+395344009,Nelaton polyurethane pre-hydrated Tiemann tip urethral catheter
+395359003,Nelaton male length urethral catheter with drainage bag
+395360008,Nelaton female length urethral catheter with drainage bag
+395361007,Nelaton pediatric length urethral catheter with drainage bag
+395362000,Nelaton Tiemann tip urethral catheter with drainage bag
+395441002,Nelaton antimicrobial-coated urethral catheter
+395442009,Nelaton antimicrobial-coated male length urethral catheter
+395443004,Nelaton antimicrobial-coated female length urethral catheter
+395444005,Nelaton antimicrobial-coated pediatric length urethral catheter
+39834009,Insertion of nephrostomy tube
+400531000000108,[V] Admission for urinary catheterisation
+410021007,Insertion of urethral catheter
+410024004,Catheterization of urinary bladder
+410251006,Urinary catheter care assessment
+410252004,Urinary catheter care education
+410253009,Urinary catheter care management
+410254003,Urinary catheter insertion assessment
+410255002,Urinary catheter insertion education
+410256001,Urinary catheter insertion management
+410257005,Urinary catheter irrigation assessment
+410258000,Urinary catheter irrigation education
+410259008,Urinary catheter irrigation management
+419992002,Fluoroscopic nephrostography
+420404007,Urinary catheterization status
+420488007,Obstruction of urethral urinary catheter
+420648005,Leakage from urinary catheter
+422352008,Obstruction of urinary catheter
+427793007,Complication of urinary catheter
+429037005,Short rigid urethral catheter
+429516009,Procedure involving suprapubic catheter
+429723008,Procedure involving urinary catheter
+430538008,Tamponade of anterior nasal bleeding using urinary catheter
+431230009,Administration of substance into urinary bladder via intravesical route using urinary bladder catheter
+431341009,Removal of nephrostomy tube using fluoroscopic guidance
+431410007,Nephrostomy using fluoroscopic guidance with contrast
+432075000,Replacement of nephrostomy tube using fluoroscopic guidance
+432587002,Insertion of suprapubic catheter using ultrasound guidance
+433029000,Nephrostomy using computed tomography guidance
+43748006,Removal of urinary bladder catheter
+439053001,Urinary catheter in situ
+439058005,Home visit for care and maintenance of urinary catheter
+439854006,Change of urinary catheter bag
+440311000,Suprapubic urinary catheter in situ
+440415005,Aspiration of urinary bladder using suprapubic catheter
+440649005,Cystourethroscopy with percutaneous insertion of nephrostomy tube
+444095005,Indwelling urinary catheter bulb in urethra
+444324009,Indwelling urinary catheter fell out
+444777002,Intermittent clamping of suprapubic urinary catheter
+445191009,Care of suprapubic urinary catheter
+445830006,Retrograde catheterization of ureter
+446583004,Insertion of indwelling catheter into urinary bladder
+446775007,Collection of urine via indwelling urinary catheter
+446846006,Urine specimen obtained via indwelling urinary catheter
+447379005,Replacement of indwelling catheter of urinary bladder
+450460004,Nephrostomy using ultrasound guidance
+450775006,Emptying of ureterostomy bag
+4521000087108,Fluoroscopic left nephrostography
+4531000087105,Fluoroscopic right nephrostography
+457971000000108,"[X]Urinary catheterisation as the cause of abnormal reaction of the patient, or of later complication, without mention of misadventure at the time of the procedure"
+464311004,Ureteropelvic balloon catheter
+464599000,Prostate electrolytic therapy system catheter
+464660000,Urodynamic catheter
+464686005,Ureteral dilatation catheter
+464726004,Urine-sampling urethral catheter
+464900000,Urethral dilatation catheter
+465065003,Ureteral dilatation/injection catheter
+465413007,Single-administration urethral drainage/irrigation catheter
+466565001,Temperature-monitoring indwelling urethral drainage catheter
+467348002,"Cystographic/urethrographic catheter, male"
+467912009,"Cystographic/urethrographic catheter, female"
+469561009,"Intermittent urethral drainage catheter, antimicrobial"
+469715007,"Intermittent urethral drainage catheter, sterile"
+470027009,"Intermittent urethral drainage catheter, non-sterile"
+470529000,General-purpose ureteral catheter
+470534001,"Indwelling urethral drainage catheter, antimicrobial"
+470611003,Indwelling urethral drainage/irrigation catheter
+470730007,Indwelling urethral drainage catheter
+473051003,Infection associated with indwelling urinary catheter
+473091000,Inflammation associated with indwelling urinary catheter
+473092007,Infection and inflammation associated with indwelling urinary catheter
+473135008,Migration of suprapubic catheter
+473153002,Retained ureteric catheter
+473154008,Retained fragment of ureteric catheter
+473183006,Obstruction of suprapubic catheter
+473416002,Nephrostomy tube submitted as specimen
+47528002,"Ureteral catheter, device"
+514141000000106,Clamping of suprapubic urinary catheter with intermittent release and re-clamping
+51661001,Removal of ureterostomy tube and ureteral catheter
+51666006,Irrigation of ureterostomy and ureteral catheter
+5171000087100,Fluoroscopic bilateral nephrostography
+521771000000108,Suprapubic urinary catheter care education
+52426000,Cystostomy with insertion of ureteral catheter
+528651000000100,"Urinary catheterization as the cause of abnormal reaction of patient, or of later complication, without mention of misadventure at the time of procedure"
+53248001,Catheterization of ureter
+53587000,Irrigation of indwelling urinary catheter
+55449009,Removal of urethral catheter
+6543003,Complicated catheterization of urinary bladder
+65848005,Removal of ureteral catheter
+698087006,Collection of urine via indwelling suprapubic catheter
+698515001,Suprapubic urinary catheter care education
+699287008,Urine specimen obtained via suprapubic indwelling urinary catheter
+700372006,Urinary tract infection associated with catheter
+700888001,Single-administration urethral drainage catheter
+701000087108,Bilateral nephrostomy using fluoroscopic guidance with contrast
+701569005,Urinary catheter/drainage bag connection facilitator
+702076008,Ureteropelvic filter catheter
+703420004,Insertion of urethral catheter using guide wire
+704485003,Ability to manage urinary catheter
+704486002,Difficulty managing urinary catheter
+704878009,Needleless transurethral injection system catheter
+705156009,Collection of urine via straight catheter
+705527001,Urethral drainage catheter
+70777001,"Urine specimen collection, catheterized"
+708801005,Adjustment of urethral catheter
+716422006,Able to manage urinary catheter care
+720357004,Urethral catheter introduction sheath
+720649006,Introduction of urinary catheter
+720876008,"Urodynamic manometric catheter, non-electronic"
+723542006,Indwelling urethral urinary catheter in situ
+73368009,Foley catheter
+737944006,Care of urinary catheter
+764581000,Computed tomography nephrostography
+764643003,Removal of nephrostomy tube from transplanted kidney using fluoroscopic guidance
+766899000,Drug-eluting urethral dilatation catheter
+767225004,Displacement of indwelling urinary catheter balloon into urethra due to and following insertion of urethral catheter
+771480002,Cystourethroscopy with ureteral catheterization and brush biopsy of lower urinary tract
+771555004,Monitoring of continuous bladder irrigation
+772072004,Retained fragment of urethral catheter
+773630006,Urinary catheter submitted as specimen
+806981000000107,Care of urinary catheter
+82633000,Temporary urinary catheter (physical device)
+827153005,Indwelling urethral or suprapubic drainage catheter
+838399006,Indwelling urethral drainage catheter with tissue oxygen monitoring sensor
+863962009,Male intraurethral catheter with valve
+874161000000104,Change of suprapubic catheter over guide wire
+874171000000106,Change of nephrostomy tube over guide wire
+874351000000100,Change of urethral catheter over guide wire
+88459000,Manipulation of ureteral calculus by catheter
+894071000000104,Urodynamic study using suprapubic tube
+90380009,Removal of pyelostomy and nephrostomy tubes
+905881000000100,Insertion of nephrostomy tube into transplanted kidney using fluoroscopic guidance
+936001000000100,Catheter urine sample
+943321000000101,Able to manage urinary catheter care
