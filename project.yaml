@@ -35,10 +35,10 @@ actions:
   # generate_patient_dataset_monthly:
   #   for_each:
   #     start_date: ["2024-02-01", "2024-03-01", "2024-04-01"]
-  #   run: ehrql:v1 generate-dataset analysis/dataset_definition_patients_monthly.py 
-  #     --output output/dataset_patients_{{ start_date }}.csv.gz
-  #     --
-  #     --start_date {{ start_date }}
-  #   outputs:
-  #     highly_sensitive:
-  #       dataset: output/dataset_patients_{{ start_date }}.csv.gz
+  #     run: ehrql:v1 generate-dataset analysis/dataset_definition_patients_monthly.py 
+  #       --output output/dataset_patients_{{ start_date }}.csv.gz
+  #       --
+  #       --start_date {{ start_date }}
+  #     outputs:
+  #       highly_sensitive:
+  #         dataset: output/dataset_patients_{{ start_date }}.csv.gz
