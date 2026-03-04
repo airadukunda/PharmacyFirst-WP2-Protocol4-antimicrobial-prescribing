@@ -7,10 +7,10 @@
       "sha": "bed7f74add5c2d2ac6f7120d89f5ba94e57a28cb"
     },
     "opensafely-ethnicity-snomed-0removed.csv": {
-      "id": "opensafely/ethnicity-snomed-0removed/2e641f61",
-      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/2e641f61/",
-      "downloaded_at": "2025-12-17 12:06:06.959034Z",
-      "sha": "8b849b5b785d80306e488d0109640c8c1d2da01b"
+      "id": "opensafely/ethnicity-snomed-0removed/22911876",
+      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/22911876/",
+      "downloaded_at": "2026-03-04 11:15:21.531062Z",
+      "sha": "d95a2f826299563aa57f6fa99009e6e13a65151b"
     },
     "opensafely-pharmacy-first-acute-otitis-media-treatment-full-dmd-codelist.csv": {
       "id": "opensafely/pharmacy-first-acute-otitis-media-treatment-full-dmd-codelist/4758f9d4",
@@ -97,10 +97,10 @@
       "sha": "389d690cc893f203b6534b200a2b16d58a115e8f"
     },
     "nhsd-primary-care-domain-refsets-preg_cod.csv": {
-      "id": "nhsd-primary-care-domain-refsets/preg_cod/20200812",
-      "url": "https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/preg_cod/20200812/",
-      "downloaded_at": "2025-12-17 12:06:07.025837Z",
-      "sha": "4a1cbc5c12ce8589030b376905ac47f5a68b2503"
+      "id": "nhsd-primary-care-domain-refsets/preg_cod/5846c42a",
+      "url": "https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/preg_cod/5846c42a/",
+      "downloaded_at": "2026-03-04 11:15:22.095377Z",
+      "sha": "b3329a85816a499a43084ff685685db7d82d969a"
     }
   }
 }

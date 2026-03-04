@@ -1,98 +1,109 @@
 from ehrql import codelist_from_csv
- 
-# Import pharmacy first conditions codelist
-pf_conditions_codelist = codelist_from_csv(
-    "codelists/opensafely-pharmacy-first-clinical-pathway-conditions.csv",
-    column="code",
-    category_column="term",
-)
- 
-# Import ethnicity codelist
+
+ ####################################################
+# SNOMED UK ethnicity category codelist - latest version 22911876
 ethnicity_group6_codelist = codelist_from_csv(
     "codelists/opensafely-ethnicity-snomed-0removed.csv",
     column="snomedcode",
     category_column="Grouping_6",
 )
- 
-# Import ethnicity codelist
 ethnicity_group16_codelist = codelist_from_csv(
     "codelists/opensafely-ethnicity-snomed-0removed.csv",
     column="snomedcode",
     category_column="Grouping_16",
 )
-#PF conditions snomed codes used within PF
-acute_otitis_media_tx_codelist = codelist_from_csv(
+####################################################
+# PF - Clinical Pathway conditions (SNOMED CT (UK Clinical Edition))
+pf_conditions_codelist = codelist_from_csv(
+    "codelists/opensafely-pharmacy-first-clinical-pathway-conditions.csv",
+    column="code",
+    category_column="term",
+)
+####################################################
+#PF conditions treatment full dmd codelist
+tx_codelist_pf_acute_otitis_media = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-acute-otitis-media-treatment-full-dmd-codelist.csv",
     column="code",
 )
  
-impetigo_treatment_tx_codelist = codelist_from_csv(
+tx_codelist_pf_impetigo = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-impetigo-treatment-full-dmd-codelist.csv",
     column="code",
 )
  
-infected_insect_bites_tx_codelist = codelist_from_csv(
+tx_codelist_pf_infected_insect_bites = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-infected-insect-bites-treatment-full-dmd-codelist.csv",
     column="code",
 )
  
-shingles_treatment_tx_codelist = codelist_from_csv(
+tx_codelist_pf_shingles = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-shingles-treatment-full-dmd-codelist.csv",
     column="code",
 )
  
-sinusitis_tx_codelist = codelist_from_csv(
+tx_codelist_pf_sinusitis = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-sinusitis-treatment-full-dmd-codelist.csv",
     column="code",
 )
  
-sore_throat_tx_codelist = codelist_from_csv(
+tx_codelist_pf_sore_throat = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-sore-throat-treatment-full-dmd-codelist.csv",
     column="code",
 )
  
-urinary_tract_infection_tx_codelist = codelist_from_csv(
+tx_codelist_pf_urinary_tract_infection = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-urinary-tract-infection-treatment-full-dmd-codelist.csv",
     column="code",
 )
-#Snomed codes for exclusion criteria
-Urinary_catheter_tx_codelist = codelist_from_csv(
+
+####################################################
+#Snomed codes used for PF conditions by GPs
+gp_snomed_codelist_uti = codelist_from_csv(
+    "codelists/pharmacy-first-project-urinary-tract-infection-and-related-conditions.csv",
+    column="code",
+)  
+gp_snomed_codelist_impetigo = codelist_from_csv(
+    "codelists/pharmacy-first-project-impetigo-related-conditions-administration-codes-for-pharmacy-first.csv",
+    column="code",
+) 
+gp_snomed_codelist_otitis_media = codelist_from_csv(
+    "codelists/pharmacy-first-project-otitis-media-and-related-conditions.csv",
+    column="code",
+) 
+gp_snomed_codelist_sinusitis = codelist_from_csv(
+    "codelists/pharmacy-first-project-sinusitis-related-conditions-administration-codes-for-pharmacy-first.csv",
+    column="code",
+) 
+gp_snomed_codelist_sore_throat = codelist_from_csv(
+    "codelists/pharmacy-first-project-Sore-throat-and-related-conditions.csv",
+    column="code",
+) 
+# to add: shingles
+
+# to add: infected insect bite
+
+####################################################
+#Snomed codes used for specific conditions by GPs - population exclusion criteria
+gp_snomed_codelist_urinary_catheter = codelist_from_csv(
     "codelists/pharmacy-first-project-urinary-catheter-administration-codes-for-pharmacy-first.csv",
     column="code",
 )
-    # Import pregnancy codelist
+
+#Snomed codes used for specific conditions by GPs - population exclusion criteria
+gp_snomed_codelist_bullous_impetigo = codelist_from_csv(
+    "codelists/pharmacy-first-project-bullous-impetigo-administration-codes-for-pharmacy-first.csv",
+    column="code",
+)
+
+#Snomed codes used for specific conditions by GPs - population exclusion criteria
+#current version: pregnancy code by NHSD
 pregnancy_codelist = codelist_from_csv(
     "codelists/nhsd-primary-care-domain-refsets-preg_cod.csv",
     column="code",
     category_column="term",
 )
-bullous_impetigo_tx_codelist = codelist_from_csv(
-    "codelists/pharmacy-first-project-bullous-impetigo-administration-codes-for-pharmacy-first.csv",
-    column="code",
-)
-#Snomed codes used for PF conditions by GPs
-GP_UTI_tx_codelist = codelist_from_csv(
-    "codelists/pharmacy-first-project-urinary-tract-infection-and-related-conditions.csv",
-    column="code",
-)  
-GP_impetigo_tx_codelist = codelist_from_csv(
-    "codelists/pharmacy-first-project-impetigo-related-conditions-administration-codes-for-pharmacy-first.csv",
-    column="code",
-) 
-GP_sore_throat_tx_codelist = codelist_from_csv(
-    "codelists/pharmacy-first-project-Sore-throat-and-related-conditions.csv",
-    column="code",
-) 
-GP_sinusitis_tx_codelist = codelist_from_csv(
-    "codelists/pharmacy-first-project-sinusitis-related-conditions-administration-codes-for-pharmacy-first.csv",
-    column="code",
-) 
-GP_otitis_media_tx_codelist = codelist_from_csv(
-    "codelists/pharmacy-first-project-otitis-media-and-related-conditions.csv",
-    column="code",
-) 
-#shingles and infected insect bites to be added
 
+####################################################
 """
 pf_med_codelist = (
     acute_otitis_media_tx_codelist
@@ -112,14 +123,11 @@ pf_consultation_service = ["983341000000102"]
 pf_consultation_cp_service = ["2129921000000100"]
  
 pf_consultation_events_dict = {
-    # Community Pharmacist (CP) Consultation Service for minor illness (procedure)
-   # "pf_consultation_cp_minorillness": pf_consultation_cp_minorillness,
-    # Pharmacy First service (qualifier value)
-    "pf_consultation_service": pf_consultation_service,
-    # Community Pharmacy Pharmacy First Service
-    "pf_consultation_cp_service": pf_consultation_cp_service,
-    "pf_consultation_services_combined": pf_consultation_service + pf_consultation_cp_service,
+    # "pf_consultation_cp_minorillness": pf_consultation_cp_minorillness, # Community Pharmacist (CP) Consultation Service for minor illness (procedure)
+    "pf_consultation_service": pf_consultation_service, # Pharmacy First service (qualifier value)
+    "pf_consultation_cp_service": pf_consultation_cp_service, # Community Pharmacy Pharmacy First Service
     # "pf_consultation_services_combined": pf_consultation_cp_minorillness + pf_consultation_service + pf_consultation_cp_service,
+    "pf_consultation_services_combined": pf_consultation_service + pf_consultation_cp_service,
 }
  
 uti_code = ["1090711000000102"]
@@ -129,4 +137,3 @@ otitismedia_code = ["3110003"]
 sorethroat_code = ["363746003"]
 shingles_code = ["4740000"]
 impetigo_code = ["48277006"]
-
