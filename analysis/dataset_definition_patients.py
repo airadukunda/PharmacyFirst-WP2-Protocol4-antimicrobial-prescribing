@@ -1,7 +1,7 @@
 # This file defines the population and selects the fields that need to be included in the data for analysis. 
 # Get new dummy tables: opensafely exec ehrql:v1 create-dummy-tables analysis/dataset_definition_patients.py dummy_tables
 
-from ehrql import create_dataset, show, months, case, when
+from ehrql import create_dataset, show, months, case, when, get_parameter
 from ehrql.tables.tpp import (patients, practice_registrations, clinical_events, addresses, ethnicity_from_sus)
 import codelists
 
@@ -9,8 +9,10 @@ dataset = create_dataset()
 dataset.configure_dummy_data(population_size=1000)
 
 # One month time period (to start with this is Nov 25) 
-start_date = "2025-10-31"     
-index_date = "2025-11-30"  
+# start_date = "2025-10-31"     
+# index_date = "2025-11-30"  
+start_date = get_parameter("start_date", default="2025-10-01")
+index_date = start_date + months(1)
 
 """
 Monthly patient-level denominator + numerator dataset
@@ -72,6 +74,7 @@ dataset.registered_index = registered_index
 dataset.alive = alive
 dataset.sex = sex
 dataset.age = age
+dataset.date_of_birth = patients.date_of_birth # debug
 from analysis.pf_variable_library import get_imd, get_latest_ethnicity
 dataset.imd = get_imd(addresses, index_date)
 dataset.ethnicity = get_latest_ethnicity(index_date,clinical_events,codelists.ethnicity_group16_codelist,ethnicity_from_sus,grouping=16,)
