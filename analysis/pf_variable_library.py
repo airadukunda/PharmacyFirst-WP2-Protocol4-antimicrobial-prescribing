@@ -39,11 +39,17 @@ def check_recurrent_status(index_date,events,codelist,lookback_months,gap_weeks=
     """
     Utilised the function https://docs.opensafely.org/ehrql/reference/language/#DateEventSeries.count_episodes_for_patient
     """
+    # condition_events = (
+    #     events
+    #     .where(events.snomedct_code.is_in(codelist))
+    #     .where(events.date.is_on_or_between(index_date - months(lookback_months),index_date,)
+    #     )
+    # )
     condition_events = (
         events
         .where(events.snomedct_code.is_in(codelist))
-        .where(events.date.is_on_or_between(index_date - months(lookback_months),index_date,)
-        )
+        .where(events.date.is_on_or_between(index_date - months(lookback_months), index_date))
+        .date
     )
 
     episode_count = (condition_events.count_episodes_for_patient(weeks(gap_weeks)))

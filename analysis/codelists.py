@@ -4,12 +4,12 @@ from ehrql import codelist_from_csv
 # SNOMED UK ethnicity category codelist - latest version 22911876
 ethnicity_group6_codelist = codelist_from_csv(
     "codelists/opensafely-ethnicity-snomed-0removed.csv",
-    column="snomedcode",
+    column="code",
     category_column="Grouping_6",
 )
 ethnicity_group16_codelist = codelist_from_csv(
     "codelists/opensafely-ethnicity-snomed-0removed.csv",
-    column="snomedcode",
+    column="code",
     category_column="Grouping_16",
 )
 ####################################################
@@ -97,7 +97,7 @@ gp_snomed_codelist_bullous_impetigo = codelist_from_csv(
 
 #Snomed codes used for specific conditions by GPs - population exclusion criteria
 #current version: pregnancy code by NHSD
-pregnancy_codelist = codelist_from_csv(
+gp_snomed_codelist_pregnancy = codelist_from_csv(
     "codelists/nhsd-primary-care-domain-refsets-preg_cod.csv",
     column="code",
     category_column="term",
