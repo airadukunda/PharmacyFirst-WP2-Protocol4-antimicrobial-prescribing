@@ -7,11 +7,17 @@ actions:
   #     highly_sensitive:
   #       dataset: output/dataset_patients.csv.gz
 
-  generate_dataset_preg:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition_pregnancy.py --output output/dataset_preg.csv.gz
+  generate_dataset_preg_2024_11_01:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_pregnancy.py --output output/dataset_preg_2024_11_01.csv.gz -- --start_date 2024-11-01
     outputs:
       highly_sensitive:
-        dataset: output/dataset_preg.csv.gz
+        dataset: output/dataset_preg_2024_11_01.csv.gz
+
+  generate_dataset_preg_2025_11_01:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_pregnancy.py --output output/dataset_preg_2025_11_01.csv.gz -- --start_date 2025-11-01
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_preg_2025_11_01.csv.gz
 
   generate_dataset_practices:
     run: ehrql:v1 generate-dataset analysis/dataset_definition_practices.py --output output/dataset_practices.csv.gz
