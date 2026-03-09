@@ -7,6 +7,12 @@ actions:
       highly_sensitive:
         dataset: output/dataset_patients.csv.gz
 
+  generate_dataset_preg:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_pregnancy.py --output output/dataset_preg.csv.gz
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_preg.csv.gz
+
   generate_dataset_practices:
     run: ehrql:v1 generate-dataset analysis/dataset_definition_practices.py --output output/dataset_practices.csv.gz
     outputs:

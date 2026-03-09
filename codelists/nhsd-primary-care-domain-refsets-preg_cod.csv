@@ -6,8 +6,17 @@ code,term
 1148811000000105,Trichorionic triamniotic triplet pregnancy
 1148821000000104,Dichorionic triamniotic triplet pregnancy
 1148841000000106,Dichorionic diamniotic triplet pregnancy
+1148848009,Multiple pregnancy following assisted fertilization
+1148970006,Higher order multiple pregnancy due to and following medically assisted reproduction
 1149411000000103,Monochorionic diamniotic triplet pregnancy
 1149421000000109,Monochorionic triamniotic triplet pregnancy
+1290152008,Singleton pregnancy
+1290175001,Shared antenatal care
+1290176000,Hospital antenatal care
+1290177009,Midwifery led antenatal care
+1300203003,Pregnancy resulting from natural conception
+1303255001,Medium risk pregnancy
+134435003,Routine antenatal care
 134781000119106,High risk pregnancy due to recurrent miscarriage
 16356006,Multiple pregnancy
 169488004,Contraceptive intrauterine device failure - pregnant
@@ -24,6 +33,7 @@ code,term
 237239003,Low risk pregnancy
 276367008,Wanted pregnancy
 314204000,Early stage of pregnancy
+424525001,Antenatal care
 439311009,Intends to continue pregnancy
 444661007,High risk pregnancy due to history of preterm labor
 459166009,Dichorionic diamniotic twin pregnancy
@@ -31,11 +41,12 @@ code,term
 459168005,Monochorionic diamniotic twin pregnancy
 459171002,Monochorionic monoamniotic twin pregnancy
 47200007,High risk pregnancy
+567941000005109,Pregnancy with certain dates
 60810003,Quadruplet pregnancy
 64254006,Triplet pregnancy
 65147003,Twin pregnancy
 713575004,Dizygotic twin pregnancy
 713576003,Monozygotic twin pregnancy
 72957006,Diamniotic-monochorionic twins
-77386006,Pregnant
+77386006,Pregnancy
 80997009,Quintuplet pregnancy

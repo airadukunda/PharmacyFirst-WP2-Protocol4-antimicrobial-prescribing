@@ -32,7 +32,8 @@ selected_events = clinical_events.where(
     clinical_events.date.is_on_or_between(start_date, index_date)
 )
 pf_consultation_events = selected_events.where(selected_events.snomedct_code.is_in(codelists.pf_consultation_events_dict["pf_consultation_services_combined"]))
-    #include if pt is alive
+
+#include if pt is alive
 dataset.alive= patients.is_alive_on(index_date)   
 
     # exclude practices which are unusual (e.g very small practices, so from practice list size)
