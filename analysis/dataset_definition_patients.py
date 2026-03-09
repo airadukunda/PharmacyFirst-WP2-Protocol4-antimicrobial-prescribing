@@ -81,7 +81,7 @@ dataset.stp = practice_registrations.for_patient_on(index_date).practice_stp
 dataset.region = practice_registrations.for_patient_on(index_date).practice_nuts1_region_name
 
 ########################################################
-# PF consultation flag for each condition (True/False for PF code recorded) 
+# PF consultation flag for each condition (True/False for PF code recorded) -this needs to be a count
 # copied from dataset_definition.py
 selected_events = clinical_events.where(clinical_events.date.is_on_or_between(start_date, index_date))
 pf_consultation_events = selected_events.where(selected_events.snomedct_code.is_in(codelists.pf_consultation_events_dict["pf_consultation_services_combined"]))
@@ -100,6 +100,21 @@ dataset.sorethroat_numerator = has_event(selected_pf_id_events,codelists.sorethr
 dataset.shingles_numerator = has_event(selected_pf_id_events,codelists.shingles_code)
 dataset.impetigo_numerator = has_event(selected_pf_id_events,codelists.impetigo_code)
 
+########################################################
+# GP treated PF condition consultation flag for each condition (True/False for PF code recorded) -this needs to be a count
+selected_events = clinical_events.where(clinical_events.date.is_on_or_between(start_date, index_date))
+
+def has_event(events, codelist):
+    return events.where(events.snomedct_code.is_in(codelist)).exists_for_patient()
+
+
+dataset.uti_GP_numerator = has_event(selected_pf_id_events,codelists.uti_code)
+dataset.sinusitis_GP_numerator = has_event(selected_pf_id_events,codelists.sinusitis_code)
+dataset.insectbite_GP_numerator = has_event(selected_pf_id_events,codelists.insectbite_code)
+dataset.otitismedia_GP_numerator = has_event(selected_pf_id_events,codelists.otitismedia_code)
+dataset.sorethroat_GP_numerator = has_event(selected_pf_id_events,codelists.sorethroat_code)
+dataset.shingles_GP_numerator = has_event(selected_pf_id_events,codelists.shingles_code)
+dataset.impetigo_GP_numerator = has_event(selected_pf_id_events,codelists.impetigo_code)
 ########################################################
 """
 Clinical variables for eligible population denominator:

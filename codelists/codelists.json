@@ -96,6 +96,18 @@
       "downloaded_at": "2026-03-02 11:15:13.572832Z",
       "sha": "389d690cc893f203b6534b200a2b16d58a115e8f"
     },
+    "pharmacy-first-project-shingles-and-related-conditions-for-pharmacy-first.csv": {
+      "id": "pharmacy-first-project/shingles-and-related-conditions-for-pharmacy-first/1672c9a3",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/shingles-and-related-conditions-for-pharmacy-first/1672c9a3/",
+      "downloaded_at": "2026-03-09 10:47:11.312307Z",
+      "sha": "e48df7a6248aa368c4b48185fda5d6271c211850"
+    },
+    "pharmacy-first-project-insect-bites-and-related-conditions-administration-codes-for-pharmacy-first.csv": {
+      "id": "pharmacy-first-project/insect-bites-and-related-conditions-administration-codes-for-pharmacy-first/6d9ae4ef",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/insect-bites-and-related-conditions-administration-codes-for-pharmacy-first/6d9ae4ef/",
+      "downloaded_at": "2026-03-09 10:47:11.383576Z",
+      "sha": "a235fe38aa569dc5964a9c2c6b369719df2c25d0"
+    },
     "nhsd-primary-care-domain-refsets-preg_cod.csv": {
       "id": "nhsd-primary-care-domain-refsets/preg_cod/20200812",
       "url": "https://www.opencodelists.org/codelist/nhsd-primary-care-domain-refsets/preg_cod/20200812/",

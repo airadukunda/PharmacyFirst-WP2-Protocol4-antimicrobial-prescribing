@@ -91,8 +91,14 @@ GP_otitis_media_tx_codelist = codelist_from_csv(
     "codelists/pharmacy-first-project-otitis-media-and-related-conditions.csv",
     column="code",
 ) 
-#shingles and infected insect bites to be added
-
+GP_insect_bites_tx_codelist = codelist_from_csv(
+    "codelists/pharmacy-first-project-insect-bites-and-related-conditions-administration-codes-for-pharmacy-first.csv",
+    column="code",
+) 
+GP_shingles_tx_codelist = codelist_from_csv(
+    "codelists/pharmacy-first-project-shingles-and-related-conditions-for-pharmacy-first.csv",
+    column="code",
+) 
 """
 pf_med_codelist = (
     acute_otitis_media_tx_codelist

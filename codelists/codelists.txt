@@ -14,4 +14,6 @@ pharmacy-first-project/sinusitis-related-conditions-administration-codes-for-pha
 pharmacy-first-project/Sore-throat-and-related-conditions/387d6b40
 pharmacy-first-project/urinary-catheter-administration-codes-for-pharmacy-first/5de5456b
 pharmacy-first-project/bullous-impetigo-administration-codes-for-pharmacy-first/0db01129
+pharmacy-first-project/shingles-and-related-conditions-for-pharmacy-first/1672c9a3
+pharmacy-first-project/insect-bites-and-related-conditions-administration-codes-for-pharmacy-first/6d9ae4ef
 nhsd-primary-care-domain-refsets/preg_cod/20200812
