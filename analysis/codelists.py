@@ -131,6 +131,13 @@ sorethroat_code = ["363746003"]
 shingles_code = ["4740000"]
 impetigo_code = ["48277006"]
 
+#pregnancy code by NHSD
+pregnancy_codelist = codelist_from_csv(
+    "codelists/nhsd-primary-care-domain-refsets-preg_cod.csv",
+    column="code",
+    category_column="term",
+)
+
 # Import no-longer-pregnant codelist
 end_pregnancy_codelist = codelist_from_csv(
     "codelists/pharmacy-first-project-no-longer-pregnant-administration-codes-for-pharmacy-first.csv",
