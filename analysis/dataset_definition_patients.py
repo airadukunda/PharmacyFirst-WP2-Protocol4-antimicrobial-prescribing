@@ -89,46 +89,46 @@ dataset.practice = practice_registrations.for_patient_on(index_date).practice_ps
 dataset.stp = practice_registrations.for_patient_on(index_date).practice_stp
 dataset.region = practice_registrations.for_patient_on(index_date).practice_nuts1_region_name
 
-# ########################################################
-# # PF consultation flag for each condition (True/False for PF code recorded) -this needs to be a count
-# # copied from dataset_definition.py
-# selected_events = select_events_between(clinical_events, start_date, index_date)
-# pf_consultation_events = select_events_from_codelist(selected_events, codelists.pf_consultation_events_dict["pf_consultation_services_combined"])
-# pf_ids = pf_consultation_events.consultation_id
-# selected_pf_id_events = select_events_by_consultation_id(selected_events, pf_ids)
+########################################################
+# PF consultation flag for each condition (True/False for PF code recorded) -this needs to be a count
+# copied from dataset_definition.py
+selected_events = select_events_between(clinical_events, start_date, index_date)
+pf_consultation_events = select_events_from_codelist(selected_events, codelists.pf_consultation_events_dict["pf_consultation_services_combined"])
+pf_ids = pf_consultation_events.consultation_id
+selected_pf_id_events = select_events_by_consultation_id(selected_events, pf_ids)
 
-# dataset.has_pf_consultation = pf_consultation_events.exists_for_patient()
+dataset.has_pf_consultation = pf_consultation_events.exists_for_patient()
 
-# pf_conditions_pf_codes = {
-#     "uti": codelists.uti_code,
-#     "sinusitis": codelists.sinusitis_code,
-#     "insectbite": codelists.insectbite_code,
-#     "otitismedia": codelists.otitismedia_code,
-#     "sorethroat": codelists.sorethroat_code,
-#     "shingles": codelists.shingles_code,
-#     "impetigo": codelists.impetigo_code,
-# }
+pf_conditions_pf_codes = {
+    "uti": codelists.uti_code,
+    "sinusitis": codelists.sinusitis_code,
+    "insectbite": codelists.insectbite_code,
+    "otitismedia": codelists.otitismedia_code,
+    "sorethroat": codelists.sorethroat_code,
+    "shingles": codelists.shingles_code,
+    "impetigo": codelists.impetigo_code,
+}
 
-# for name, codes in pf_conditions_pf_codes.items():
-#     count = has_event_count(selected_pf_id_events, codes)
-#     setattr(dataset, f"numerator_pf_{name}", count)
+for name, codes in pf_conditions_pf_codes.items():
+    count = has_event_count(selected_pf_id_events, codes)
+    setattr(dataset, f"numerator_pf_{name}", count)
 
-# ########################################################
-# # GP treated PF condition consultation count for each condition 
-# # ? thought we need to use 'Snomedcodes used for PF conditions by GPs'
-# pf_conditions_gp_codes = {
-#     "uti": codelists.gp_snomed_codelist_uti,
-#     "sinusitis": codelists.gp_snomed_codelist_sinusitis,
-#     "insectbite": codelists.gp_snomed_codelist_insect_bites,
-#     "otitismedia": codelists.gp_snomed_codelist_otitis_media,
-#     "sorethroat": codelists.gp_snomed_codelist_sore_throat,
-#     "shingles": codelists.gp_snomed_codelist_shingles,
-#     "impetigo": codelists.gp_snomed_codelist_impetigo,
-# }
+########################################################
+# GP treated PF condition consultation count for each condition 
+# ? thought we need to use 'Snomedcodes used for PF conditions by GPs'
+pf_conditions_gp_codes = {
+    "uti": codelists.gp_snomed_codelist_uti,
+    "sinusitis": codelists.gp_snomed_codelist_sinusitis,
+    "insectbite": codelists.gp_snomed_codelist_insect_bites,
+    "otitismedia": codelists.gp_snomed_codelist_otitis_media,
+    "sorethroat": codelists.gp_snomed_codelist_sore_throat,
+    "shingles": codelists.gp_snomed_codelist_shingles,
+    "impetigo": codelists.gp_snomed_codelist_impetigo,
+}
 
-# for name, codes in pf_conditions_gp_codes.items():
-#     count = has_event_count(selected_events, codes)
-#     setattr(dataset, f"numerator_gp_{name}", count)
+for name, codes in pf_conditions_gp_codes.items():
+    count = has_event_count(selected_events, codes)
+    setattr(dataset, f"numerator_gp_{name}", count)
 
 ########################################################
 """
@@ -181,7 +181,8 @@ dataset.pregnant = case(
     # recent pregnancy code
     when(dataset.pregnancy_code.is_not_null()).then("P"),
     otherwise="0",)
-dataset.pregnant_this_month = case(when(dataset.pregnant.is_in(("P-E", "P-EDD", "P"))).then(1),otherwise=0,)
+pregnant_this_month = case(when(dataset.pregnant.is_in(("P-E", "P-EDD", "P"))).then(1),otherwise=0,)
+dataset.pregnant_this_month = pregnant_this_month
 
 # [] Flag: bullous_impetigo during the specific month
 # bullous_impetigo_this_month = (age < 0)
