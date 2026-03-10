@@ -69,6 +69,13 @@ def count_past_events(index_date, selected_events, codelist, num_months):
         .count_for_patient()
     )
 
+# Function to count 
+def has_event_count(events, codelist):
+    filtered = events.where(events.snomedct_code.is_in(codelist))
+    # flag = filtered.exists_for_patient()
+    # count = filtered.count_for_patient()
+    count = filtered.count_distinct_for_patient()
+    return count
 
 # Function to get events linked to a specified codelist
 def select_events_from_codelist(event_frame, codelist):
