@@ -105,7 +105,7 @@ dataset.has_pf_consultation = pf_consultation_events.exists_for_patient()
 # dataset.uti_numerator = has_event(selected_pf_id_events,codelists.uti_code)
 # dataset.uti_flag, dataset.uti_count = has_event_count(selected_pf_id_events,codelists.uti_code)
 # dataset.pf_count_uti = has_event_count(selected_pf_id_events,codelists.uti_code)
-conditions = {
+pf_conditions_pf_codes = {
     "uti": codelists.uti_code,
     "sinusitis": codelists.sinusitis_code,
     "insectbite": codelists.insectbite_code,
@@ -115,21 +115,37 @@ conditions = {
     "impetigo": codelists.impetigo_code,
 }
 
-for name, codes in conditions.items():
+for name, codes in pf_conditions_pf_codes.items():
     count = has_event_count(selected_pf_id_events, codes)
-    setattr(dataset, f"pf_count_{name}", count)
+    setattr(dataset, f"numerator_pf_{name}", count)
 
 ########################################################
-# GP treated PF condition consultation count for each condition
+# GP treated PF condition consultation count for each condition 
 selected_events = clinical_events.where(clinical_events.date.is_on_or_between(start_date, index_date))
 
-dataset.uti_GP_numerator = has_event_count(selected_pf_id_events,codelists.uti_code)
-dataset.sinusitis_GP_numerator = has_event_count(selected_pf_id_events,codelists.sinusitis_code)
-dataset.insectbite_GP_numerator = has_event_count(selected_pf_id_events,codelists.insectbite_code)
-dataset.otitismedia_GP_numerator = has_event_count(selected_pf_id_events,codelists.otitismedia_code)
-dataset.sorethroat_GP_numerator = has_event_count(selected_pf_id_events,codelists.sorethroat_code)
-dataset.shingles_GP_numerator = has_event_count(selected_pf_id_events,codelists.shingles_code)
-dataset.impetigo_GP_numerator = has_event_count(selected_pf_id_events,codelists.impetigo_code)
+# dataset.uti_GP_numerator = has_event_count(selected_pf_id_events,codelists.uti_code)
+# dataset.sinusitis_GP_numerator = has_event_count(selected_pf_id_events,codelists.sinusitis_code)
+# dataset.insectbite_GP_numerator = has_event_count(selected_pf_id_events,codelists.insectbite_code)
+# dataset.otitismedia_GP_numerator = has_event_count(selected_pf_id_events,codelists.otitismedia_code)
+# dataset.sorethroat_GP_numerator = has_event_count(selected_pf_id_events,codelists.sorethroat_code)
+# dataset.shingles_GP_numerator = has_event_count(selected_pf_id_events,codelists.shingles_code)
+# dataset.impetigo_GP_numerator = has_event_count(selected_pf_id_events,codelists.impetigo_code)
+
+# [? thought we need to use 'Snomedcodes used for PF conditions by GPs']
+pf_conditions_gp_codes = {
+    "uti": codelists.gp_snomed_codelist_uti,
+    "sinusitis": codelists.gp_snomed_codelist_sinusitis,
+    "insectbite": codelists.gp_snomed_codelist_insect_bites,
+    "otitismedia": codelists.gp_snomed_codelist_otitis_media,
+    "sorethroat": codelists.gp_snomed_codelist_sore_throat,
+    "shingles": codelists.gp_snomed_codelist_shingles,
+    "impetigo": codelists.gp_snomed_codelist_impetigo,
+}
+
+for name, codes in pf_conditions_gp_codes.items():
+    count = has_event_count(selected_pf_id_events, codes)
+    setattr(dataset, f"numerator_gp_{name}", count)
+
 ########################################################
 """
 Clinical variables for eligible population denominator:
