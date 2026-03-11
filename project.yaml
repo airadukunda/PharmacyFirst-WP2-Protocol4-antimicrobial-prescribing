@@ -36,9 +36,9 @@ actions:
       highly_sensitive:
         dataset: output/dataset_patients_debug.csv.gz
 
-  # action pending discussion - combine monthly tables - may need to add "needs:"
+  # action pending discussion - combine monthly tables - may need to add "needs: action name"
   # combine_monthly_patient_gz:
-  #   run: python:v2 analysis/preprocess_combine_gz.py --output output/dataset_patients_combined.csv
+  #   run: python:v2 analysis/preprocess_combine_gz.py --output output/dataset_patients_combined.csv.gz
   #   outputs:
   #     highly_sensitive:
-  #       dataset: output/dataset_patients_combined.csv
+  #       dataset: output/dataset_patients_combined.csv.gz

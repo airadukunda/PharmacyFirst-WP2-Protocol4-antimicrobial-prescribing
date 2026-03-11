@@ -110,12 +110,14 @@ pf_conditions_pf_codes = {
 }
 
 for name, codes in pf_conditions_pf_codes.items():
-    count = has_event_count(selected_pf_id_events, codes)
-    setattr(dataset, f"numerator_pf_{name}", count)
+    # count for patient OR count for episode?
+    # count events, consultations or episodes?
+    count_pf_event, count_pf_episode = has_event_count(selected_pf_id_events, codes)
+    setattr(dataset, f"numerator_pf_event_{name}", count_pf_event)
+    setattr(dataset, f"numerator_pf_episode_{name}", count_pf_episode)
 
 ########################################################
 # GP treated PF condition consultation count for each condition 
-# ? thought we need to use 'Snomedcodes used for PF conditions by GPs'
 pf_conditions_gp_codes = {
     "uti": codelists.gp_snomed_codelist_uti,
     "sinusitis": codelists.gp_snomed_codelist_sinusitis,
@@ -127,8 +129,9 @@ pf_conditions_gp_codes = {
 }
 
 for name, codes in pf_conditions_gp_codes.items():
-    count = has_event_count(selected_events, codes)
-    setattr(dataset, f"numerator_gp_{name}", count)
+    count_gp_event, event_gp_episode = has_event_count(selected_events, codes)
+    setattr(dataset, f"numerator_gp_event_{name}", count_gp_event)
+    setattr(dataset, f"numerator_gp_episode_{name}", event_gp_episode)
 
 ########################################################
 """

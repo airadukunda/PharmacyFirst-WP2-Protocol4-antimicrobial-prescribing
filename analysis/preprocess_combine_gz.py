@@ -23,7 +23,7 @@ combined = pd.concat(dfs, ignore_index=True)
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--output",
-    default="output/dataset_patients_combined.csv",
+    default="output/dataset_patients_combined.csv.gz",
     help="Output file path"
 )
 
