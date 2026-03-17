@@ -42,3 +42,59 @@ actions:
   #   outputs:
   #     highly_sensitive:
   #       dataset: output/dataset_patients_combined.csv.gz
+
+# https://actions.opensafely.org/actions/safetab/v3.0.2/
+# safetabs: create two-way tables for the specified variables; redact results for small numbers
+  generate_safetabs:
+    run: safetab:v3.0.2 output/dataset_patients_debug.csv.gz
+    needs: [debug_generate_patient_dataset]
+    config:
+      output_path: output
+      redaction_limit: 2
+      tables:
+        two_way:
+          tab_type: 2-way
+          variables:
+            - sex
+            - has_pf_consultation
+    outputs:
+      moderately_sensitive:
+        safetab_log: output/dataset_patients_debug.csv_tables/table_log.txt
+        safetab_two_way: output/dataset_patients_debug.csv_tables/two_way/*.md
+
+# https://actions.opensafely.org/actions/cohort-report/v3.0.0/
+# generate cohort report; require all variable_types
+  generate_cohort_report:
+    run: cohort-report:v3.0.0 output/dataset_patients_debug.csv.gz
+    needs: [debug_generate_patient_dataset]
+    config:
+      variable_types:
+        start_date: categorical
+        index_date: categorical
+        registered_start: categorical
+        registered_index: categorical
+        alive: categorical
+        sex: categorical
+        age: int
+        date_of_birth: date
+        imd: categorical
+        ethnicity: categorical
+        stp: categorical
+        region: categorical
+        has_pf_consultation: categorical
+    outputs:
+      moderately_sensitive:
+        reports: cohort_reports_outputs/descriptives_dataset_patients_debug.csv.html
+        figures: cohort_reports_outputs/*.png
+
+# # https://actions.opensafely.org/actions/dataset-report/v0.0.29/
+# # dataset report
+#   generate_dataset_report:
+#     run: >
+#       dataset-report:v0.0.29
+#         --input-files output/dataset_patients_debug.csv.gz
+#         --output-dir output
+#     needs: [debug_generate_patient_dataset]
+#     outputs:
+#       moderately_sensitive:
+#         dataset_report: output/dataset_patients_debug.html
