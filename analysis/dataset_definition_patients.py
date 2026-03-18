@@ -39,7 +39,7 @@ Eligibility/clinical characteristics flag for study population denominator:
 - include_patient_overall_eligible: at least one condition
 
 The above variables require:
-- pregnant_this_month: True/False, developed by Helen
+- [to update]pregnant_this_month: True/False, developed by Helen
 - bullous_impetigo_this_month
 - recurrent_impetigo_this_year
 - catheter_status
@@ -296,3 +296,6 @@ dataset.include_patient_overall_eligible = include_patient_overall_eligible
 ########################################################
 
 show(dataset) # DEBUG: show the patients in the base population
+
+########################################################
+# Define measures for analysis

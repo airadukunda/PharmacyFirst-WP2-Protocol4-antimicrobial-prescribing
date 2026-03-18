@@ -51,7 +51,7 @@ actions:
           tab_type: 2-way
           variables:
             - sex
-            - has_pf_consultation
+            - region
     outputs:
       moderately_sensitive:
         safetab_log: output/dataset_patients_combined.csv_tables/table_log.txt
