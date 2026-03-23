@@ -1,11 +1,12 @@
     #this file defines the practices for the patients and selects the fields that need to be included in the data for analysis. 
     #This data includes the denominator of the practice population for objective 2, the numerators will be all consultations 
 from ehrql import create_dataset, show
-from ehrql.tables.tpp import patients, practice_registrations, clinical_events
+from ehrql.tables.tpp import patients, practice_registrations, clinical_events, appointments
 #need to add Appointment
 import codelists
 dataset = create_dataset()
 
+# [to-do]: change to monthly interval
 start_date = "2024-01-31"
         #change to end of month
 index_date = "2025-11-30"
@@ -38,5 +39,14 @@ dataset.stp = practice_registrations.for_patient_on("2025-11-30").practice_stp
 dataset.region = practice_registrations.for_patient_on("2025-11-30").practice_nuts1_region_name
 show(dataset)
 
-#add the total number of consultations
-#clinical_events.where(clinical_events.date.is_in(appointments.date))
+#add the total number of consultations/ appointments attended
+# Count the number of matches in the period for each patient
+# dataset = create_dataset()
+
+# Filter for appointments that were attended
+
+attended_appointments = appointments.where(
+    appointments.status == "Arrived"
+) # [to-do: filter for specified date range]
+dataset.total_attended_appointments = attended_appointments.count_for_patient()
+show(dataset)

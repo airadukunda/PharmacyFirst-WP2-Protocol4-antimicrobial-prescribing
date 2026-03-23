@@ -1,0 +1,24 @@
+patient_id,status
+1,Arrived
+1,Arrived
+1,In Progress
+1,Visit
+1,
+1,Cancelled Due To Death
+1,
+2,Blocked
+3,
+4,
+4,In Progress
+4,
+4,Arrived
+4,Blocked
+5,Arrived
+6,Arrived
+6,Arrived
+8,Requested
+9,In Progress
+9,Requested
+9,Patient Walked Out
+10,
+10,

@@ -2,7 +2,9 @@
 # Get new dummy tables: opensafely exec ehrql:v1 create-dummy-tables analysis/dataset_definition_patients.py dummy_tables
 
 from ehrql import create_dataset, show, days, weeks, months, years, case, when, get_parameter
-from ehrql.tables.tpp import (patients, practice_registrations, clinical_events, addresses, ethnicity_from_sus)
+from ehrql.tables.tpp import (patients, practice_registrations, clinical_events, addresses, 
+                              ethnicity_from_sus,
+                              emergency_care_attendances)
 import codelists
 
 from analysis.pf_variable_library import (get_imd, get_latest_ethnicity, 
@@ -39,11 +41,17 @@ Eligibility/clinical characteristics flag for study population denominator:
 - include_patient_overall_eligible: at least one condition
 
 The above variables require:
-- [to update]pregnant_this_month: True/False, developed by Helen
+- pregnant_this_month: True/False, developed by Helen
 - bullous_impetigo_this_month
 - recurrent_impetigo_this_year
 - catheter_status
 - recurrent_uti
+
+A&E variables:
+- total number of A&E attendances in month based on arrival_date
+- for each PF condition, using GP wider SNOMED codelists, create variables for:
+    - count of A&E attendances with primary diagnosis (diagnosis_01) match to the condition-specific GP codelist
+    - flag for any non-primary diagnosis (diagnosis_02-24) match to the condition-specific GP codelist (T/F)
 
 Notes: 
 - may have patients not eligible but PF consultation
@@ -292,6 +300,21 @@ include_patient_overall_eligible = (include_patient_otitis_media|include_patient
                                   |include_patient_sore_throat|include_patient_insect_bites
                                   |include_patient_shingles|include_patient_impetigo|include_patient_uuti)
 dataset.include_patient_overall_eligible = include_patient_overall_eligible
+########################################################
+from pf_variable_library import ae_non_primary_diagnosis_matches
+# select A&E clinical events in month based on arrival date
+ae_events = emergency_care_attendances.where(emergency_care_attendances.arrival_date.is_on_or_between(start_date, index_date))
+# overall A&E attendances in month
+dataset.ae_attendance_count = ae_events.count_for_patient()
+# A&E PF-condition matching using GP codelists
+for name, codes in pf_conditions_gp_codes.items():
+    # primary diagnosis match
+    ae_primary = ae_events.where(ae_events.diagnosis_01.is_in(codes))
+    # non-primary diagnosis match
+    ae_non_primary = ae_non_primary_diagnosis_matches(ae_events, codes)
+    # count and flag
+    setattr(dataset, f"ae_{name}_primary_count", ae_primary.count_for_patient())
+    setattr(dataset, f"has_ae_{name}_non_primary", ae_non_primary)
 
 ########################################################
 
