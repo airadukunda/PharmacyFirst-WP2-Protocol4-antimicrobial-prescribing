@@ -102,7 +102,7 @@ gp_snomed_codelist_pregnancy = codelist_from_csv(
 
 # Import no-longer-pregnant codelist
 gp_snomed_codelist_end_pregnancy = codelist_from_csv(
-    "codelists/pharmacy-first-project-no-longer-pregnant-administration-codes-for-pharmacy-first.csv",
+    "codelists/pharmacy-first-project-end-of-pregnancy-narrow.csv",
     column="code",
     category_column="term",
 )

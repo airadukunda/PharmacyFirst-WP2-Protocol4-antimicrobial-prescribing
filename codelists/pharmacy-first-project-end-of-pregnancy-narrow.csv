@@ -8,50 +8,28 @@ code,term
 102504006,Well premature male newborn
 102505007,Well premature female newborn
 102879009,Post-term delivery
-1033571000000100,Minor postpartum haemorrhage
-1033591000000101,Major postpartum hemorrhage
 10455003,Removal of ectopic cervical pregnancy by evacuation
-104851000119103,Postpartum major depression in remission
 106009009,Fetal condition affecting obstetrical care of mother
 10697004,Miscarriage complicated by renal failure
-10741871000119101,Alcohol dependence in pregnancy
 10743881000119104,Suspected fetal abnormality affecting management of mother
 10745001,Delivery of transverse presentation
 10749691000119103,Obstetric anesthesia with cardiac complication in childbirth
 10749811000119108,Obstetric anesthesia with central nervous system complication in childbirth
-10750411000119102,Nonpurulent mastitis associated with lactation
 10751511000119105,Obstructed labor due to incomplete rotation of fetal head
 10751581000119104,Obstructed labor due to disproportion between fetus and pelvis
 10751631000119101,Obstructed labor due to abnormality of maternal pelvis
 10751701000119102,Spontaneous onset of labor between 37 and 39 weeks gestation with planned cesarean section
-10751771000119107,Placental abruption due to afibrinogenemia
-10751991000119105,Postpartum cellulitis of breast
-10752031000119100,Postpartum inflammation of cervix
-10752111000119109,Postpartum acute cystitis
-10752171000119101,Postpartum candidiasis of vagina
-10752211000119104,Postpartum bacterial vaginosis
-10753141000119100,Postpartum cholestasis
 10753181000119105,Premature rupture of membranes in full term pregnancy with onset of labor within 24 hours of rupture
 10753231000119104,Premature rupture of membranes in full term pregnancy with onset of labor more than 24 hours after rupture
 10753281000119103,Premature rupture of membranes in full term pregnancy with onset of labor unknown
 10753491000119101,Gestational diabetes mellitus in childbirth
-10753681000119101,Postpartum hypothyroidism
 10754331000119108,Air embolism in childbirth
-10754741000119103,Postpartum calculus of gallbladder
-10754961000119101,Postpartum hyperthyroidism
-10755001000119102,Postpartum mood disorder
-10755381000119108,Postpartum iron deficiency anemia
 10755951000119102,Heart murmur in mother in childbirth
-10757671000119107,Maternal postpartum viral disease
-10757711000119106,Postpartum thyroid disease
-10759191000119106,Septic thrombophlebitis in puerperium
 10759611000119105,Preterm premature rupture of membranes with onset of labor later than 24 hours after rupture
 10759661000119108,Preterm premature rupture of membranes with onset of labor unknown
 10759711000119103,Preterm premature rupture of membranes with onset of labor within 24 hours of rupture
 10760081000119108,Pyemic and septic embolism in childbirth
-10760221000119101,Uterine prolapse in pregnancy
 10760261000119106,Uterine laceration during delivery
-10760581000119104,Pain in round ligament in pregnancy
 10760661000119109,"Triplets, some live born"
 10760701000119102,"Quadruplets, all live born"
 10760741000119100,"Quadruplets, some live born"
@@ -63,28 +41,17 @@ code,term
 10761141000119107,Preterm labor in second trimester with preterm delivery in second trimester
 10761191000119104,Preterm labor in third trimester with preterm delivery in third trimester
 10761241000119104,Preterm labor with preterm delivery
-10761341000119105,Preterm labor without delivery
 10763001,Therapeutic abortion by insertion of laminaria
-10806041000119104,Infection of nipple associated with lactation
 10808861000119105,Maternal distress during childbirth
-10812041000119103,Urinary tract infection due to incomplete miscarriage
 10835781000119105,Amniotic fluid embolism in childbirth
 10836111000119108,Dislocation of symphysis pubis in labor and delivery
-10836241000119104,Cracked nipple associated with lactation
-109894007,Retained placenta
-109895008,Retained placental fragment
 11026009,Miscarriage with renal tubular necrosis
 1105781000000106,Misoprostol induction of labour
 1105791000000108,Mifepristone induction of labour
 1105801000000107,Clitoral tear during delivery
 11109001,Miscarriage with uremia
-111424000,Retained products of conception not following abortion
 111431001,Legal abortion complicated by damage to pelvic organs AND/OR tissues
 111432008,Legal abortion with air embolism
-111452009,Postpartum afibrinogenemia with hemorrhage
-111453004,"Retained placenta, without hemorrhage"
-111458008,Venous thrombosis in puerperium
-111459000,"Infection of nipple, associated with childbirth"
 112070001,Onset of labor induced
 112071002,Postmature pregnancy delivered
 112075006,Premature birth of newborn sextuplets
@@ -94,25 +61,11 @@ code,term
 112927003,Manual rotation of fetal head
 11373009,Illegal abortion with sepsis
 1141750000,Physiological delivery of placenta
-1144765000,Varicose veins of vulva in puerperium
-1144766004,Varicose veins of perineum in puerperium
-1144797000,Varicose veins of bilateral lower limbs in puerperium
 11466000,Cesarean section
 1147951000000100,Delivery following termination of pregnancy
 1147961000000102,Breech delivery following termination of pregnancy
 1147971000000109,Cephalic delivery following termination of pregnancy
-1148484005,Retained uterine membrane
-1148619000,Retained uterine membrane without hemorrhage
-1148755000,Retained products of conception with no hemorrhage
-1148794004,Postpartum hemorrhage with retained placenta
-1148941002,Retention of part of placenta and uterine membrane without hemorrhage
-1148942009,Retention of part of placenta without hemorrhage
-1148943004,Retention of placenta and uterine membrane
-1149473005,Thrombophlebitis of bilateral lower limbs in puerperium
-1156029006,Thrombus of dural sinus in puerperium
-1156032009,Venous varices in puerperium
 1167981000000101,Ultrasound scan for chorionicity
-1173981003,Compression suture of uterus for postpartum hemorrhage
 118182003,Finding related to amniotic fluid turnover
 118215003,Delivery finding
 118216002,Labor finding
@@ -120,8 +73,6 @@ code,term
 11914001,Transverse OR oblique presentation of fetus
 11942004,Perineal laceration involving pelvic floor
 1197219005,Elective lower segment cesarean section through inverted T shaped incision of uterus
-119891000119105,Postpartum hemorrhage due to total placenta previa
-12062007,Puerperal pelvic cellulitis
 12095001,Legal abortion with cardiac arrest AND/OR failure
 1219001000000101,Selective destruction of fetus by percutaneous intrafetal radiofrequency ablation of umbilical cord
 1219011000000104,Selective destruction of fetus by percutaneous intrafetal bipolar coagulation of umbilical cord
@@ -133,33 +84,21 @@ code,term
 1220630007,Incomplete induced termination of pregnancy complicated by embolism
 1220631006,Incomplete induced termination of pregnancy complicated by delayed or excessive hemorrhage
 1220632004,Incomplete induced termination of pregnancy complicated by damage to pelvic organs or tissues
+1220653008,Excessive hemorrhage due to and following complete induced termination of pregnancy
 12296009,Legal abortion with intravascular hemolysis
 12349003,Danforth's sign
-1236976008,Postpartum inversion of uterus
-1237362007,Pressure collapse of lung due to anesthesia in puerperium
 1237363002,Pressure collapse of lung due to anesthesia during labor and delivery
 12394009,Miscarriage with cerebral anoxia
 124735008,Late onset of labor
-1258867002,Postpartum abscess of breast
-1258898000,Mental disorder during puerperium
-1258917005,Fissure of nipple in puerperium
-1258923000,Infection caused by Neisseria gonorrhoeae during puerperium
-1259016008,Rupture of uterus following obstructed labor
-1259017004,Substance dependence during puerperium
 1264255000,Complete induced termination of pregnancy
 1268535008,Obstructed labor due to interlocked twins
-1269247005,Infection of female genital tract due to incomplete miscarriage
-1269249008,Infection of pelvis due to incomplete miscarriage
 127009,Miscarriage with laceration of cervix
+12729009,Prolonged rupture of membranes
 128077009,Trauma to vagina during delivery
 12867002,Fetal distress affecting management of mother
-1287637001,Purulent mastitis during lactation
-1287638006,Postpartum mastitis
 1287984003,Immediate repair of obstetric laceration of cervix uteri
 13100007,Legal abortion with laceration of uterus
 13384007,Miscarriage complicated by metabolic disorder
-133906008,Postpartum care
-133907004,Episiotomy care
 1345223002,Lateral episiotomy
 1345224008,Median episiotomy
 1345225009,Mediolateral episiotomy
@@ -176,42 +115,28 @@ code,term
 1356801009,Damage of joint of pelvic wall during vaginal delivery
 1356815006,Presentation of prolapsed upper limb of fetus
 1356816007,Presentation of prolapsed hand of fetus
-1359709000,Hysteroscopic evacuation of retained product of conception
+1363121004,Unassisted birth
 1363272004,Thierry spatulas vaginal delivery of fetus
-1363324002,Postpartum disorder of abnormal fibrinolysis
 1365933005,Mechanical induction of labor
 1371301003,Cesarean section with delivery of fetal head using forceps
-13842006,Subinvolution of uterus in puerperium
 13859001,Premature birth of newborn twins
 14022007,"Fetal death, affecting management of mother"
 14049007,Chaussier's sign
 14119008,Braxton Hicks obstetrical version with extraction
 14136000,Miscarriage with perforation of broad ligament
 1469007,Miscarriage with urinary tract infection
-1499003,"Bipolar I disorder, single manic episode with postpartum onset"
 151441000119105,Twin live born in hospital by vaginal delivery
 1538006,Fetal malformation of central nervous system affecting obstetrical care
-15406009,Retromammary abscess associated with childbirth
 15413009,High forceps delivery with episiotomy
 15467003,"Term birth of identical twins, both living"
-15504009,Rupture of gravid uterus
 15511008,Legal abortion with parametritis
 156072005,Incomplete miscarriage
 156073000,Complete miscarriage
-156240002,Primary postpartum hemorrhage
-15755591000119106,Postpartum lactation disorder
 15809008,Miscarriage with perforation of uterus
 15898009,Third stage of labor
-15928461000119104,Infection of left nipple during lactation
-15928501000119104,Infection of right nipple during lactation
-15953341000119100,Fissure of right nipple during lactation
-15953381000119105,Fissure of left nipple during lactation
 16038004,Abortion due to Leptospira
 16101000119107,Incomplete induced termination of pregnancy with complication
 16111000119105,Incomplete spontaneous abortion due to hemorrhage
-16316801000119102,Postpartum purulent mastitis
-16317041000119105,Purulent mastitis of left breast during lactation
-16317081000119100,Purulent mastitis of right breast during lactation
 163565006,On examination - vaginal examination - os 0-1 cm dilated
 163566007,On examination - vaginal examination - os 1-2cm dilated
 163567003,On examination - vaginal examination - os 2-4 cm dilated
@@ -219,49 +144,12 @@ code,term
 163569000,On examination - vaginal examination - os 6-8cm dilated
 163570004,On examination - vaginal examination - os 8-10cm dilated
 163571000,On examination - vaginal examination - os fully dilated
-164353731000119106,Acute deep vein thrombus during postpartum period
 164817009,Placental localization
-16607004,Missed abortion
 16714009,Miscarriage with laceration of bowel
-16737621000119100,Postpartum edema
-16740211000119107,Postpartum gestational proteinuria
-16740331000119109,Maternal postpartum mild pre-eclampsia
-16740451000119109,Postpartum hemolysis-elevated liver enzymes-low platelet count syndrome
 16819009,Delivery of face presentation
 16836811000119108,Miscarriage of left tubal ectopic pregnancy
 16836851000119109,Miscarriage of right tubal ectopic pregnancy
 16950007,Fourth degree perineal laceration involving anal mucosa
-169600002,Antenatal care: under 5ft tall
-169602005,Antenatal care: 10 years plus since last pregnancy
-169603000,"Antenatal care: primiparous, under 17 years"
-169711001,Antenatal booking examination
-169712008,Antenatal 12 weeks examination
-169713003,Antenatal 16 week examination
-169714009,Antenatal 20 week examination
-169715005,Antenatal 24 week examination
-169716006,Antenatal 28 week examination
-169717002,Antenatal 30 week examination
-169718007,Antenatal 32 week examination
-169719004,Antenatal 34 week examination
-169720005,Antenatal 35 week examination
-169721009,Antenatal 36 week examination
-169722002,Antenatal 37 week examination
-169723007,Antenatal 38 week examination
-169724001,Antenatal 39 week examination
-169725000,Antenatal 40 week examination
-169726004,Antenatal 41 week examination
-169727008,Antenatal 42 week examination
-169762003,Postnatal visit
-169763008,Postnatal - first day visit
-169764002,Postnatal - second day visit
-169765001,Postnatal - third day visit
-169766000,Postnatal - fourth day visit
-169767009,Postnatal - fifth day visit
-169768004,Postnatal - sixth day visit
-169769007,Postnatal - seventh day visit
-169770008,Postnatal - eighth day visit
-169771007,Postnatal - ninth day visit
-169772000,Postnatal - tenth day visit
 169826009,Single live birth from singleton pregnancy
 169827000,Single stillbirth
 169828005,Twins - both live born
@@ -274,12 +162,10 @@ code,term
 169836001,Birth of child
 169960003,Labor details
 169961004,Normal birth
-172734791000119103,Chronic deep vein thrombosis during postpartum period
 17333005,Term birth of multiple newborns
 17335003,Illegal abortion with laceration of bowel
 17369002,Miscarriage
 17594002,Fetal bradycardia affecting management of mother
-176827002,Dilation of cervix uteri and vacuum aspiration of products of conception from uterus
 176849008,Introduction of abortifacient into uterine cavity
 176854004,Insertion of prostaglandin abortifacient suppository
 176928008,Excision of ectopic ovarian pregnancy
@@ -311,9 +197,6 @@ code,term
 177181005,Non-manipulative cephalic vaginal delivery with abnormal presentation of head at delivery without instrument
 177184002,Normal delivery procedure
 177185001,Water birth delivery
-177200004,Instrumental removal of products of conception from delivered uterus
-177203002,Manual removal of products of conception from delivered uterus
-177204008,Manual removal of placenta from delivered uterus
 177208006,Repositioning of inverted uterus
 177212000,Normal delivery of placenta
 177217006,Immediate repair of obstetric laceration
@@ -321,14 +204,8 @@ code,term
 177219009,Immediate repair of obstetric laceration of perineum and sphincter of anus
 177220003,Immediate repair of obstetric laceration of vagina and floor of pelvis
 177221004,Immediate repair of minor obstetric laceration
-177222006,Repair of episiotomy
 177227000,Secondary repair of obstetric laceration
-17744000,Subtotal hysterectomy after cesarean delivery
-178280004,Postnatal infection
 17860005,Low forceps delivery with episiotomy
-18114009,Prenatal examination and care of mother
-18237006,Parenchymatous mastitis associated with childbirth
-18260003,Postpartum psychosis
 18302006,Therapeutic abortion by hysterotomy
 18391007,Elective abortion
 184339009,Miscarriage at 8 to 28 weeks
@@ -338,14 +215,11 @@ code,term
 18684002,Illegal abortion complicated by metabolic disorder
 18872002,Illegal abortion with laceration of cervix
 18894005,Legal abortion with cerebral anoxia
-190643008,Puerperal osteomalacia
 19169002,Miscarriage in first trimester
 19390001,Partial breech delivery with forceps to aftercoming head
 195005,Illegal abortion with endometritis
 19564003,Illegal abortion with laceration of periurethral tissue
 19729005,Prolapse of anterior lip of cervix obstructing labor
-19773009,Infection of the breast AND/OR nipple associated with childbirth
-198347000,Cicatrix (postpartum) of cervix
 198617006,Delivery of viable fetus in abdominal pregnancy
 198644001,Incomplete miscarriage with genital tract or pelvic infection
 198645000,Incomplete miscarriage with delayed or excessive hemorrhage
@@ -389,11 +263,6 @@ code,term
 198760008,Complete illegal abortion with metabolic disorder
 198761007,Complete illegal abortion with shock
 198762000,Complete illegal abortion with embolism
-198832001,Damage to pelvic organs or tissues following abortive pregnancy
-198861000,"Readmission for retained products of conception, spontaneous abortion"
-198862007,"Readmission for retained products of conception, legal abortion"
-198863002,"Readmission for retained products of conception, illegal abortion"
-198912003,Premature separation of placenta with coagulation defect
 198917009,Antepartum hemorrhage with coagulation defect - delivered
 198922009,Antepartum hemorrhage with trauma - delivered
 198927003,Antepartum hemorrhage with uterine leiomyoma - delivered
@@ -408,9 +277,7 @@ code,term
 199099004,Asymptomatic bacteriuria in pregnancy - delivered
 199100007,Asymptomatic bacteriuria in pregnancy - delivered with postnatal complication
 199102004,Asymptomatic bacteriuria in pregnancy with postnatal complication
-199111004,Urinary tract infection following delivery
 199117000,Liver disorder in pregnancy - delivered
-199118005,Liver disorder in pregnancy - not delivered
 199121007,Fatigue during pregnancy - delivered
 199122000,Fatigue during pregnancy - delivered with postnatal complication
 199124004,Fatigue during pregnancy with postnatal complication
@@ -428,7 +295,6 @@ code,term
 199330009,"Multiple delivery, all by forceps and vacuum extractor"
 199331008,"Multiple delivery, all by cesarean section"
 199344003,Unstable lie - delivered
-199345002,Unstable lie with antenatal problem
 199358001,Oblique lie - delivered
 199362007,Transverse lie - delivered
 199375007,High head at term - delivered
@@ -450,6 +316,7 @@ code,term
 199597005,Labor and delivery complicated by biochemical evidence of fetal stress
 199660008,Premature rupture of membranes with onset of labor within 24 hours of the rupture
 199662000,Premature rupture of membranes with onset of labor after 24 hours of the rupture
+199670005,Prolonged artificial rupture of membranes
 199710008,"Sepsis during labor, delivered"
 199718001,Elderly primigravida - delivered
 199745000,Complication occurring during labor and delivery
@@ -480,7 +347,6 @@ code,term
 199787003,Locked twins - delivered
 199806003,Obstructed labor due to unusually large fetus
 199819004,Primary uterine inertia - delivered
-199821009,Primary uterine inertia with antenatal problem
 199824001,Secondary uterine inertia - delivered
 199833004,Precipitate labor - delivered
 199838008,Hypertonic uterine inertia - delivered
@@ -521,8 +387,6 @@ code,term
 200063000,Obstetric anesthesia with central nervous system complications - delivered
 200064006,Obstetric anesthesia with central nervous system complication - delivered with postnatal problem
 200066008,Obstetric anesthesia with central nervous system complication with postnatal problem
-200070000,Toxic reaction caused by local anesthesia during puerperium
-200073003,Spinal and epidural anesthesia-induced headache during the puerperium
 200075005,Toxic reaction caused by local anesthetic during labor and delivery
 200077002,Cardiac complications of anesthesia during labor and delivery
 200099005,Maternal distress - delivered
@@ -535,7 +399,6 @@ code,term
 200112003,Maternal hypotension syndrome - delivered with postnatal problem
 200114002,Maternal hypotension syndrome with postnatal problem
 200118004,Post-delivery acute renal failure with postnatal problem
-200125006,Infection of obstetric surgical wound
 200130005,Forceps delivery - delivered
 200133007,Delivery by combination of forceps and vacuum extractor
 200134001,Delivered by mid-cavity forceps with rotation
@@ -561,9 +424,6 @@ code,term
 200196001,Puerperal sepsis with postnatal complication
 200237000,Postnatal deep vein thrombosis - delivered with postnatal complication
 200238005,Postnatal deep vein thrombosis with postnatal complication
-200255009,Hemorrhoids in puerperium
-200260008,Cerebral venous thrombosis in puerperium
-200277008,Puerperal pyrexia of unknown origin
 200280009,Puerperal pyrexia of unknown origin - delivered with postnatal complication
 200281008,Puerperal pyrexia of unknown origin with postnatal complication
 200286003,Obstetric air pulmonary embolism
@@ -583,39 +443,26 @@ code,term
 20259008,Finding of ballottement of fetal parts
 20272009,Premature birth of multiple newborns
 20483002,Legal abortion with renal tubular necrosis
-206242003,Liver subcapsular hematoma due to birth trauma
-206244002,Vulval hematoma due to birth trauma
 20845005,Meconium in amniotic fluid affecting management of mother
 20891002,Fetal decapitation
-20932005,Puerperal salpingitis
 21127004,Term birth of newborn male
 21243004,Term birth of newborn
 21280005,Legal abortion with postoperative shock
 21360006,Miscarriage with afibrinogenemia
-215874071000119106,Postpartum adjustment disorder
 21604008,Illegal abortion with blood-clot embolism
-21737000,Retained fetal tissue
 22046002,Illegal abortion with salpingitis
 22137006,"Hypoxia, in liveborn infant"
-22271007,Abnormal fetal heart beat first noted during labor AND/OR delivery in liveborn infant
-22399000,Puerperal endometritis
 22514005,"Term birth of fraternal twins, one living, one stillborn"
 225245001,Rubbing up a contraction
 22633006,"Vaginal delivery, medical personnel present"
-22846003,Hepatorenal syndrome following delivery
-229761000000107,Vacuum aspiration of products of conception from uterus using flexible cannula
-229801000000102,Vacuum aspiration of products of conception from uterus using rigid cannula
 23128002,"Cervical dilatation, 5cm"
-23171006,Delayed AND/OR secondary postpartum hemorrhage
 2321005,Delivery by Ritgen maneuver
 2324901000000103,Delivered by high cavity forceps delivery
-23332002,Failed trial of labor
 23401002,Illegal abortion with perforation of bowel
 23431000119106,Rupture of uterus during labor
 23508005,"Uterine incoordination, first degree"
 23652008,"Cervical dilatation, 3cm"
 23667007,Term pregnancy delivered
-236883005,Evacuation of retained product of conception
 236958009,Induction of labor
 236971007,Stabilizing induction
 236973005,Delivery procedure
@@ -653,40 +500,21 @@ code,term
 237011008,Wood's screw maneuver
 237012001,Freeing the posterior arm
 237013006,Embryotomy
-237014000,Postpartum obstetric operation
-237015004,Surgical control of postpartum hemorrhage
 237021000,Hydrostatic replacement of inverted uterus
 237022007,Manual replacement of inverted uterus
 237023002,Haultain's operation
 237024008,Kustner's operation
-237025009,Repair of right mediolateral episiotomy
 237198001,Rectocele complicating postpartum care - baby delivered during previous episode of care
 237202004,Rectocele - delivered with postpartum complication
 237206001,Rectocele - baby delivered
 237235009,Undiagnosed breech
-237273008,Revealed placental abruption
-237274002,Concealed placental abruption
-237275001,Mixed placental abruption
-237277009,Marginal placental hemorrhage
+237267007,Prolonged premature rupture of membranes
 237311001,Breech delivery
 237312008,"Multiple delivery, function"
 237313003,Vaginal delivery following previous cesarean section
-237319004,Failure to progress in labor
-237320005,Failure to progress in first stage of labor
-237321009,Delayed delivery of triplet
 237324001,Cervical dystocia
 237325000,Head entrapment during breech delivery
 237329006,Urethra injury - obstetric
-237337003,Afibrinogenemia - postpartum
-237338008,Blood dyscrasia puerperal
-237343001,Phlebitis in puerperium
-237348005,Puerperal pyrexia
-237349002,Mild postnatal depression
-237350002,Severe postnatal depression
-237351003,Mild postnatal psychosis
-237352005,Severe postnatal psychosis
-237355007,Milk engorgement of breast
-237357004,Vascular engorgement of breast
 237364002,Stillbirth
 237365001,Fresh stillbirth
 237366000,Macerated stillbirth
@@ -699,8 +527,6 @@ code,term
 24146004,Premature birth of newborn quintuplets
 24258008,Damage to pelvic joints AND/OR ligaments during delivery
 24699006,Arrested active phase of labor
-247421008,Removal of secundines by aspiration curettage
-248273008,Aspiration curettage of uterus after delivery
 249032005,Finding of speed of delivery
 249037004,Caul membrane over baby's head at delivery
 249089009,Fetal mouth presenting
@@ -724,7 +550,6 @@ code,term
 249195007,Maternal condition during labor
 249196008,Distress from pain in labor
 249207000,Membrane at cervical os
-249218000,Postpartum vulval hematoma
 249219008,Genital tear resulting from childbirth
 249220002,Vaginal tear resulting from childbirth
 25192009,"Premature birth of fraternal twins, both living"
@@ -733,25 +558,22 @@ code,term
 25519006,Illegal abortion with perforation of vagina
 25691001,Legal abortion with septic shock
 25828002,Mid forceps delivery with episiotomy
-25922000,"Major depressive disorder, single episode with postpartum onset"
 26010008,Legal abortion with pelvic peritonitis
 26050006,Suture of old obstetrical laceration of vagina
 26158002,Uterine inertia
 26313002,Delivery by vacuum extraction with episiotomy
-265062002,Dilation of cervix uteri and curettage of products of conception from uterus
 265633004,Selective destruction of fetus
 265639000,Midforceps delivery without rotation
 265640003,Crede placental expression
 266784003,Manual replacement of inverted postnatal uterus
 267193004,Incomplete legal abortion
 267194005,Complete legal abortion
-267197003,Antepartum hemorrhage due to abruptio placentae and placenta previa
 267257007,Labor and delivery complicated by fetal heart rate anomaly
+267262008,Prolonged spontaneous rupture of membranes
 267265005,Hypertonic uterine inertia
 267268007,Trauma to perineum and/or vulva during delivery
 267269004,Vulval and perineal hematoma during delivery
 267271004,Obstetric trauma damaging pelvic joints and ligaments
-267272006,Postpartum coagulation defects
 267276009,Obstetric anesthesia with pulmonary complications
 267278005,Deliveries by vacuum extractor
 267340006,Maternal pyrexia in labor
@@ -764,7 +586,6 @@ code,term
 271373005,Deliveries by spontaneous breech delivery
 271415006,Removal of products of conception from fallopian tube
 27169005,Legal abortion complicated by shock
-27214003,Atonic postpartum hemorrhage
 27388005,Intrapartum hemorrhage due to partial placenta previa
 273984003,Delivery problem for fetus
 274125008,Elderly primiparous with labor
@@ -773,30 +594,22 @@ code,term
 274129002,Face delivery
 274130007,Emergency cesarean section
 274514009,"Delivery conduct, function"
-274972007,Dilatation of cervix and curettage of retained products of conception
 274973002,Dilation of cervix uteri and curettage for termination of pregnancy
 275168001,Neville-Barnes forceps delivery
 275169009,Simpson's forceps delivery
 275421004,Miscarriage with heavy bleeding
-275425008,Retained products after miscarriage
-275434003,Stroke in the puerperium
 276508000,Hydrops fetalis
 278094007,Rapid rate of delivery
 278095008,Normal rate of delivery
 278096009,Slow rate of delivery
-279225001,Maternity blues
 28030000,Twin birth
 281050002,Livebirth
 281052005,Triplet birth
 281687006,Face to pubes birth
 282020008,Premature delivery
-28357009,Transitory postpartum mood disturbance
 285409006,Medical termination of pregnancy
-285416007,Resuture of episiotomy
-285417003,Resuture of episiotomy dehiscence
 28542003,Wigand-Martin maneuver
 285434006,Insertion of abortifacient suppository
-2858002,Puerperal sepsis
 287977004,Dilation/incision of cervix - delivery aid
 288039005,Internal cephalic version and extraction
 288042004,Hysterectomy and fetus removal
@@ -815,7 +628,6 @@ code,term
 28860009,Prague maneuver
 289210008,Finding of first stage of labor
 289211007,First stage of labor established
-289212000,First stage of labor not established
 289213005,Normal length of first stage of labor
 289214004,Normal first stage of labor
 289215003,First stage of labor problem
@@ -840,7 +652,6 @@ code,term
 289235002,Rapid expulsion of placenta
 289236001,Delayed expulsion of placenta
 289237005,Normal rate of expulsion of placenta
-289238000,Finding of pattern of labor
 289239008,Finding of duration of labor
 289240005,Long duration of labor
 289241009,Short duration of labor
@@ -868,24 +679,17 @@ code,term
 289353006,Ballottement of fetal head vaginally
 289354000,Presenting part not ballottable
 289574008,Operculum passed
-289606001,Maternity pad damp with liquor
-289607005,Maternity pad wet with liquor
-289608000,Maternity pad soaked with liquor
 289761004,Finding of cervical dilatation
 289762006,Cervix dilated
 289763001,Rim of cervix palpable
 289764007,Cervix undilated
 28996007,Stillbirth of premature female (1000-2499 gms.)
-290653008,Postpartum hypopituitarism
-291665000,Postpartum intrapituitary hemorrhage
-29171003,Trapped placenta
 29397004,Repair of old obstetric urethral laceration
 29583006,Illegal abortion with laceration of broad ligament
 29613008,Delivery by double application of forceps
 29950007,Legal abortion with septic embolism
 29995000,Illegal abortion with fat embolism
 29997008,Premature birth of newborn triplets
-300927001,Episiotomy infection
 30165006,"Premature birth of fraternal twins, one living, one stillborn"
 302080006,Finding of birth outcome
 302253005,Delivered by cesarean section - pregnancy at term
@@ -894,12 +698,10 @@ code,term
 302382009,Breech extraction with internal podalic version
 302383004,Forceps delivery
 302384005,Controlled cord traction of placenta
-303063000,Eclampsia in puerperium
 30476003,Barton's forceps delivery
 30479005,Legal abortion with afibrinogenemia
 304968002,Fetal Danforth operation
 306727001,"Breech presentation, delivery, no version"
-30687003,"Bipolar II disorder, most recent episode major depressive with postpartum onset"
 307733001,Inevitable abortion complete
 307734007,Complete inevitable abortion complicated by genital tract and pelvic infection
 307735008,Complete inevitable abortion complicated by delayed or excessive hemorrhage
@@ -912,20 +714,12 @@ code,term
 307752007,Incomplete inevitable abortion complicated by delayed or excessive hemorrhage
 308037008,Syntocinon induction of labor
 30806007,Miscarriage with endometritis
-308135003,Varicose veins of genitalia in puerperium
-308137006,Superficial thrombophlebitis in puerperium
-308187004,Varicose veins of vagina in puerperium
 30828007,"Anoxia, in liveborn infant"
 309469004,Spontaneous vertex delivery
 31041000119106,Obstructed labor due to deep transverse arrest and persistent occipitoposterior position
-310602001,Expression of retained products of conception
-310603006,Digital evacuation of retained products of conception
-310604000,Suction evacuation of retained products of conception
 31207002,Self-induced abortion
 31208007,Medical induction of labor
 312974005,Preterm premature rupture of membranes
-313291009,Anemia during the puerperium
-31407004,Pre-existing hypertension complicating AND/OR reason for care during puerperium
 315307003,Repair of obstetric laceration of lower urinary tract
 315308008,Dilatation of cervix for delivery
 31939001,Repair of obstetric laceration of cervix
@@ -940,7 +734,6 @@ code,term
 34100008,"Premature birth of identical twins, both living"
 34262005,Fourth degree perineal laceration involving rectal mucosa
 34270000,Miscarriage complicated by shock
-34273003,Hypertensive heart disease complicating AND/OR reason for care during puerperium
 34327003,Parturient hemorrhage associated with hyperfibrinolysis
 34500003,Legal abortion without complication
 34614007,Miscarriage with complication
@@ -949,18 +742,15 @@ code,term
 35347003,Delayed delivery after artificial rupture of membranes
 35574001,"Delivery of shoulder presentation, function"
 35608009,Stillbirth of immature male (500-999 gms.)
-35716006,Cracked nipple associated with childbirth
 35874009,Normal labor
 35882009,Abnormality of forces of labor
 359937006,Repair of obstetric laceration of anus
 359940006,Partial breech extraction
 359943008,Partial breech delivery
 359944002,Anal sphincteroplasty for current obstetrical laceration
-359946000,Repair of current obstetric laceration of rectum and sphincter ani
 361096002,Disruption of cesarean wound in the puerperium
 36248000,Repair of obstetric laceration of urethra
 362972006,Disorder of labor / delivery
-362973001,Disorder of puerperium
 3634007,Legal abortion complicated by metabolic disorder
 363681007,Pregnancy with abortive outcome
 36473002,Legal abortion with oliguria
@@ -972,9 +762,6 @@ code,term
 366329008,Finding of speed of delivery of placenta
 366332006,Finding of odor of placenta
 367494004,Premature birth of newborn
-371091008,Postpartum infection of vulva
-371374003,Retained products of conception
-371375002,Retained secundines
 372456005,Repair of obstetric laceration
 373896005,Miscarriage complicated by genital-pelvic infection
 373901007,Legal abortion complicated by genital-pelvic infection
@@ -982,14 +769,11 @@ code,term
 37787009,Legal abortion with blood-clot embolism
 3798002,"Premature birth of identical twins, both stillborn"
 38010008,Intrapartum hemorrhage
-38250004,Arrested labor
 38257001,"Term birth of identical twins, one living, one stillborn"
-38451000119105,Failed attempted vaginal birth after previous cesarean section
 384729004,Delivery of vertex presentation
 384730009,Delivery of cephalic presentation
 38479009,Frank breech delivery
 386216000,"Human parturition, function"
-386322007,High risk pregnancy care
 386343008,Labor suppression
 386561000,Fetal craniotomy
 386562007,Fetal cranioclasis
@@ -1009,33 +793,22 @@ code,term
 391896006,Therapeutic abortion by aspiration curettage
 391897002,Aspiration curettage of uterus for termination of pregnancy
 39199000,Miscarriage with laceration of urinary bladder
-391997001,Operation for retained placenta
-391998006,Dilation and curettage of uterus after delivery
-392000009,Hysterotomy for retained placenta
 39213008,"Premature birth of identical twins, one living, one stillborn"
 39239006,Legal abortion with electrolyte imbalance
 39246002,Legal abortion with sepsis
 39333005,"Cervical dilatation, 8cm"
 39406005,Legally induced abortion
 3950001,Birth
-396544001,Cesarean wound disruption
-39727004,Hypertension secondary to renal disease complicating AND/OR reason for care during puerperium
-397752008,Obstetric perineal wound disruption
 397949005,Poor fetal growth affecting management
 397952002,Trauma to perineum during delivery
 398019008,Perineal laceration during delivery
-398262004,Disruption of episiotomy wound in the puerperium
 399031001,Fourth degree perineal laceration
 399363000,Late fetal death affecting management of mother
 4006006,Fetal tachycardia affecting management of mother
 40219000,Delivery by Malstrom's extraction with episiotomy
-4026005,Interstitial mastitis associated with childbirth
-403528000,Pregnancy-related exacerbation of dermatosis
 40405003,Illegal abortion with cerebral anoxia
 40444006,Miscarriage with acute necrosis of liver
 40500006,Illegal abortion with laceration of uterus
-40511000119107,Postpartum pre-existing essential hypertension
-40521000119100,Postpartum pregnancy-induced hypertension
 40704000,Wright's obstetrical version with extraction
 40792007,Kristeller maneuver
 408796008,Stillbirth - unknown if fetal death intrapartum or prior to labor
@@ -1043,31 +816,24 @@ code,term
 408818004,Induction of labor by artificial rupture of membranes
 408819007,Delivery of placenta by maternal effort
 408840008,Extra-amniotic termination of pregnancy
-408883002,Breastfeeding support
 41059002,Cesarean hysterectomy
 413338003,Incomplete miscarriage with complication
-415105001,Placental abruption
 416055001,Total breech extraction
 417121007,Breech extraction
 41806003,Legal abortion with laceration of broad ligament
-42102002,"Pre-admission observation, undelivered mother"
 42390009,Repair of obstetric laceration of urinary bladder and urethra
-42537006,Secondary perineal tear in the puerperium
 42599006,Trauma from instrument during delivery
 42783002,"Spontaneous placental expulsion, Schultz mechanism"
 428508008,Abortion due to Brucella abortus
 42857002,Second stage of labor
-431868002,Initiation of breastfeeding
 43306002,Miscarriage complicated by embolism
 43715006,Secondary uterine inertia
 43808007,"Cervical dilatation, 4cm"
 44101005,Illegal abortion with air embolism
 441619002,Repair of obstetric laceration of perineum and anal sphincter and mucosa of rectum
 44223004,Premature rupture of membranes
-44464006,Postpartum AND/OR puerperal erysipelas
 445086005,Chemical pregnancy
 4451004,Illegal abortion with renal tubular necrosis
-445149007,Residual trophoblastic disease
 445912000,Excision of fallopian tube and surgical removal of ectopic pregnancy
 447972007,Medical termination of pregnancy using prostaglandin
 44814008,Miscarriage with laceration of periurethral tissue
@@ -1079,22 +845,18 @@ code,term
 450484007,Cesarean section through J shaped incision of uterus
 450562009,Laparoscopic excision of ruptured ectopic tubal pregnancy
 450563004,Laparoscopic excision of ectopic ovarian pregnancy
-450640001,Open removal of products of conception from uterus
 450678004,Intraamniotic injection of abortifacient
 450679007,Extraamniotic injection of abortifacient
 450798003,Delivery of occipitoposterior presentation
-451014004,Curettage of products of conception from uterus
 45384004,Multiple birth
 45718005,Vaginal delivery with forceps including postpartum care
 45757002,Labor problem
 4576001,Legal abortion complicated by renal failure
-46273003,Abscess of nipple associated with childbirth
 46311005,Perineal laceration involving fourchette
 46502006,Hematoma of vagina during delivery
 47236005,Third stage hemorrhage
 472839005,Termination of pregnancy after first trimester
 47537002,Miscarriage with postoperative shock
-47821001,Postpartum hemorrhage
 48204000,"Spontaneous unassisted delivery, medical personnel present"
 48433002,Legal abortion with complication
 48485000,Miscarriage in third trimester
@@ -1103,11 +865,8 @@ code,term
 48782003,Delivery normal
 4886009,Premature birth of newborn male
 48975005,Stimulated labor
-49177006,Postpartum coagulation defect with hemorrhage
 49279000,Slow slope active phase of labor
-49364005,Subareolar abscess associated with childbirth
 49550006,Premature pregnancy delivered
-49561003,Rupture of gravid uterus before onset of labor
 49632008,Illegally induced abortion
 49815007,Damage to coccyx during delivery
 49964003,Ectopic fetus
@@ -1118,16 +877,13 @@ code,term
 51920004,Precipitate labor
 51953009,Legal abortion with perforation of broad ligament
 51954003,Miscarriage with perforation of periurethral tissue
-522101000000109,Fetal death before 24 weeks with retention of dead fetus
 52342006,Legal abortion with acute renal failure
 52483005,Term birth of newborn sextuplets
 52660002,Induced abortion following intra-amniotic injection with hysterotomy
-52772002,Postpartum thyroiditis
 52942000,Term birth of stillborn twins
 5300004,Hemoglobin Bart's hydrops syndrome
 53098006,Legal abortion with salpingitis
 53183006,Miscarriage with intravascular hemolysis
-53212003,Postobstetric urethral stricture
 53247006,Illegal abortion with laceration of bladder
 53443007,Prolonged labor
 53638009,Therapeutic abortion
@@ -1139,19 +895,13 @@ code,term
 54812001,"Delivery of brow presentation, function"
 54844002,Prolapse of gravid uterus
 54973000,Total breech delivery with forceps to aftercoming head
-55466006,Missed labor
-55472006,Submammary abscess associated with childbirth
-55516002,"Bipolar I disorder, most recent episode manic with postpartum onset"
 5556001,Manually assisted spontaneous delivery
 55581002,Meconium in amniotic fluid first noted during labor AND/OR delivery in liveborn infant
 55589000,Illegal abortion with pulmonary embolism
-55613002,Engorgement of breasts associated with childbirth
 55669006,Repair of obstetrical laceration of perineum
-55704005,"Abscess of breast, associated with childbirth"
 5577003,Legal abortion with laceration of bowel
 55933000,Legal abortion with perforation of bowel
 55976003,Miscarriage with blood-clot embolism
-56272000,Deep venous thrombosis in puerperium
 56620000,Delivery of placenta following delivery of infant outside of hospital
 57271003,Extraperitoneal cesarean section
 5740008,Pelvic hematoma during delivery
@@ -1161,10 +911,7 @@ code,term
 57734001,Legal abortion complicated by embolism
 57759005,First degree perineal laceration
 57797005,Induced termination of pregnancy
-57873008,Hypertensive renal disease complicating AND/OR reason for care during puerperium
-58289000,Prodromal stage labor
 58699001,"Cervical dilatation, 2cm"
-58703003,Postpartum depression
 58705005,Bracht maneuver
 58990004,Miscarriage complicated by damage to pelvic organs and/or tissues
 59204004,Miscarriage with septic embolism
@@ -1173,9 +920,7 @@ code,term
 5945005,Legal abortion with urinary tract infection
 59859005,Legal abortion with laceration of bladder
 60265009,Miscarriage with air embolism
-60401000119104,Postpartum psychosis in remission
 609204004,Subchorionic hematoma
-609443003,Retained products of conception following induced termination of pregnancy
 609446006,Induced termination of pregnancy with complication
 609447002,Induced termination of pregnancy complicated by damage to pelvic organs and/or tissues
 609449004,Induced termination of pregnancy complicated by embolism
@@ -1222,7 +967,6 @@ code,term
 609492009,Induced termination of pregnancy without complication
 609493004,Induced termination of pregnancy complicated by tetanus
 609494005,Induced termination of pregnancy complicated by pelvic disorder
-609497003,Venous complication of puerperium
 609498008,Induced termination of pregnancy complicated by laceration of urinary bladder
 609499000,Induced termination of pregnancy complicated by laceration of periurethral tissue
 609500009,Induced termination of pregnancy complicated by perforation of urinary bladder
@@ -1250,14 +994,10 @@ code,term
 61810006,Illegal abortion with defibrination syndrome
 61893009,Laparoscopic treatment of ectopic pregnancy with oophorectomy
 62129004,Contraction ring dystocia
-62131008,Couvelaire uterus
 6234006,Second degree perineal laceration
-62377009,Postpartum cardiomyopathy
-62410004,Postpartum fibrinolysis with hemorrhage
 62472004,Cervix fully dilated
 62508004,Mid forceps delivery
 6251000119101,Induced termination of pregnancy in first trimester
-62583006,Phlegmasia alba dolens in puerperium
 6261000119104,Induced termination of pregnancy in second trimester
 62657007,Cardiac arrest AND/OR failure following anesthesia AND/OR sedation in labor AND/OR delivery
 62726004,Fetal clavicotomy
@@ -1265,31 +1005,22 @@ code,term
 62888008,Legal abortion with perforation of bladder
 63407004,Episioproctotomy
 63596003,Laparoscopic treatment of ectopic pregnancy with salpingectomy
-63662002,Purulent mastitis associated with childbirth
 6383007,Premature labor
 64229006,Traumatic lesion during delivery
 6473009,Suture of old obstetrical laceration of uterus
 64814003,Miscarriage with electrolyte imbalance
 64954002,Avulsion of inner symphyseal cartilage during delivery
-65042007,"Bipolar I disorder, most recent episode mixed with postpartum onset"
 65243006,Delivery by midwife
-65377004,Polygalactia
-65378009,Delayed repair of episiotomy
 65539006,Impetigo herpetiformis
-6594005,Cerebrovascular disorder in the puerperium
-66119008,Disruption of perineal laceration repair in the puerperium
 66131005,Miscarriage with fat embolism
 66231000,"Fetal OR intrauterine asphyxia, not clear if noted before OR after onset of labor in liveborn infant"
 6647006,Legal abortion with defibrination syndrome
 66895001,"Cervical dilatation, 6cm"
 67465009,Miscarriage with sepsis
-67486009,Pelvic thrombophlebitis in puerperium
 6802007,Illegal abortion with perforation of broad ligament
 68189005,Illegal abortion with perforation of periurethral tissue
-68214002,Lymphangitis of breast associated with childbirth
 6825008,Perineal laceration involving rectovaginal septum
 68509000,Stillbirth of immature female (500-999 gms.)
-686778351000119105,Acute candidiasis of vagina postpartum
 6891008,"Uterine incoordination, second degree"
 6893006,First stage of labor
 69162008,Cleidotomy
@@ -1299,34 +1030,19 @@ code,term
 698586005,Complete legal abortion complicated by excessive hemorrhage
 698587001,Complete illegal abortion complicated by excessive hemorrhage
 698636009,Complete legal abortion with complication
-698640000,Hypertension in the puerperium with pulmonary edema
 698716002,Preterm spontaneous labor with preterm delivery
 698717006,Preterm spontaneous labor with term delivery
-699949009,Retained placenta due to morbidly adherent placenta
 699999008,Obstetrical version with extraction
 700000006,Vaginal delivery of fetus
-700038005,Mastitis associated with lactation
 700041001,Induced termination of pregnancy under unsafe conditions
 700073007,Aspiration of ectopic pregnancy from cornu of fallopian tube
 70112005,Stillbirth of mature female (2500 gms. or more)
 702452007,Quadruplet birth
 702453002,Quintuplet birth
 702454008,Sextuplet birth
-702736005,Supervision of high risk pregnancy with history of previous cesarean section
-702737001,Supervision of high risk pregnancy with history of gestational diabetes mellitus
-702738006,Supervision of high risk pregnancy
-702739003,Supervision of high risk pregnancy with history of previous molar pregnancy
-702740001,Supervision of high risk pregnancy with history of previous precipitate labor
-702741002,Supervision of high risk pregnancy for multigravida
-702742009,Supervision of high risk pregnancy for social problem
-702743004,Supervision of high risk pregnancy for multigravida age 15 years or younger
-702744005,Supervision of high risk pregnancy for primigravida age 15 years or younger
-707089008,Genital tract infection in puerperium
 707207004,Incomplete induced termination of pregnancy
 70823006,Illegal abortion with intravascular hemolysis
 709004006,Emergency lower segment cesarean section with inverted T incision
-709201008,Compression suturing of uterus for atonic postpartum hemorrhage
-70964000,Postparturient hemoglobinuria
 71096001,Inversion of uterine contraction
 71166009,Forceps delivery with rotation of fetal head
 71216006,Legal abortion with laceration of periurethral tissue
@@ -1335,52 +1051,22 @@ code,term
 712655005,Delivery by cesarean section for flexed breech presentation
 713202001,Antepartum stillbirth
 713232009,Prolonged second stage of labor due to poor maternal effort
-713233004,Supervision of high risk pregnancy with history of previous neonatal death
-713234005,Supervision of high risk pregnancy with history of previous intrauterine death
-713235006,Supervision of high risk pregnancy with history of previous antepartum hemorrhage
-713237003,Supervision of high risk pregnancy with history of previous big baby
-713238008,Supervision of high risk pregnancy with history of previous abnormal baby
-713239000,Supervision of high risk pregnancy with history of previous primary postpartum hemorrhage
-713240003,Supervision of high risk pregnancy with poor obstetric history
-713241004,Supervision of high risk pregnancy with history of previous fetal distress
-713242006,Supervision of high risk pregnancy with poor reproductive history
-713249002,Pyogenic granuloma of gingiva due to pregnancy
-713386003,Supervision of high risk pregnancy for maternal short stature
-713387007,Supervision of high risk pregnancy with family history of diabetes mellitus
 71362000,Illegal abortion with septic embolism
 714812005,Induced termination of pregnancy
 715880002,Obstructed labor due to fetal abnormality
-71612002,Postpartum uterine hypertrophy
-71639005,Galactorrhea associated with childbirth
 7166002,Legal abortion with laceration of cervix
-717794008,Supervision of pregnancy with history of infertility
-717795009,Supervision of pregnancy with history of insufficient antenatal care
-717809003,Immediate postpartum care
-717810008,Routine postpartum follow-up
-717816002,Infection of nipple associated with childbirth with attachment difficulty
-717817006,Abscess of breast associated with childbirth with attachment difficulty
-717818001,Nonpurulent mastitis associated with childbirth with attachment difficulty
-717819009,Retraction of nipple associated with childbirth with attachment difficulty
-717820003,Cracked nipple associated with childbirth with attachment difficulty
-717959008,Cardiac complication of anesthesia during the puerperium
-717960003,Central nervous system complication of anesthesia during the puerperium
 71848002,Bolt's sign
 72059007,Destructive procedure on fetus to facilitate delivery
-721022000,Complication of anesthesia during the puerperium
 724484007,Incomplete legal abortion without complication
 724488005,Preterm delivery following induction of labor
 724489002,Preterm delivery following Cesarean section
 724490006,Intrapartum hemorrhage co-occurrent and due to obstructed labor with uterine rupture
-724496000,Postpartum hemorrhage co-occurrent and due to uterine rupture following obstructed labor
 72492007,Footling breech delivery
 72543004,"Stillbirth of immature fetus, sex undetermined (500-999 gms.)"
 72613009,Miscarriage with oliguria
 7266006,Intrapartum hemorrhage due to total placenta previa
-73161006,Transverse lie
 73280003,Illegal abortion with laceration of vagina
-733142005,Sepsis following obstructed labor
 73341009,Removal of ectopic fetus from ovary without oophorectomy
-733839001,Postpartum acute renal failure
 734275002,Delivery by outlet vacuum extraction
 734276001,Delivery by mid-vacuum extraction
 735492001,Obstructed labor due to shoulder dystocia
@@ -1388,14 +1074,10 @@ code,term
 736020003,Emergency upper segment cesarean section with bilateral tubal ligation
 736026009,Elective lower segment cesarean section with bilateral tubal ligation
 736118004,Emergency lower segment cesarean section with bilateral tubal ligation
-737318003,Delayed hemorrhage due to and following miscarriage
 737321001,Excessive hemorrhage due to and following molar pregnancy
-737331008,Disorder of vein following miscarriage
-73972002,Postpartum neurosis
 740597009,Umbilical cord complication during labor and delivery
 74369005,Miscarriage with perforation of cervix
 74522004,"Cervical dilatation, 7cm"
-74955002,Retraction of nipple associated with childbirth
 74978008,Illegal abortion with complication
 749781000000109,Incomplete termination of pregnancy
 75013000,Legal abortion with perforation of vagina
@@ -1408,14 +1090,12 @@ code,term
 762613004,Quintuplets with all five stillborn
 762614005,Sextuplets with all six stillborn
 76472002,Legal abortion with perforation of periurethral tissue
-765182005,Maternal postpartum pre-eclampsia
 76771005,Parturient hemorrhage associated with hypofibrinogenemia
 77099001,Illegal abortion with perforation of uterus
 77206006,Puerperal pelvic sepsis
 77259008,Prolonged second stage of labor
 7768008,Failure of cervical dilation
 77814006,Stillbirth of premature male (1000-2499 gms.)
-77913004,Submammary mastitis associated with childbirth
 7802000,Illegal abortion without complication
 7809009,Miscarriage with laceration of uterus
 785341006,Intrapartum hemorrhage due to leiomyoma
@@ -1426,9 +1106,7 @@ code,term
 785871007,Excessive hemorrhage due to and following legally induced termination of pregnancy
 785872000,Excessive hemorrhage due to and following illegally induced termination of pregnancy
 7860005,Stillbirth of mature male (2500 gms. or more)
-78697003,Nonpurulent mastitis associated with childbirth
 788180009,Lower uterine segment cesarean section
-788728009,Hematoma of surgical wound following cesarean section
 7888004,Term birth of newborn quadruplets
 7910003,Miscarriage with salpingitis
 79179003,Desultory labor
@@ -1441,7 +1119,6 @@ code,term
 80002007,Fetal malpresentation
 80438008,Illegal abortion with perforation of bladder
 8071005,Miscarriage with perforation of bowel
-810646391000119100,Subclinical hyperthyroidism in puerperium
 81130000,Removal of intraligamentous ectopic pregnancy
 81448000,"Hemorrhage in early pregnancy, delivered"
 816966004,Augmentation of labor using oxytocin
@@ -1456,7 +1133,6 @@ code,term
 83094001,Perineal hematoma during delivery
 83121003,"Term birth of fraternal twins, both stillborn"
 8333008,Term birth of newborn triplets
-83916000,Thrombophlebitis in puerperium
 83922009,Miscarriage with parametritis
 8393005,Tetanic contractions of uterus
 84007008,Shock during AND/OR following labor AND/OR delivery
@@ -1467,44 +1143,30 @@ code,term
 84382006,"Premature birth of fraternal twins, both stillborn"
 84457005,Spontaneous onset of labor
 8468007,Legal abortion with uremia
-84693004,Intervillous hemorrhage of placenta
-85039006,Postpartum amenorrhea-galactorrhea syndrome
 85116003,Miscarriage in second trimester
 85331004,Miscarriage with laceration of broad ligament
 85403009,"Delivery, medical personnel present"
-854611000000109,Medically induced evacuation of retained products of conception using prostaglandin
 85467007,Miscarriage with perforation of urinary bladder
 85542007,Perineal laceration involving skin
 85548006,Episiotomy
 85632001,Miscarriage with laceration of vagina
 85652000,Legal abortion with perforation of cervix
 85991008,Miscarriage with pelvic peritonitis
-860602007,Postpartum excision of uterus
 860603002,Episiotomy wound
-861281000000109,Antenatal 22 week examination
-861301000000105,Antenatal 25 week examination
-861321000000101,Antenatal 31 week examination
-86196005,Disorder of breast associated with childbirth
-86356004,Unstable lie
 866229004,Trauma to urethra and urinary bladder during delivery
 8670007,Illegal abortion with salpingo-oophoritis
 86803008,Term birth of newborn quintuplets
-87038002,Postpartum alopecia
-87203005,"Bipolar I disorder, most recent episode depressed with postpartum onset"
 87383005,Maternal distress
 87662006,"Term birth of fraternal twins, both living"
 87814002,Intrapartum hemorrhage due to marginal placenta previa
-87840008,Galactocele associated with childbirth
 87967003,Miscarriage with perforation of vagina
 87968008,Repair of old obstetrical laceration of cervix
 88144003,Removal of ectopic interstitial uterine pregnancy requiring total hysterectomy
-88178009,Puerperal peritonitis
 88201000119101,Failure of cervical dilation due to primary uterine inertia
 88362001,Removal of ectopic fetus from fallopian tube without salpingectomy
 89053004,Vaginal cesarean section
 89346004,Delivery by Kielland rotation
 893721000000103,Defibulation of vulva to facilitate delivery
-89672000,Retromammary mastitis associated with childbirth
 89700002,Shoulder girdle dystocia
 89849000,High forceps delivery
 89934007,Crowning
@@ -1513,14 +1175,9 @@ code,term
 90438006,Delivery by Malstrom's extraction
 90450000,Illegal abortion with pelvic peritonitis
 90532005,Central laceration during delivery
-9121000119106,Low back pain in pregnancy
 921611000000101,Intrapartum stillbirth
 9221009,Surgical treatment of septic abortion
-926336003,Rupture of uterus after labor
 9293002,Atony of uterus
 9343003,Term birth of newborn female
 9442009,Parturient hemorrhage associated with afibrinogenemia
-95121000119108,Postpartum disorder of breast
-95888005,Mycoplasmal postpartum fever
-9724000,Repair of current obstetric laceration of uterus
 9780006,Presentation of prolapsed arm of fetus
