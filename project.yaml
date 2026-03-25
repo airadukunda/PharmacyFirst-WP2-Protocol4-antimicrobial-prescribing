@@ -72,7 +72,7 @@ actions:
     run: python:v2 analysis/process_measures_to_practice_dataset.py --output output/practice_level_data.csv
     needs: [generate_patient_measures_for_practices]
     outputs:
-      highly_sensitive:
+      moderately_sensitive:
         practice_level_data: output/practice_level_data.csv
 
 # https://actions.opensafely.org/actions/safetab/v3.0.2/
