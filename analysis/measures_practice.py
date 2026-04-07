@@ -32,14 +32,6 @@ measures.define_defaults(
     # intervals=months(2).starting_on("2024-02-01")
 )
 
-# population
-measures.define_measure(
-    name="population",
-    numerator=measure_base_population,
-    denominator=measure_base_population,
-    group_by=group,
-)
-
 # appointments
 measures.define_measure(
     name="appointments_total",
@@ -59,12 +51,6 @@ measures.define_measure(
     name="pf_consultation_uti",
     numerator=dataset.numerator_pf_consultation_uti,
     denominator=measure_base_population & dataset.include_patient_uuti,
-    group_by=group,
-)
-measures.define_measure(
-    name="populationeligible_uuti",
-    numerator=dataset.include_patient_uuti,
-    denominator=measure_base_population,
     group_by=group,
 )
 
