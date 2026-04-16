@@ -263,7 +263,7 @@ dataset.gp_pf_consultation_telephone = (
 )
 
 dataset.gp_pf_consultation_othermode = (
-    gp_pf_condition_events.where(
+    gp_pf_condition_all_events.where(
         ~gp_pf_condition_events.consultation_id.is_in(gp_pf_f2f_ids)
         & ~gp_pf_condition_events.consultation_id.is_in(gp_pf_online_ids)
         & ~gp_pf_condition_events.consultation_id.is_in(gp_pf_telephone_ids)
