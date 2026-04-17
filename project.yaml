@@ -7,52 +7,52 @@ actions:
   #     highly_sensitive:
   #       dataset: output/dataset_patients.csv.gz
 
+  #################################################################
+  # Actions defined for checking pregnancy variables
+
   generate_dataset_preg_2024_11_01:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition_pregnancy.py --output output/dataset_preg_2024_11_01.csv.gz -- --start_date 2024-11-01
+    run: ehrql:v1 generate-dataset analysis/check_pregnancy_variables/dataset_definition_pregnancy.py --output output/dataset_preg_2024_11_01.csv.gz -- --start_date 2024-11-01
     outputs:
       highly_sensitive:
         dataset: output/dataset_preg_2024_11_01.csv.gz
 
   generate_dataset_preg_2025_11_01:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition_pregnancy.py --output output/dataset_preg_2025_11_01.csv.gz -- --start_date 2025-11-01
+    run: ehrql:v1 generate-dataset analysis/check_pregnancy_variables/dataset_definition_pregnancy.py --output output/dataset_preg_2025_11_01.csv.gz -- --start_date 2025-11-01
     outputs:
       highly_sensitive:
         dataset: output/dataset_preg_2025_11_01.csv.gz
 
   generate_dataset_preg_measures:
-    run: ehrql:v1 generate-measures analysis/dataset_definition_pregnancy_measures.py --output output/measures/:csv
+    run: ehrql:v1 generate-measures analysis/check_pregnancy_variables/dataset_definition_pregnancy_measures.py --output output/measures/:csv
     outputs:
       moderately_sensitive:
         dataset: output/measures/*.csv
 
   analyse_preg_measures:
-    run: python:v2 analysis/pregnancy_checks.py --output output/measures/pregnancy_checks.csv --input output/measures/*.csv
+    run: python:v2 analysis/check_pregnancy_variables/pregnancy_checks.py --output output/measures/pregnancy_checks.csv --input output/measures/*.csv
     needs: 
       [generate_dataset_preg_measures]
     outputs:
       moderately_sensitive:
         dataset: output/measures/*by_year.csv
         charts: output/measures/*by_year.png
-
-
-  # generate_dataset_practices:
-  #   run: ehrql:v1 generate-dataset analysis/dataset_definition_practices.py --output output/dataset_practices.csv.gz
-  #   outputs:
-  #     highly_sensitive:
-  #       dataset: output/dataset_practices.csv.gz
   
+  #################################################################
+  # Actions for retrieving patient-level data for each specified month AND combine all into one csv.gz for downstream analysis
+
+  # retrieve csv.gz for each specified month
   generate_patient_dataset_2024_02_01:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition_patients.py --dummy-tables dummy-folder --output output/dataset_patients_2024-02-01.csv.gz -- --start_date 2024-02-01
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_patients.py --dummy-tables dummy_tables --output output/dataset_patients_2024-02-01.csv.gz -- --start_date 2024-02-01
     outputs:
       highly_sensitive:
         dataset: output/dataset_patients_2024-02-01.csv.gz
   generate_patient_dataset_2024_03_01:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition_patients.py --dummy-tables dummy-folder --output output/dataset_patients_2024-03-01.csv.gz -- --start_date 2024-03-01
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_patients.py --dummy-tables dummy_tables --output output/dataset_patients_2024-03-01.csv.gz -- --start_date 2024-03-01
     outputs:
       highly_sensitive:
         dataset: output/dataset_patients_2024-03-01.csv.gz
 
-  # combine monthly tables
+  # combine monthly tables into one csv.gz
   combine_monthly_patient_gz:
     run: python:v2 analysis/preprocess_combine_gz.py --output output/dataset_patients_combined.csv.gz
     needs: [generate_patient_dataset_2024_02_01, generate_patient_dataset_2024_03_01]
@@ -60,37 +60,80 @@ actions:
       highly_sensitive:
         dataset: output/dataset_patients_combined.csv.gz
 
+  #################################################################
   # patient-level measures for sense checking; not final measures for analysis
-  # local testing with dummy tables
-  generate_patient_measures:
-    run: ehrql:v1 generate-measures analysis/measures_patient.py --dummy-tables dummy-folder --output output/patient_measures.csv
+  
+  # # local testing with dummy tables
+  # generate_patient_measures_population_structure:
+  #   run: ehrql:v1 generate-measures analysis/validation/measures_patient_population_structure.py --dummy-tables dummy_tables --output output/patient_measures_population_structure.csv
+  #   outputs:
+  #     moderately_sensitive:
+  #       measure_tables: output/patient_measures_population_structure.csv
+  
+  generate_patient_measures_population_structure:
+    run: ehrql:v1 generate-measures analysis/validation/measures_patient_population_structure.py --output output/patient_measures_population_structure.csv
     outputs:
       moderately_sensitive:
-        measure_tables: output/patient_measures.csv
+        measure_tables: output/patient_measures_population_structure.csv
   
+  process_patient_measures_population_structure:
+    run: python:v2 analysis/validation/process_measure_population_structure.py --output output/patient_measures_population_structure_longformat.csv
+    needs: [generate_patient_measures_population_structure]
+    outputs:
+      moderately_sensitive:
+        measure_tables: output/patient_measures_population_structure_longformat.csv
   
+  # TO ADD: measures for checking PF eligibility variables; consultation count variables
+  
+  #################################################################
+  # Actions defined for getting measures and aggregating into practice-level
+
   # practice-level data step 1: run patient dataset measures 
+
+  # # version for debugging
+  # generate_patient_measures_for_practices:
+  #   run: ehrql:v1 generate-measures analysis/practice_variables/measures_practice.py --dummy-tables dummy_tables --output output/practice_measures.csv
+  #   outputs:
+  #     highly_sensitive:
+  #       measure_tables: output/practice_measures.csv
+
   generate_patient_measures_for_practices:
-    run: ehrql:v1 generate-measures analysis/measures_practice.py --dummy-tables dummy-folder --output output/practice_measures.csv
+    run: ehrql:v1 generate-measures analysis/practice_variables/measures_practice.py --output output/practice_measures.csv
     outputs:
       highly_sensitive:
         measure_tables: output/practice_measures.csv
   
   # practice-level data step 2: aggregate patient measures to practice-level data
   process_measures_to_practice_dataset:
-    run: python:v2 analysis/process_measures_to_practice_dataset.py --output output/practice_level_data.csv
+    run: python:v2 analysis/practice_variables/process_measures_to_practice_dataset.py --output output/practice_level_data.csv
     needs: [generate_patient_measures_for_practices]
     outputs:
       moderately_sensitive:
         practice_level_data: output/practice_level_data.csv
   
   # practice-level data step 3: extract info from practice-level data
-  process_practice_dataset:
-    run: python:v2 analysis/process_practice_dataset.py --output output/practice_summary_by_stp.csv
+  process_practice_dataset_stp:
+    run: python:v2 analysis/practice_variables/practice_to_stp.py --output output/practice_summary_by_stp.csv
     needs: [process_measures_to_practice_dataset]
     outputs:
       moderately_sensitive:
         practice_level_data: output/practice_summary_by_stp.csv
+  
+  process_practice_dataset_region:
+    run: python:v2 analysis/practice_variables/practice_to_region.py --output output/practice_summary_by_region.csv
+    needs: [process_measures_to_practice_dataset]
+    outputs:
+      moderately_sensitive:
+        practice_level_data: output/practice_summary_by_region.csv
+  
+  process_practice_size_distribution:
+    run: python:v2 analysis/practice_variables/practice_size_distribution.py --output output/practice_size_distribution.png
+    needs: [process_measures_to_practice_dataset]
+    outputs:
+      moderately_sensitive:
+        practice_level_plot: output/practice_size_distribution.png
+
+  #################################################################
 
 # https://actions.opensafely.org/actions/safetab/v3.0.2/
 # safetabs: create two-way tables for the specified variables; redact results for small numbers

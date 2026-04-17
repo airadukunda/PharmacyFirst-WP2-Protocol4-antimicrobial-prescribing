@@ -1,0 +1,26 @@
+This document describes the column names and definitions for the file
+"output/practice_summary_by_region.csv".
+
+- interval_start: Start date of the month
+
+- region: Name of the NHS region.
+
+- n_stp: Number of STPs within the region.
+
+- n_practices: Number of GP practices within the region.
+
+- population_total: Total number of registered patients across all practices in the region during the interval.
+
+- population_max_practice: Maximum practice-level population within the region (i.e. the largest GP practice by registered population).
+
+- population_min_practice: Minimum practice-level population within the region (i.e. the smallest GP practice by registered population).
+
+- appointments_scheduled: Total number of GP appointments scheduled within the interval across all practices in the region.
+
+- appointments_seen: Total number of GP appointments seen within the interval across all practices in the region.
+
+- pf_consultation_general: Total number of PF consultations (with any of the three PF service codes) recorded within the interval.
+
+- pf_consultation_uti: Total number of PF uncomplicated UTI consultations within the interval.
+
+- populationeligible_uuti: Total number of patients eligible for PF uncomplicated UTI within the interval, based on predefined inclusion/exclusion criteria.

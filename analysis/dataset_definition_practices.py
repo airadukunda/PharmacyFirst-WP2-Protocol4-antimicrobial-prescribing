@@ -103,7 +103,15 @@ dataset.pf_consultation_general_butno_condition = (
 # Total appointments attended in the period
 appointment_events = appointments.where(
     (appointments.seen_date.is_on_or_between(start_date, index_date)) &
-    (appointments.status == "Arrived")
+    (appointments.status.is_in([
+            "Arrived",
+            "In Progress",
+            "Finished",
+            "Visit",
+            "Patient Walked Out",
+            "Did Not Attend"
+        ]))
+    # (appointments.status == "Arrived")
 )
 # count attended appointments per patient
 dataset.appointment_count = appointment_events.count_for_patient()

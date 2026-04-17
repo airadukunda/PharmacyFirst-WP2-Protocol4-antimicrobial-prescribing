@@ -1,6 +1,6 @@
-from ehrql import create_dataset, weeks, days, years, show, case, when, create_measures, INTERVAL
+from ehrql import create_dataset, weeks, days, show, case, when
 from ehrql.tables.tpp import patients, practice_registrations, clinical_events
-import codelists
+import analysis.codelists as codelists
 dataset = create_dataset()
 
 start_date = "2023-05-01"
@@ -18,7 +18,7 @@ start_date = "2023-05-01"
 dataset.pregnancy_end_recent = clinical_events.where(
     clinical_events.snomedct_code.is_in(codelists.gp_snomed_codelist_end_pregnancy)
     &
-    clinical_events.date.is_on_or_between(INTERVAL.start_date - weeks(32), INTERVAL.start_date - days(1))
+    clinical_events.date.is_on_or_between(start_date - weeks(32), start_date - days(1))
     ).sort_by(clinical_events.date).last_for_patient().date
 
 # look ahead for end-of-pregnancy codes
@@ -31,7 +31,7 @@ dataset.pregnancy_end_recent = clinical_events.where(
 dataset.pregnancy_end = clinical_events.where(
     clinical_events.snomedct_code.is_in(codelists.gp_snomed_codelist_end_pregnancy)
     &
-    clinical_events.date.is_on_or_between(INTERVAL.start_date, INTERVAL.start_date + weeks(40))
+    clinical_events.date.is_on_or_between(start_date, start_date + weeks(40))
     ).sort_by(clinical_events.date).first_for_patient().date
 
 
@@ -40,7 +40,7 @@ dataset.pregnancy_end = clinical_events.where(
 # this date should assume exactly 40w gestation will be reached so we can calculate exact start of pregnancy, 
 # but likely unknown until ~6w, so only include those 32w from middle of month ie. 34w from start
 dataset.pregnancy_edd = clinical_events.where(
-    clinical_events.date.is_on_or_between(INTERVAL.start_date - weeks(2), INTERVAL.start_date + weeks(34))
+    clinical_events.date.is_on_or_between(start_date - weeks(2), start_date + weeks(34))
     &
     clinical_events.snomedct_code.is_in(codelists.gp_snomed_codelist_pregnancy_edd)
     ).sort_by(clinical_events.date).first_for_patient().date
@@ -52,7 +52,7 @@ dataset.pregnancy_edd = clinical_events.where(
 dataset.pregnancy_code = clinical_events.where(
     clinical_events.snomedct_code.is_in(codelists.gp_snomed_codelist_pregnancy)
     &
-    clinical_events.date.is_on_or_between(INTERVAL.start_date - weeks(12), INTERVAL.start_date + weeks(4))
+    clinical_events.date.is_on_or_between(start_date - weeks(12), start_date + weeks(4))
     ).sort_by(clinical_events.date).first_for_patient().date
 
 
@@ -60,7 +60,9 @@ dataset.pregnancy_code = clinical_events.where(
 # combine criteria to create a pregnancy status for the current month:
 dataset.pregnant = case(
     # recent delivery -> not pregnant now:
-    when(dataset.pregnancy_end_recent.is_on_or_after(INTERVAL.start_date - weeks(12))).then("0-R"),
+    when(dataset.pregnancy_end_recent.is_on_or_after(start_date - weeks(12))).then("0-R"),
+    # end of pregnancy in month or next 2 months - currently pregnant:
+    when(dataset.pregnancy_end.is_on_or_before(start_date + weeks(12))).then("P-E"),
     # EDD in month or next 8 months, not preceeded by an end-of-pregnancy
     when(dataset.pregnancy_edd.is_not_null() 
         # check that the pregnancy linked to the EDD did not end very early,
@@ -68,8 +70,6 @@ dataset.pregnant = case(
          & (dataset.pregnancy_end_recent.is_null() # no past delivery captured
             | ~dataset.pregnancy_end_recent.is_on_or_between(dataset.pregnancy_edd-weeks(28),dataset.pregnancy_edd+weeks(3))
             )).then("P-EDD"),
-    # end of pregnancy in month or next 2 months - currently pregnant:
-    when(dataset.pregnancy_end.is_on_or_before(INTERVAL.start_date + weeks(12))).then("P-E"),
     # recent pregnancy code
     when(dataset.pregnancy_code.is_not_null()).then("P"),
     otherwise="0",
@@ -77,7 +77,7 @@ dataset.pregnant = case(
 
 # binary flag:
 dataset.pregnant_flag = case(
-    when(dataset.pregnant.is_in(("P-EDD", "P-E", "P"))).then(1),
+    when(dataset.pregnant.is_in(("P-E", "P-EDD", "P"))).then(1),
     otherwise=0,
 )
 
@@ -112,59 +112,9 @@ dataset.ck_diff_edd_end_current = (dataset.pregnancy_end - dataset.pregnancy_edd
 
 
 dataset.sex = patients.sex
-dataset.age = patients.age_on(INTERVAL.start_date)
+dataset.age = patients.age_on(start_date)
 dataset.define_population(
-    (dataset.sex == "female") #& (dataset.age <=50) & (dataset.age >=11)
+    (dataset.sex == "female") & (dataset.age <=50) & (dataset.age >=11)
 )
 
-#show(dataset)
-
-measures = create_measures()
-measures.define_defaults(
-    intervals=years(2).starting_on("2025-01-01"),
-)
-measures.configure_disclosure_control(enabled=False)
-
-measures.define_measure(
-    name="pregnant_source",
-    numerator=dataset.pregnant!= "0",
-    denominator=(dataset.age <=50) & (dataset.age >=11),
-    group_by={
-        "source": dataset.pregnant
-    },
-)
-measures.define_measure(
-    name="ck_pregnancy_future",
-    numerator=dataset.ck_pregnancy_future.is_not_null(),
-    denominator=(dataset.age <=50) & (dataset.age >=11),
-    group_by={
-        "weeks": dataset.ck_diff_new_preg
-    },
-)
-
-measures.define_measure(
-    name="ck_diff_preg_ends",
-    numerator=dataset.ck_diff_preg_ends.is_not_null(),
-    denominator=(dataset.age <=50) & (dataset.age >=11),
-    group_by={
-        "weeks_1": dataset.ck_diff_preg_ends
-    },
-)
-
-measures.define_measure(
-    name="ck_diff_edd_end_recent",
-    numerator=dataset.ck_diff_edd_end_recent.is_not_null(),
-    denominator=(dataset.age <=50) & (dataset.age >=11),
-    group_by={
-        "weeks_2": dataset.ck_diff_edd_end_recent
-    },
-)
-
-measures.define_measure(
-    name="ck_diff_edd_end_current",
-    numerator=dataset.ck_diff_edd_end_current.is_not_null(),
-    denominator=(dataset.age <=50) & (dataset.age >=11),
-    group_by={
-        "weeks_3": dataset.ck_diff_edd_end_current
-    },
-)
+show(dataset)

@@ -6,15 +6,18 @@ The measures include:
 - among PF eligible population, how many had a PF consultation
 - among all population, how many had a PF consultation
 
-
+https://reports.opensafely.org/reports/opensafely-pharmacy-first-first-year-dashboard/
 '''
 from ehrql import case, create_measures, months, when
 from analysis.dataset_definition_patients_measures import dataset
 # opensafely exec ehrql:v1 generate-measures analysis/measures_patient.py --output output/measures_patient.csv
 
 measures = create_measures()
-
-measure_base_population = (
+measures.configure_disclosure_control(enabled=False)
+measures.define_defaults(
+    intervals=months(1).starting_on("2025-10-01")
+)
+base = (
     dataset.alive
     & dataset.registered_start
     & dataset.registered_index
@@ -23,7 +26,7 @@ measure_base_population = (
 
 pf_eligible_population = (
     dataset.include_patient_overall_eligible
-    & measure_base_population
+    & base
 )
 
 pf_consultation_population_eligible = (
@@ -33,7 +36,7 @@ pf_consultation_population_eligible = (
 
 pf_consultation_population_all = (
     (dataset.pf_consultation_general > 0)
-    & measure_base_population
+    & base
 )
 
 age_band = case(
@@ -45,101 +48,95 @@ age_band = case(
     when(dataset.age.is_null()).then("Missing"),
 )
 
-measures.define_defaults(
-    intervals=months(1).starting_on("2024-02-01")
+age_group = case(
+    when(dataset.age < 5).then("0-4"),
+    when(dataset.age < 16).then("5-15"),
+    when(dataset.age < 20).then("16-19"),
+    when(dataset.age < 45).then("20-44"),
+    when(dataset.age < 65).then("45-64"),
+    when(dataset.age < 80).then("65-79"),
+    when(dataset.age >= 80).then("80+"),
+    when(dataset.age.is_null()).then("Missing"),
 )
-measures.configure_disclosure_control(enabled=False)
 
 # check base cohort size
 measures.define_measure(
     name="population_by_sex",
-    numerator=measure_base_population,
-    denominator=measure_base_population,
+    numerator=base,
+    denominator=base,
     group_by = {"sex": dataset.sex},
 )
 
 measures.define_measure(
     name="population_by_region",
-    numerator=measure_base_population,
-    denominator=measure_base_population,
+    numerator=base,
+    denominator=base,
     group_by={"region": dataset.region},
 )
 
 measures.define_measure(
     name="population_by_imd",
-    numerator=measure_base_population,
-    denominator=measure_base_population,
+    numerator=base,
+    denominator=base,
     group_by={"imd": dataset.imd},
 )
 
 measures.define_measure(
     name="population_by_ethnicity",
-    numerator=measure_base_population,
-    denominator=measure_base_population,
+    numerator=base,
+    denominator=base,
     group_by={"ethnicity": dataset.ethnicity},
 )
-
-# # check practice size in base cohort
-# # should be the same as population_base_eligible but grouped by practice instead of region, in case there are missing practice codes in the dataset
-# # may be used to exclude practices with very small patient numbers from practice-level analyses
-# measures.define_measure(
-#     name="population_by_practice",
-#     numerator=measure_base_population,
-#     denominator=measure_base_population,
-#     group_by={
-#         "practice": dataset.practice
-#     },
-# )
 
 # check PF eligible population size from base cohort
 measures.define_measure(
     name="pf_eligible_population_by_sex",
     numerator=pf_eligible_population,
-    denominator=measure_base_population,
+    denominator=base,
     group_by={"sex": dataset.sex},
 )
 # check eligibility for each condition among the base population
 # conditions include otitis_media, sinusitis, sore_throat, insect_bites, shingles, impetigo, uuti
 measures.define_measure(
     name="pf_eligible_population_by_condition_otitis_media",
-    numerator=dataset.include_patient_otitis_media & measure_base_population,
-    denominator=measure_base_population,
+    numerator=dataset.include_patient_otitis_media,
+    denominator=base,
     group_by = {"age_band": age_band}
 )
 measures.define_measure(
     name="pf_eligible_population_by_condition_sinusitis",
-    numerator=dataset.include_patient_sinusitis & measure_base_population,
-    denominator=measure_base_population,
+    numerator=dataset.include_patient_sinusitis,
+    denominator=base,
     group_by = {"age_band": age_band}
 )
 measures.define_measure(
     name="pf_eligible_population_by_condition_sore_throat",
-    numerator=dataset.include_patient_sore_throat & measure_base_population,
-    denominator=measure_base_population,
+    numerator=dataset.include_patient_sore_throat,
+    denominator=base,
     group_by = {"age_band": age_band}
 )
 measures.define_measure(
     name="pf_eligible_population_by_condition_insect_bites",
-    numerator=dataset.include_patient_insect_bites & measure_base_population,
-    denominator=measure_base_population,
+    numerator=dataset.include_patient_insect_bites,
+    denominator=base,
     group_by = {"age_band": age_band}
 )
 measures.define_measure(
     name="pf_eligible_population_by_condition_shingles",
-    numerator=dataset.include_patient_shingles & measure_base_population,
-    denominator=measure_base_population,
+    numerator=dataset.include_patient_shingles,
+    denominator=base,
     group_by = {"age_band": age_band}
 )
 measures.define_measure(
     name="pf_eligible_population_by_condition_impetigo",
-    numerator=dataset.include_patient_impetigo & measure_base_population,
-    denominator=measure_base_population,
+    numerator=dataset.include_patient_impetigo,
+    denominator=base,
     group_by = {"age_band": age_band}
 )
 measures.define_measure(
     name="pf_eligible_population_by_condition_uuti",
-    numerator=dataset.include_patient_uuti & measure_base_population,
-    denominator=measure_base_population,
+    numerator=dataset.include_patient_uuti,
+    denominator=base,
     group_by = {"age_band": age_band, "sex": dataset.sex}
 )
 
@@ -154,9 +151,6 @@ measures.define_measure(
 # among those had a PF consultation, how many are eligible for PF
 measures.define_measure(
     name="pf_consultation_among_not_eligible_by_sex",
-    numerator=(
-        pf_consultation_population_all
-        & ~pf_eligible_population
-    ),
+    numerator=(~pf_eligible_population),
     denominator=pf_consultation_population_all
 )

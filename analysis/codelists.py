@@ -13,8 +13,22 @@ ethnicity_group16_codelist = codelist_from_csv(
     category_column="Grouping_16",
 )
 
+# consultation type
+gp_codelist_consultation_f2f = codelist_from_csv(
+    "codelists/pharmacy-first-project-face-to-face-consultation-codes-for-pharmacy-first.csv",
+    column="code"
+)
+gp_codelist_consultation_online = codelist_from_csv(
+    "codelists/pharmacy-first-project-online-consultation-codes-for-pharmacy-first.csv",
+    column="code"
+)
+gp_codelist_consultation_telephone = codelist_from_csv(
+    "codelists/pharmacy-first-project-telephone-consultation-codes-for-pharmacy-first.csv",
+    column="code"
+)
+
 #PF conditions snomed codes used within PF
-acute_otitis_media_tx_codelist = codelist_from_csv(
+tx_codelist_pf_otitis_media = codelist_from_csv(
     "codelists/opensafely-pharmacy-first-acute-otitis-media-treatment-full-dmd-codelist.csv",
     column="code",
 )

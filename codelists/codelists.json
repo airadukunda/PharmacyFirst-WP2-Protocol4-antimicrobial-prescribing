@@ -125,6 +125,24 @@
       "url": "https://www.opencodelists.org/codelist/user/VickiPalin/pregnancy_edd_snomed/64193fae/",
       "downloaded_at": "2026-03-09 12:58:22.721092Z",
       "sha": "dd5be50159201566cc88e4dc61ff25a757c919fc"
+    },
+    "pharmacy-first-project-face-to-face-consultation-codes-for-pharmacy-first.csv": {
+      "id": "pharmacy-first-project/face-to-face-consultation-codes-for-pharmacy-first/22c1c79c",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/face-to-face-consultation-codes-for-pharmacy-first/22c1c79c/",
+      "downloaded_at": "2026-04-13 11:09:37.004041Z",
+      "sha": "58c3d6f7b690a4e0f6cd3c59535c111dc5a74f07"
+    },
+    "pharmacy-first-project-online-consultation-codes-for-pharmacy-first.csv": {
+      "id": "pharmacy-first-project/online-consultation-codes-for-pharmacy-first/70a2e131",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/online-consultation-codes-for-pharmacy-first/70a2e131/",
+      "downloaded_at": "2026-04-13 11:09:37.301196Z",
+      "sha": "fb800dc92a486542e3e3e5553b05c7914713f804"
+    },
+    "pharmacy-first-project-telephone-consultation-codes-for-pharmacy-first.csv": {
+      "id": "pharmacy-first-project/telephone-consultation-codes-for-pharmacy-first/5cf8ede8",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/telephone-consultation-codes-for-pharmacy-first/5cf8ede8/",
+      "downloaded_at": "2026-04-13 11:09:37.389300Z",
+      "sha": "ce242fc9aaf8d0367064e3c06cac00e93f841fd5"
     }
   }
 }
