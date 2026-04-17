@@ -8,6 +8,10 @@ claim_permissions("appointments")
 # Create measures object
 measures = create_measures()
 measures.configure_disclosure_control(enabled=False)
+measures.define_defaults(
+    intervals=months(2).starting_on("2025-10-01"),
+    # intervals=years(2).starting_on("2024-02-01")
+)
 
 measure_base_population = (
     dataset.alive
@@ -26,11 +30,6 @@ group = {
     "stp": dataset.stp,
     "region": dataset.region,
 }
-
-measures.define_defaults(
-    intervals=months(2).starting_on("2025-10-01"),
-    # intervals=years(2).starting_on("2024-02-01")
-)
 
 # appointments
 measures.define_measure(

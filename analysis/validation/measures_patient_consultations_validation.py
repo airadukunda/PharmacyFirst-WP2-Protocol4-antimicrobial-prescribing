@@ -1,36 +1,59 @@
-# PF consultations, GP consultations, A&E, appointment: total and by condition
+from ehrql import case, create_measures, months, when
+from analysis.dataset_definition_patients_measures import dataset
+# opensafely exec ehrql:v1 generate-measures analysis/measures_patient.py --output output/measures_patient.csv
+
+measures = create_measures()
+measures.configure_disclosure_control(enabled=False)
+measures.define_defaults(
+    intervals=months(2).starting_on("2025-10-01"),
+    # intervals=years(2).starting_on("2024-02-01")
+)
+
+measure_base_population = (
+    dataset.alive
+    & dataset.registered_start
+    & dataset.registered_index
+    & (dataset.age <= 120)
+)
+
+pf_eligible_population = (
+    dataset.include_patient_overall_eligible
+    & measure_base_population
+)
+
+pf_user_population = (
+    (dataset.pf_consultation_general > 0)
+    & measure_base_population
+)
+
+age_band = case(
+    when((dataset.age >= 0) & (dataset.age < 20)).then("0-19"),
+    when((dataset.age >= 20) & (dataset.age < 40)).then("20-39"),
+    when((dataset.age >= 40) & (dataset.age < 60)).then("40-59"),
+    when((dataset.age >= 60) & (dataset.age < 80)).then("60-79"),
+    when(dataset.age >= 80).then("80+"),
+    when(dataset.age.is_null()).then("Missing"),
+)
 
 '''
-Appointment: 
-- Appointment_scheduled: count the number of appointments that were scheduled within this month based on the appointment start_date, include statues such as Arrived, Visit etc - reflect overall appointment demand regardless of whether the patient was actually seen
-- Appointment_seen: count the number of appointments that were recorded as seen … use the same set of statues -- indicate appointment was actually processed or attended
-? is appointment_scheduled == appointment_seen? 
-- - > Expect this to be slightly different - some appointments may be rescheduled to a date that is in another month.
-'''
+1. Check whether PF consultation counts broken down by condition sum to the corresponding total number of consultations:
+- pf_consultation_general: total number of consultations with PF service codes
+- pf_consultation_general_butno_condition: number of consultations with PF service codes but no associated condition code
+- numerator_pf_consultation_<condition>: number of consultations with PF service codes AND a specific PF condition code (e.g. UTI, sinusitis, insect bite, otitis media, sore throat, shingles, impetigo)
+
+-> Validation check: The sum of consultations across all conditions should equal:
+  sum(numerator_pf_consultation_{condition}) = pf_consultation_general − pf_consultation_general_butno_condition
+  This assumes that each consultation is assigned to at most one PF condition.
 
 
-'''
-PF consultation count:
-? is numerator_pf_event_{condition} == numerator_pf_consultation_{condition} >= numerator_pf_episode_{condition}?
-- - > for validating which method to use for counting number of consultations
 
-- pf_consultation_general: the total number of PF consultations per patient
-- pf_consultation_general_butno_condition: PF consultations that have no associated PF condition code
-? is (pf_consultation_general - pf_consultation_general_butno_condition) 
-        == 
-        sum(numerator_pf_consultation_{condition})?
-- - > may not be. sanity check - to decide on which metric to use as total PF consultation count
-
-
-- For PF consultations, assigned each consultation to a single type (face-to-face, online, or telephone) using a priority rule (face-to-face > online > telephone), and grouped the remaining as unknown. This ensures that consultation types form a complete partition of PF consultations.
-? is pf_consultation_general == pf_consultation_f2f + pf_consultation_online + pf_consultation_telephone + pf_consultation_unknowntype? 
-- - > This should be equal.
-'''
-
-
-'''
 GP consultation count:
-- is sum(numerator_gp_consultation_{condition}) >= 
-     (gp_pf_consultation_f2f + gp_pf_consultation_online + gp_pf_consultation_telephone + gp_pf_consultation_unknowntype)?
-- - > may be more than - one consultation may include many conditions
+- numerator_gp_consultation_{condition}: number of condition-related GP consultations
+- gp_consultation_{condition}_{mode}: number of condition-related GP consultations broken down by consultation mode
+-> Validation check: For one {condition} e.g., uti:
+        numerator_gp_consultation_uti = gp_consultation_uti_f2f + gp_consultation_uti_online + gp_consultation_uti_telephone + gp_consultation_uti_othermode
+
+- gp_pf_consultation_f2f: number of PF condition-related GP consultations with f2f consultation mode
+-> Validation check: gp_pf_consultation_f2f = sum(gp_consultation_{condition}_f2f)
+
 '''

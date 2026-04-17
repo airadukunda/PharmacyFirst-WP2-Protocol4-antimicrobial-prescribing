@@ -36,13 +36,6 @@ actions:
       moderately_sensitive:
         dataset: output/measures/*by_year.csv
         charts: output/measures/*by_year.png
-
-
-  # generate_dataset_practices:
-  #   run: ehrql:v1 generate-dataset analysis/dataset_definition_practices.py --output output/dataset_practices.csv.gz
-  #   outputs:
-  #     highly_sensitive:
-  #       dataset: output/dataset_practices.csv.gz
   
   #################################################################
   # Actions for retrieving patient-level data for each specified month AND combine all into one csv.gz for downstream analysis
@@ -69,22 +62,33 @@ actions:
 
   #################################################################
   # patient-level measures for sense checking; not final measures for analysis
-  # local testing with dummy tables
-  generate_patient_measures:
-    run: ehrql:v1 generate-measures analysis/measures_patient.py --dummy-tables dummy_tables --output output/patient_measures.csv
+  
+  # # local testing with dummy tables
+  # generate_patient_measures_population_structure:
+  #   run: ehrql:v1 generate-measures analysis/validation/measures_patient_population_structure.py --dummy-tables dummy_tables --output output/patient_measures_population_structure.csv
+  #   outputs:
+  #     moderately_sensitive:
+  #       measure_tables: output/patient_measures_population_structure.csv
+  
+  generate_patient_measures_population_structure:
+    run: ehrql:v1 generate-measures analysis/validation/measures_patient_population_structure.py --output output/patient_measures_population_structure.csv
     outputs:
       moderately_sensitive:
-        measure_tables: output/patient_measures.csv
+        measure_tables: output/patient_measures_population_structure.csv
+  
+  process_patient_measures_population_structure:
+    run: python:v2 analysis/validation/process_measure_population_structure.py --output output/patient_measures_population_structure_longformat.csv
+    needs: [generate_patient_measures_population_structure]
+    outputs:
+      moderately_sensitive:
+        measure_tables: output/patient_measures_population_structure_longformat.csv
+  
+  # TO ADD: measures for checking PF eligibility variables; consultation count variables
   
   #################################################################
   # Actions defined for getting measures and aggregating into practice-level
 
   # practice-level data step 1: run patient dataset measures 
-  generate_patient_measures_for_practices:
-    run: ehrql:v1 generate-measures analysis/practice_variables/measures_practice.py --output output/practice_measures.csv
-    outputs:
-      highly_sensitive:
-        measure_tables: output/practice_measures.csv
 
   # # version for debugging
   # generate_patient_measures_for_practices:
@@ -92,6 +96,12 @@ actions:
   #   outputs:
   #     highly_sensitive:
   #       measure_tables: output/practice_measures.csv
+
+  generate_patient_measures_for_practices:
+    run: ehrql:v1 generate-measures analysis/practice_variables/measures_practice.py --output output/practice_measures.csv
+    outputs:
+      highly_sensitive:
+        measure_tables: output/practice_measures.csv
   
   # practice-level data step 2: aggregate patient measures to practice-level data
   process_measures_to_practice_dataset:
