@@ -1,6 +1,6 @@
 from ehrql import create_dataset, weeks, days, show, case, when
 from ehrql.tables.tpp import patients, practice_registrations, clinical_events
-import codelists
+import analysis.codelists as codelists
 dataset = create_dataset()
 
 start_date = "2023-05-01"
