@@ -82,6 +82,9 @@ measure_order = [
     "pf_shingles_eligible_among_base",
     "pf_shingles_excluded_due_to_age_under18",
     "pf_shingles_excluded_due_to_pregnancy",
+
+    # Overall eligible
+    "pf_overall_eligible_among_base",
 ]
 
 df["measure_order"] = df["measure"].apply(

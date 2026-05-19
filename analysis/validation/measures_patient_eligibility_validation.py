@@ -236,3 +236,11 @@ measures.define_measure(
     numerator=dataset.pregnant_this_month,
     denominator=shingles_excluded_population,
 )
+
+# include_patient_overall_eligible
+measures.define_measure(
+    name="pf_overall_eligible_among_base",
+    numerator=dataset.include_patient_overall_eligible,
+    denominator=measure_base_population,
+    group_by={"age_band": age_band_naive},
+)
