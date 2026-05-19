@@ -5,8 +5,8 @@ from analysis.dataset_definition_patients_measures import dataset
 measures = create_measures()
 measures.configure_disclosure_control(enabled=False)
 measures.define_defaults(
-    # intervals=months(2).starting_on("2025-10-01"),
-    intervals=months(2).starting_on("2024-02-01")
+    intervals=months(2).starting_on("2025-10-01"),
+    # intervals=months(2).starting_on("2024-02-01")
 )
 
 measure_base_population = (
