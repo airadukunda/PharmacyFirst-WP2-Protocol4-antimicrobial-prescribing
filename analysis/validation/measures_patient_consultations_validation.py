@@ -5,8 +5,8 @@ from analysis.dataset_definition_patients_measures import dataset
 measures = create_measures()
 measures.configure_disclosure_control(enabled=False)
 measures.define_defaults(
-    intervals=months(2).starting_on("2025-10-01"),
-    # intervals=years(2).starting_on("2024-02-01")
+    # intervals=months(2).starting_on("2025-10-01"),
+    intervals=months(2).starting_on("2024-02-01")
 )
 
 measure_base_population = (
@@ -35,26 +35,138 @@ age_band = case(
     when(dataset.age.is_null()).then("Missing"),
 )
 
-'''
-1. Check whether PF consultation counts broken down by condition sum to the corresponding total number of consultations:
-- pf_consultation_general: total number of consultations with PF service codes
-- pf_consultation_general_butno_condition: number of consultations with PF service codes but no associated condition code
-- numerator_pf_consultation_<condition>: number of consultations with PF service codes AND a specific PF condition code (e.g. UTI, sinusitis, insect bite, otitis media, sore throat, shingles, impetigo)
-
--> Validation check: The sum of consultations across all conditions should equal:
-  sum(numerator_pf_consultation_{condition}) = pf_consultation_general − pf_consultation_general_butno_condition
-  This assumes that each consultation is assigned to at most one PF condition.
-
-
-
-GP consultation count:
-- numerator_gp_consultation_{condition}: number of condition-related GP consultations
-- gp_consultation_{condition}_{mode}: number of condition-related GP consultations broken down by consultation mode
--> Validation check: For one {condition} e.g., uti:
-        numerator_gp_consultation_uti = gp_consultation_uti_f2f + gp_consultation_uti_online + gp_consultation_uti_telephone + gp_consultation_uti_othermode
-
-- gp_pf_consultation_f2f: number of PF condition-related GP consultations with f2f consultation mode
--> Validation check: gp_pf_consultation_f2f = sum(gp_consultation_{condition}_f2f)
+age_band_naive = case(
+    when(dataset.age < 16).then("<16"),
+    when((dataset.age >= 16) & (dataset.age <= 64)).then("16-64"),
+    when(dataset.age > 64).then("65+"),
+    when(dataset.age.is_null()).then("Missing"),
+)
 
 '''
+Checks:
+1. PF consultation count
+- pf_consultation_general_total should capture all consultations with PF service codes.
+- pf_consultation_general_butno_condition_total should be smaller than pf_consultation_general_total.
+- pf_consultation_condition_sum_total should be compared with pf_consultation_general_total - pf_consultation_general_butno_condition_total.
+- - If condition sum is larger, this suggests some PF consultations may be assigned to more than one condition.
+2. PF consultation count vs same-day consultation count ('episode')
+- For each condition, pf_episode_<condition> should be less than or equal to pf_consultation_<condition>.
+3. GP consultation vs episode
+- For each condition, gp_episode_<condition> should be less than or equal to gp_consultation_<condition>.
+4. PF consultation count vs GP consultation count 
+- compare by condition
+- change by month
+5. A&E variables
+- ae_<condition>_primary_count should generally be low
+- ae_<condition>_non_primary_flag may be higher than primary counts, but very high values may suggest broad diagnosis matching.
+6. Among patients with PF consultations for a given condition, all of them should meet the corresponding eligibility criteria.
+'''
+
+measures.define_measure(
+    name="pf_consultation_general_total",
+    numerator=dataset.pf_consultation_general,
+    denominator=measure_base_population,
+)
+measures.define_measure(
+    name="pf_consultation_general_butno_condition_total",
+    numerator=dataset.pf_consultation_general_butno_condition,
+    denominator=measure_base_population,
+)
+pf_condition_consultation_sum = (
+    dataset.numerator_pf_consultation_uti
+    + dataset.numerator_pf_consultation_sinusitis
+    + dataset.numerator_pf_consultation_insectbite
+    + dataset.numerator_pf_consultation_otitismedia
+    + dataset.numerator_pf_consultation_sorethroat
+    + dataset.numerator_pf_consultation_shingles
+    + dataset.numerator_pf_consultation_impetigo
+)
+measures.define_measure(
+    name="pf_consultation_condition_sum_total",
+    numerator=pf_condition_consultation_sum,
+    denominator=measure_base_population,
+)
+
+pf_conditions = [
+    "uti",
+    "sinusitis",
+    "insectbite",
+    "otitismedia",
+    "sorethroat",
+    "shingles",
+    "impetigo",
+]
+
+for condition in pf_conditions:
+
+    # check numerator only
+    measures.define_measure(
+        name=f"pf_consultation_{condition}",
+        numerator=getattr(dataset, f"numerator_pf_consultation_{condition}"),
+        denominator=measure_base_population,
+    )
+
+    # check numerator only
+    measures.define_measure(
+        name=f"pf_episode_{condition}",
+        numerator=getattr(dataset, f"numerator_pf_episode_{condition}"),
+        denominator=measure_base_population,
+    )
+
+    # check numerator only
+    measures.define_measure(
+        name=f"gp_consultation_{condition}",
+        numerator=getattr(dataset, f"numerator_gp_consultation_{condition}"),
+        denominator=measure_base_population,
+    )
+
+    # check numerator only
+    measures.define_measure(
+        name=f"gp_episode_{condition}",
+        numerator=getattr(dataset, f"numerator_gp_episode_{condition}"),
+        denominator=measure_base_population,
+    )
+
+    # check numerator only
+    measures.define_measure(
+        name=f"ae_{condition}_primary_count",
+        numerator=getattr(dataset, f"ae_{condition}_primary_count"),
+        denominator=measure_base_population,
+    )
+
+    # proportion of patients with ≥1 non-primary A&E diagnosis
+    measures.define_measure(
+        name=f"patient_has_non_primary_ae_{condition}",
+        numerator=getattr(dataset, f"has_ae_{condition}_non_primary"),
+        denominator=measure_base_population,
+    )
+
+# check numerator only
+measures.define_measure(
+    name="ae_attendance_total",
+    numerator=dataset.ae_attendance_count,
+    denominator=measure_base_population,
+)
+
+pf_condition_map = {
+    "uti": "uuti",
+    "sinusitis": "sinusitis",
+    "insectbite": "insect_bites",
+    "otitismedia": "otitis_media",
+    "sorethroat": "sore_throat",
+    "shingles": "shingles",
+    "impetigo": "impetigo",
+}
+
+for condition, eligibility_name in pf_condition_map.items():
+
+    # Among patients with ≥1 PF consultation for a given condition, 
+    # the proportion that meets the corresponding PF eligibility criteria.
+    measures.define_measure(
+        name=f"pf_{condition}_eligible_among_pf_consultation",
+        numerator=getattr(dataset, f"include_patient_{eligibility_name}"),
+        denominator=(
+            getattr(dataset, f"numerator_pf_consultation_{condition}") > 0
+        ) & measure_base_population,
+    )
 
