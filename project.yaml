@@ -63,6 +63,7 @@ actions:
   #################################################################
   # patient-level measures for sense checking; not final measures for analysis
   
+  # Population structure
   # # local testing with dummy tables
   # generate_patient_measures_population_structure:
   #   run: ehrql:v1 generate-measures analysis/validation/measures_patient_population_structure.py --dummy-tables dummy_tables --output output/patient_measures_population_structure.csv
@@ -83,8 +84,32 @@ actions:
       moderately_sensitive:
         measure_tables: output/patient_measures_population_structure_longformat.csv
   
-  # TO ADD: measures for checking PF eligibility variables; consultation count variables
+  # Measures for checking PF eligibility variables; consultation count variables
+  # # local testing with dummy tables
+  # generate_patient_measures_eligibility:
+  #   run: ehrql:v1 generate-measures analysis/validation/measures_patient_eligibility_validation.py --dummy-tables dummy_tables --output output/patient_measures_eligibility_validation.csv
+  #   outputs:
+  #     moderately_sensitive:
+  #       measure_tables: output/patient_measures_eligibility_validation.csv
   
+  generate_patient_measures_eligibility:
+    run: ehrql:v1 generate-measures analysis/validation/measures_patient_eligibility_validation.py --output output/patient_measures_eligibility_validation.csv
+    outputs:
+      moderately_sensitive:
+        measure_tables: output/patient_measures_eligibility_validation.csv
+  
+  process_patient_measures_eligibility:
+    run: python:v2 analysis/validation/process_measure_eligibility_validation.py --output output/patient_measures_eligibility_validation_ordered.csv
+    needs: [generate_patient_measures_eligibility]
+    outputs:
+      moderately_sensitive:
+        measure_tables: output/patient_measures_eligibility_validation_ordered.csv
+  
+
+  # TO ADD: measures for checking consultation count variables
+
+
+
   #################################################################
   # Actions defined for getting measures and aggregating into practice-level
 

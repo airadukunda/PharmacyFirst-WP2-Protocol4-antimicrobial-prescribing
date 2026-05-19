@@ -12,7 +12,7 @@ measures_of_interest = [
 
 df = df[df["measure"].isin(measures_of_interest)].copy()
 
-# 拆成 category + variable
+# category + variable
 def get_category_variable(row):
     if row["measure"] == "population_by_sex":
         return "sex", row["sex"]
