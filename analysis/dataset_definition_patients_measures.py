@@ -231,46 +231,46 @@ for codes in pf_conditions_gp_codes.values():
 gp_pf_condition_events = gp_events_clean.where(gp_events_clean.snomedct_code.is_in(pf_conditions_gp_code_set))
 gp_pf_condition_ids = gp_pf_condition_events.consultation_id
 gp_pf_condition_all_events = select_events_by_consultation_id(gp_events_clean,gp_pf_condition_ids)
-# gp_pf_f2f_type_events = select_events_from_codelist(
-#     gp_pf_condition_all_events,
-#     codelists.gp_codelist_consultation_f2f
-# )
-# gp_pf_online_type_events = select_events_from_codelist(
-#     gp_pf_condition_all_events,
-#     codelists.gp_codelist_consultation_online
-# )
-# gp_pf_telephone_type_events = select_events_from_codelist(
-#     gp_pf_condition_all_events,
-#     codelists.gp_codelist_consultation_telephone
-# )
-# gp_pf_f2f_ids = gp_pf_f2f_type_events.consultation_id
-# gp_pf_online_ids = gp_pf_online_type_events.consultation_id
-# gp_pf_telephone_ids = gp_pf_telephone_type_events.consultation_id
+gp_pf_f2f_type_events = select_events_from_codelist(
+    gp_pf_condition_all_events,
+    codelists.gp_codelist_consultation_f2f
+)
+gp_pf_online_type_events = select_events_from_codelist(
+    gp_pf_condition_all_events,
+    codelists.gp_codelist_consultation_online
+)
+gp_pf_telephone_type_events = select_events_from_codelist(
+    gp_pf_condition_all_events,
+    codelists.gp_codelist_consultation_telephone
+)
+gp_pf_f2f_ids = gp_pf_f2f_type_events.consultation_id
+gp_pf_online_ids = gp_pf_online_type_events.consultation_id
+gp_pf_telephone_ids = gp_pf_telephone_type_events.consultation_id
 
-# dataset.gp_pf_consultation_f2f = (
-#     gp_pf_f2f_ids.count_distinct_for_patient()
-# )
+dataset.gp_pf_consultation_f2f = (
+    gp_pf_f2f_ids.count_distinct_for_patient()
+)
 
-# dataset.gp_pf_consultation_online = (
-#     gp_pf_online_type_events.where(
-#         ~gp_pf_online_type_events.consultation_id.is_in(gp_pf_f2f_ids)
-#     ).consultation_id.count_distinct_for_patient()
-# )
+dataset.gp_pf_consultation_online = (
+    gp_pf_online_type_events.where(
+        ~gp_pf_online_type_events.consultation_id.is_in(gp_pf_f2f_ids)
+    ).consultation_id.count_distinct_for_patient()
+)
 
-# dataset.gp_pf_consultation_telephone = (
-#     gp_pf_telephone_type_events.where(
-#         ~gp_pf_telephone_type_events.consultation_id.is_in(gp_pf_f2f_ids)
-#         & ~gp_pf_telephone_type_events.consultation_id.is_in(gp_pf_online_ids)
-#     ).consultation_id.count_distinct_for_patient()
-# )
+dataset.gp_pf_consultation_telephone = (
+    gp_pf_telephone_type_events.where(
+        ~gp_pf_telephone_type_events.consultation_id.is_in(gp_pf_f2f_ids)
+        & ~gp_pf_telephone_type_events.consultation_id.is_in(gp_pf_online_ids)
+    ).consultation_id.count_distinct_for_patient()
+)
 
-# dataset.gp_pf_consultation_othermode = (
-#     gp_pf_condition_all_events.where(
-#         ~gp_pf_condition_all_events.consultation_id.is_in(gp_pf_f2f_ids)
-#         & ~gp_pf_condition_all_events.consultation_id.is_in(gp_pf_online_ids)
-#         & ~gp_pf_condition_all_events.consultation_id.is_in(gp_pf_telephone_ids)
-#     ).consultation_id.count_distinct_for_patient()
-# )
+dataset.gp_pf_consultation_othermode = (
+    gp_pf_condition_all_events.where(
+        ~gp_pf_condition_all_events.consultation_id.is_in(gp_pf_f2f_ids)
+        & ~gp_pf_condition_all_events.consultation_id.is_in(gp_pf_online_ids)
+        & ~gp_pf_condition_all_events.consultation_id.is_in(gp_pf_telephone_ids)
+    ).consultation_id.count_distinct_for_patient()
+)
 
 ########################################################
 '''
@@ -283,42 +283,42 @@ Outputs:
 - gp_consultation_<name>_othermode
 '''
 
-# for name, codes in pf_conditions_gp_codes.items():
+for name, codes in pf_conditions_gp_codes.items():
 
-#     # condition-specific events -> consultation IDs
-#     condition_events = gp_events_clean.where(gp_events_clean.snomedct_code.is_in(codes))
-#     condition_ids = condition_events.consultation_id
+    # condition-specific events -> consultation IDs
+    condition_events = gp_events_clean.where(gp_events_clean.snomedct_code.is_in(codes))
+    condition_ids = condition_events.consultation_id
 
-#     # retrieve all events within these consultations
-#     condition_all_events = select_events_by_consultation_id(gp_events_clean,condition_ids)
+    # retrieve all events within these consultations
+    condition_all_events = select_events_by_consultation_id(gp_events_clean,condition_ids)
 
-#     # assign consultation mode
-#     f2f_events = select_events_from_codelist(condition_all_events,codelists.gp_codelist_consultation_f2f)
-#     online_events = select_events_from_codelist(condition_all_events,codelists.gp_codelist_consultation_online)
-#     telephone_events = select_events_from_codelist(condition_all_events,codelists.gp_codelist_consultation_telephone)
-#     f2f_ids = f2f_events.consultation_id
-#     online_ids = online_events.consultation_id
-#     telephone_ids = telephone_events.consultation_id
+    # assign consultation mode
+    f2f_events = select_events_from_codelist(condition_all_events,codelists.gp_codelist_consultation_f2f)
+    online_events = select_events_from_codelist(condition_all_events,codelists.gp_codelist_consultation_online)
+    telephone_events = select_events_from_codelist(condition_all_events,codelists.gp_codelist_consultation_telephone)
+    f2f_ids = f2f_events.consultation_id
+    online_ids = online_events.consultation_id
+    telephone_ids = telephone_events.consultation_id
 
-#     setattr(dataset,f"gp_consultation_{name}_f2f",f2f_ids.count_distinct_for_patient())
-#     setattr(dataset,f"gp_consultation_{name}_online",
-#         online_events.where(
-#             ~online_events.consultation_id.is_in(f2f_ids)
-#         ).consultation_id.count_distinct_for_patient()
-#     )
-#     setattr(dataset,f"gp_consultation_{name}_telephone",
-#         telephone_events.where(
-#             ~telephone_events.consultation_id.is_in(f2f_ids)
-#             & ~telephone_events.consultation_id.is_in(online_ids)
-#         ).consultation_id.count_distinct_for_patient()
-#     )
-#     setattr(dataset,f"gp_consultation_{name}_othermode",
-#         condition_all_events.where(
-#             ~condition_all_events.consultation_id.is_in(f2f_ids)
-#             & ~condition_all_events.consultation_id.is_in(online_ids)
-#             & ~condition_all_events.consultation_id.is_in(telephone_ids)
-#         ).consultation_id.count_distinct_for_patient()
-#     )
+    setattr(dataset,f"gp_consultation_{name}_f2f",f2f_ids.count_distinct_for_patient())
+    setattr(dataset,f"gp_consultation_{name}_online",
+        online_events.where(
+            ~online_events.consultation_id.is_in(f2f_ids)
+        ).consultation_id.count_distinct_for_patient()
+    )
+    setattr(dataset,f"gp_consultation_{name}_telephone",
+        telephone_events.where(
+            ~telephone_events.consultation_id.is_in(f2f_ids)
+            & ~telephone_events.consultation_id.is_in(online_ids)
+        ).consultation_id.count_distinct_for_patient()
+    )
+    setattr(dataset,f"gp_consultation_{name}_othermode",
+        condition_all_events.where(
+            ~condition_all_events.consultation_id.is_in(f2f_ids)
+            & ~condition_all_events.consultation_id.is_in(online_ids)
+            & ~condition_all_events.consultation_id.is_in(telephone_ids)
+        ).consultation_id.count_distinct_for_patient()
+    )
 
 ########################################################
 """

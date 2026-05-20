@@ -20,4 +20,5 @@ nhsd-primary-care-domain-refsets/preg_cod/5846c42a
 pharmacy-first-project/end-of-pregnancy-narrow/0cd68ba0/
 user/VickiPalin/pregnancy_edd_snomed/64193fae
 pharmacy-first-project/face-to-face-consultation-codes-for-pharmacy-first/353cf910
+pharmacy-first-project/online-consultation-codes-for-pharmacy-first/5c28d15c
 pharmacy-first-project/telephone-consultation-codes-for-pharmacy-first/20cc5238

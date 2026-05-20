@@ -18,10 +18,10 @@ gp_codelist_consultation_f2f = codelist_from_csv(
     "codelists/pharmacy-first-project-face-to-face-consultation-codes-for-pharmacy-first.csv",
     column="code"
 )
-# gp_codelist_consultation_online = codelist_from_csv(
-#     "codelists/pharmacy-first-project-online-consultation-codes-for-pharmacy-first.csv",
-#     column="code"
-# )
+gp_codelist_consultation_online = codelist_from_csv(
+    "codelists/pharmacy-first-project-online-consultation-codes-for-pharmacy-first.csv",
+    column="code"
+)
 gp_codelist_consultation_telephone = codelist_from_csv(
     "codelists/pharmacy-first-project-telephone-consultation-codes-for-pharmacy-first.csv",
     column="code"
