@@ -1,0 +1,26 @@
+The python files in this folder aim to examine coding patterns within GP consultations related to PF conditions, 
+excluding consultations classified as PF consultations. 
+
+For each PF condition, consultations are identified using the corresponding PF-condition-specific SNOMED codelists. 
+Within these GP consultations, the frequency of each SNOMED code from the same condition-specific codelist is quantified by 
+counting the number of unique consultations (consultation_id) in which the code appears.
+
+Detailed approach
+1. Use the existing PF-condition-specific SNOMED codelists to identify consultations related to each PF condition (e.g. UTI, sore throat, sinusitis) 
+    ---> PF-condition-related consultations
+2. Exclude consultations already classified as PF consultations. Restrict the analysis to remaining GP consultations related to the PF condition.
+    ---> updated PF-condition-related consultations
+3. For each PF condition,
+    For each SNOMED code within the same condition-specific codelist, 
+        calculate the number of unique consultations (consultation_id) in which the code appears.
+4. Produce one aggregated output dataset per PF condition, with one row per SNOMED code.
+
+The resulting dataset will include fields such as:
+- PF condition
+- SNOMED code
+- SNOMED term
+- Number of unique consultations containing the code.
+
+`dataset_definition_snomed_validation.py` defines the patient-level dataset for steps 1-3.
+
+`process.py` performs step 4 by reshaping and aggregating the patient-level outputs into the final SNOMED-code-level summary dataset.

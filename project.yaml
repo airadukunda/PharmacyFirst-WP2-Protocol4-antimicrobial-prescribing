@@ -156,13 +156,63 @@ actions:
 #################################################################
   # Dataset definition and measures for checking snomedcode appearance for PF conditions
   # local testing with dummy tables
-  generate_dataset_snomed_count:
-    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --dummy-tables dummy-folder --output output/dataset_patients_snomed.csv.gz -- --start_date 2024-02-01
+  generate_dataset_snomed_count_uti:
+    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --output output/dataset_patients_snomed_uti.csv.gz -- --start_date 2025-10-01 --condition uti
     outputs:
       highly_sensitive:
-        dataset: output/dataset_patients_snomed.csv.gz
+        dataset: output/dataset_patients_snomed_uti.csv.gz
 
+  generate_dataset_snomed_count_sinusitis:
+    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --output output/dataset_patients_snomed_sinusitis.csv.gz -- --start_date 2025-10-01 --condition sinusitis
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_patients_snomed_sinusitis.csv.gz
 
+  generate_dataset_snomed_count_insectbite:
+    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --output output/dataset_patients_snomed_insectbite.csv.gz -- --start_date 2025-10-01 --condition insectbite
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_patients_snomed_insectbite.csv.gz
+
+  generate_dataset_snomed_count_otitismedia:
+    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --output output/dataset_patients_snomed_otitismedia.csv.gz -- --start_date 2025-10-01 --condition otitismedia
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_patients_snomed_otitismedia.csv.gz
+
+  generate_dataset_snomed_count_sorethroat:
+    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --output output/dataset_patients_snomed_sorethroat.csv.gz -- --start_date 2025-10-01 --condition sorethroat
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_patients_snomed_sorethroat.csv.gz
+
+  generate_dataset_snomed_count_shingles:
+    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --output output/dataset_patients_snomed_shingles.csv.gz -- --start_date 2025-10-01 --condition shingles
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_patients_snomed_shingles.csv.gz
+
+  generate_dataset_snomed_count_impetigo:
+    run: ehrql:v1 generate-dataset analysis/validation_snomed/dataset_definition_snomed.py --output output/dataset_patients_snomed_impetigo.csv.gz -- --start_date 2025-10-01 --condition impetigo
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_patients_snomed_impetigo.csv.gz
+
+  process_dataset_snomed_count:
+    run: python:v2 analysis/validation_snomed/process.py --output output/snomed_count_summary.csv
+    needs: [
+      generate_dataset_snomed_count_uti,
+      generate_dataset_snomed_count_sinusitis,
+      generate_dataset_snomed_count_insectbite,
+      generate_dataset_snomed_count_otitismedia,
+      generate_dataset_snomed_count_sorethroat,
+      generate_dataset_snomed_count_shingles,
+      generate_dataset_snomed_count_impetigo,
+    ]
+    outputs:
+      moderately_sensitive:
+        output_tables: output/snomed_count_summary.csv
+        output_plots: output/snomed_count_top10_all_conditions.png
 
 
   #################################################################
