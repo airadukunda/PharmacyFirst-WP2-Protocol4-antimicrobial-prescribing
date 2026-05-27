@@ -162,7 +162,7 @@ for name, codes in pf_conditions_pf_codes.items():
 
 ########################################################
 '''
-This section counts the number of GP consultations for PF-related conditions, explicitly excluding consultations identified as PF consultations using general PF service codes.
+This section counts the number of GP consultations for PF-related conditions and control conditions, explicitly excluding consultations identified as PF consultations using general PF service codes.
 
 Key logic:
 - pf_ids' represents consultation IDs where at least one event contains a general PF service code.
@@ -183,7 +183,6 @@ gp_events_clean = selected_events.where(
 )
 
 pf_conditions_gp_codes = {
-    # PF conditions
     "uti": codelists.gp_snomed_codelist_uti,
     "sinusitis": codelists.gp_snomed_codelist_sinusitis,
     "insectbite": codelists.gp_snomed_codelist_insect_bites,
@@ -191,12 +190,19 @@ pf_conditions_gp_codes = {
     "sorethroat": codelists.gp_snomed_codelist_sore_throat,
     "shingles": codelists.gp_snomed_codelist_shingles,
     "impetigo": codelists.gp_snomed_codelist_impetigo,
+}
 
-    # control conditions for PF
+control_conditions_gp_codes = {
     "lowerbackpain": codelists.gp_snomed_codelist_lower_back_pain,
 }
 
-for name, codes in pf_conditions_gp_codes.items():
+all_conditions_gp_codes = {
+    **pf_conditions_gp_codes,
+    **control_conditions_gp_codes,
+}
+
+# for name, codes in pf_conditions_gp_codes.items():
+for name, codes in all_conditions_gp_codes.items():
     count_gp_consultation, count_gp_episode = has_event_count(gp_events_clean, codes)
     setattr(dataset, f"numerator_gp_consultation_{name}", count_gp_consultation)
     setattr(dataset, f"numerator_gp_episode_{name}", count_gp_episode)
@@ -278,7 +284,73 @@ dataset.gp_pf_consultation_othermode = (
 
 ########################################################
 '''
-This section counts the number of GP consultations for each PF-related conditions by consultation mode (excluding consultations with PF service codes)
+This section repeats the above logic to count GP consultations by consultation mode,
+but only for control conditions rather than PF-conditions
+
+Outputs:
+- gp_control_consultation_f2f
+- gp_control_consultation_online
+- gp_control_consultation_f2f_telephone
+- gp_control_consultation_othermode
+'''
+control_conditions_gp_code_set = []
+for codes in control_conditions_gp_codes.values():
+    control_conditions_gp_code_set += codes
+
+gp_control_condition_events = gp_events_clean.where(
+    gp_events_clean.snomedct_code.is_in(control_conditions_gp_code_set)
+)
+gp_control_condition_ids = gp_control_condition_events.consultation_id
+gp_control_condition_all_events = select_events_by_consultation_id(
+    gp_events_clean,
+    gp_control_condition_ids
+)
+
+gp_control_f2f_type_events = select_events_from_codelist(
+    gp_control_condition_all_events,
+    codelists.gp_codelist_consultation_f2f
+)
+gp_control_online_type_events = select_events_from_codelist(
+    gp_control_condition_all_events,
+    codelists.gp_codelist_consultation_online
+)
+gp_control_telephone_type_events = select_events_from_codelist(
+    gp_control_condition_all_events,
+    codelists.gp_codelist_consultation_telephone
+)
+
+gp_control_f2f_ids = gp_control_f2f_type_events.consultation_id
+gp_control_online_ids = gp_control_online_type_events.consultation_id
+gp_control_telephone_ids = gp_control_telephone_type_events.consultation_id
+
+dataset.gp_control_consultation_f2f = (
+    gp_control_f2f_ids.count_distinct_for_patient()
+)
+
+dataset.gp_control_consultation_online = (
+    gp_control_online_type_events.where(
+        ~gp_control_online_type_events.consultation_id.is_in(gp_control_f2f_ids)
+    ).consultation_id.count_distinct_for_patient()
+)
+
+dataset.gp_control_consultation_telephone = (
+    gp_control_telephone_type_events.where(
+        ~gp_control_telephone_type_events.consultation_id.is_in(gp_control_f2f_ids)
+        & ~gp_control_telephone_type_events.consultation_id.is_in(gp_control_online_ids)
+    ).consultation_id.count_distinct_for_patient()
+)
+
+dataset.gp_control_consultation_othermode = (
+    gp_control_condition_all_events.where(
+        ~gp_control_condition_all_events.consultation_id.is_in(gp_control_f2f_ids)
+        & ~gp_control_condition_all_events.consultation_id.is_in(gp_control_online_ids)
+        & ~gp_control_condition_all_events.consultation_id.is_in(gp_control_telephone_ids)
+    ).consultation_id.count_distinct_for_patient()
+)
+
+########################################################
+'''
+This section counts the number of GP consultations for each PF-related conditions and control conditions by consultation mode (excluding consultations with PF service codes)
 
 Outputs:
 - gp_consultation_<name>_f2f
@@ -287,7 +359,8 @@ Outputs:
 - gp_consultation_<name>_othermode
 '''
 
-for name, codes in pf_conditions_gp_codes.items():
+# for name, codes in pf_conditions_gp_codes.items():
+for name, codes in all_conditions_gp_codes.items():
 
     # condition-specific events -> consultation IDs
     condition_events = gp_events_clean.where(gp_events_clean.snomedct_code.is_in(codes))
@@ -492,7 +565,8 @@ ae_events = emergency_care_attendances.where(emergency_care_attendances.arrival_
 # overall A&E attendances in month
 dataset.ae_attendance_count = ae_events.count_for_patient()
 # A&E PF-condition matching using GP codelists
-for name, codes in pf_conditions_gp_codes.items():
+# for name, codes in pf_conditions_gp_codes.items():
+for name, codes in all_conditions_gp_codes.items(): 
     # primary diagnosis match
     ae_primary = ae_events.where(ae_events.diagnosis_01.is_in(codes))
     # non-primary diagnosis match
