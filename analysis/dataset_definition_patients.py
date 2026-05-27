@@ -181,6 +181,7 @@ gp_events_clean = selected_events.where(
 )
 
 pf_conditions_gp_codes = {
+    # PF conditions
     "uti": codelists.gp_snomed_codelist_uti,
     "sinusitis": codelists.gp_snomed_codelist_sinusitis,
     "insectbite": codelists.gp_snomed_codelist_insect_bites,
@@ -188,6 +189,9 @@ pf_conditions_gp_codes = {
     "sorethroat": codelists.gp_snomed_codelist_sore_throat,
     "shingles": codelists.gp_snomed_codelist_shingles,
     "impetigo": codelists.gp_snomed_codelist_impetigo,
+
+    # control conditions for PF
+    "lowerbackpain": codelists.gp_snomed_codelist_lower_back_pain,
 }
 
 for name, codes in pf_conditions_gp_codes.items():

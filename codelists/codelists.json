@@ -143,6 +143,12 @@
       "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/telephone-consultation-codes-for-pharmacy-first/20cc5238/",
       "downloaded_at": "2026-05-19 14:40:23.658822Z",
       "sha": "5d5c5ee4ec61be1f69d4b623e9d4042a3f974325"
+    },
+    "pharmacy-first-project-lower-back-pain-for-pf-control.csv": {
+      "id": "pharmacy-first-project/lower-back-pain-for-pf-control/47b82a84",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/lower-back-pain-for-pf-control/47b82a84/",
+      "downloaded_at": "2026-05-27 12:55:54.949028Z",
+      "sha": "dd9af340bf3634828c99f01d68bb0760b748e3b7"
     }
   }
 }

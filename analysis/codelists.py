@@ -93,6 +93,15 @@ gp_snomed_codelist_shingles = codelist_from_csv(
     "codelists/pharmacy-first-project-shingles-and-related-conditions-for-pharmacy-first.csv",
     column="code",
 )
+
+####################################################
+#Snomed codes used for control conditions by GPs
+gp_snomed_codelist_lower_back_pain = codelist_from_csv(
+    "codelists/pharmacy-first-project-lower-back-pain-for-pf-control.csv",
+    column="code",
+)
+
+
 ####################################################
 #Snomed codes used for specific conditions by GPs - population exclusion criteria
 gp_snomed_codelist_urinary_catheter = codelist_from_csv(
