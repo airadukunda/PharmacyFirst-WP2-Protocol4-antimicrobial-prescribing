@@ -17,6 +17,14 @@ index_date = start_date + months(1) - days(1)
 This work aims to examine coding patterns within GP consultations related to PF conditions, 
 excluding consultations classified as PF consultations. 
 
+For each PF condition, the analysis is restricted to the condition-specific eligible population
+based on the relevant PF inclusion and exclusion criteria. 
+The base population:
+   - alive at the end of the month &
+   - registered at the start and end of the month &
+   - aged 120 years or under &
+   - eligible for the selected PF condition
+
 For each PF condition, consultations are identified using the corresponding PF-condition-specific SNOMED codelists. 
 Within these GP consultations, the frequency of each SNOMED code from the same condition-specific codelist is quantified by 
 counting the number of unique consultations (consultation_id) in which the code appears.
@@ -31,8 +39,9 @@ Detailed approach
         calculate the number of unique consultations (consultation_id) in which the code appears.
 
 The resulting dataset:
-- each row representing an individual patient;
-- each column representing the count of a specific SNOMED code.
+- each row representing an individual patient in the condition-specific eligible population
+- each column representing the count of a specific SNOMED code
+- each cell contains the number of unique non-PF GP consultations in which that code appears for that patient during the month.
 '''
 #----------------------------------------
 # Patient identifiers: alive_status, registration_status, age

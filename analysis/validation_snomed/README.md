@@ -3,6 +3,8 @@
 The Python files in this folder examine coding patterns within GP consultations related to Pharmacy First (PF) conditions, excluding consultations classified as
 PF consultations.
 
+For each PF condition, the analysis is restricted to the condition-specific eligible population based on the relevant Pharmacy First inclusion and exclusion criteria.
+
 For each PF condition, consultations are identified using the corresponding condition-specific SNOMED codelist. Within these GP consultations, the frequency of each SNOMED code from the same condition-specific codelist is quantified by counting the number of unique consultations (`consultation_id`) in which the code appears.
 
 ## Overview of workflow
