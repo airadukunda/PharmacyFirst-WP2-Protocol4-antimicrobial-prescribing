@@ -42,11 +42,7 @@ for condition in conditions:
     df = pd.read_csv(input_file)
 
     # Read condition-specific codelist lookup
-    lookup = pd.read_csv(
-        gp_snomed_codelist_files[condition],
-        dtype={"code": str},
-    )
-
+    lookup = pd.read_csv(gp_snomed_codelist_files[condition],dtype={"code": str},)
     lookup = lookup.rename(columns={"code": "snomed_code"})
 
     # Keep only relevant lookup columns
@@ -61,24 +57,14 @@ for condition in conditions:
         if col.startswith("count_")
     ]
 
-    df_long = df.melt(
-        id_vars=["patient_id"],
-        value_vars=count_cols,
-        var_name="snomed_code",
-        value_name="consultation_count",
-    )
+    summary = (df[count_cols].sum().reset_index())
 
-    # Remove prefix from SNOMED code column
-    df_long["snomed_code"] = (
-        df_long["snomed_code"]
+    summary.columns = ["snomed_code", "consultation_count"]
+
+    summary["snomed_code"] = (
+        summary["snomed_code"]
         .str.replace("count_", "", regex=False)
         .astype(str)
-    )
-
-    summary = (
-        df_long
-        .groupby("snomed_code", as_index=False)["consultation_count"]
-        .sum()
     )
 
     # Add SNOMED term
@@ -178,8 +164,8 @@ for i, condition in enumerate(conditions):
     ax.set_ylabel("SNOMED code / term")
 
 
-# Remove unused final subplot
-fig.delaxes(axes[-1])
+# # Remove unused final subplot
+# fig.delaxes(axes[-1])
 
 plt.tight_layout()
 

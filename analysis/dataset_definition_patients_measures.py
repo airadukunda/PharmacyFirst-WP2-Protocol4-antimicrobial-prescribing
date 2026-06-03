@@ -494,6 +494,7 @@ Eligibility/clinical characteristics flag for study population denominator:
 - include_patient_uti
 - include_patient_overall_eligible
 """
+female = patients.sex.is_in(["female"])
 
 # Condition: acute otitis media
 # - inclusion: children aged 1 to 17 years
@@ -509,25 +510,25 @@ dataset.include_patient_sinusitis = include_patient_sinusitis
 
 # Condition: acute sore throat
 # - inclusion: age >= 5
-# - exclusion: pregnant individuals under 16s
+# - exclusion: pregnant female under 16s
 age_eligible_sore_throat = (age >= 5)
-exclusion_sore_throat = pregnant_this_month & (age < 16)
+exclusion_sore_throat = pregnant_this_month & (age < 16) & (female)
 include_patient_sore_throat = (age_eligible_sore_throat & ~exclusion_sore_throat)
 dataset.include_patient_sore_throat = include_patient_sore_throat
 
 # Condition: infected insect bites
 # - inclusion: age >= 1
-# - exclusion: pregnant individuals under 16s
+# - exclusion: pregnant female under 16s
 age_eligible_insect_bites = (age >= 1)
-exclusion_insect_bites = pregnant_this_month & (age < 16)
+exclusion_insect_bites = pregnant_this_month & (age < 16) & (female)
 include_patient_insect_bites = (age_eligible_insect_bites & ~exclusion_insect_bites)
 dataset.include_patient_insect_bites = include_patient_insect_bites
 
 # Condition: shingles
 # - inclusion: age >= 18
-# - exclusion: pregnant individuals
+# - exclusion: pregnant female
 age_eligible_shingles = (age >= 18)
-exclusion_shingles = pregnant_this_month
+exclusion_shingles = pregnant_this_month & (female)
 include_patient_shingles = (age_eligible_shingles & ~exclusion_shingles)
 dataset.include_patient_shingles = include_patient_shingles
 
@@ -536,19 +537,19 @@ dataset.include_patient_shingles = include_patient_shingles
 # - exclusion: 
 # - - bullous impetigo, 
 # - - recurrent impetigo (defined as 2 or more episodes in the same year), 
-# - - pregnant individuals under 16 years
+# - - pregnant female under 16 years
 impetigo_age_eligible = (age >= 1)
-impetigo_exclusion = (bullous_impetigo_this_month | recurrent_impetigo_this_year | (pregnant_this_month & (age < 16)))
+impetigo_exclusion = (bullous_impetigo_this_month | recurrent_impetigo_this_year | (pregnant_this_month & (age < 16) & female))
 include_patient_impetigo = (impetigo_age_eligible & ~impetigo_exclusion)
 dataset.include_patient_impetigo = include_patient_impetigo
 
 # Condition: Uncomplicated UTI
 # - inclusion: women aged 16 to 64 years
 # - exclusion: 
-# - - pregnant individuals
+# - - pregnant female
 # - - urinary catheter
 # - - recurrent UTI: 2 episodes in last 6 months, or 3 episodes in last 12 months
-uuti_eligible = (age >= 16) & (age <= 64) & (patients.sex.is_in(["female"]))
+uuti_eligible = (age >= 16) & (age <= 64) & female
 uuti_exclusion = (pregnant_this_month | catheter_status | recurrent_uti)
 include_patient_uuti = (uuti_eligible & ~uuti_exclusion)
 dataset.include_patient_uuti = include_patient_uuti
