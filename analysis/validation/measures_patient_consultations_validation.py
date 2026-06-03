@@ -16,32 +16,6 @@ measure_base_population = (
     & (dataset.age <= 120)
 )
 
-pf_eligible_population = (
-    dataset.include_patient_overall_eligible
-    & measure_base_population
-)
-
-pf_user_population = (
-    (dataset.pf_consultation_general > 0)
-    & measure_base_population
-)
-
-age_band = case(
-    when((dataset.age >= 0) & (dataset.age < 20)).then("0-19"),
-    when((dataset.age >= 20) & (dataset.age < 40)).then("20-39"),
-    when((dataset.age >= 40) & (dataset.age < 60)).then("40-59"),
-    when((dataset.age >= 60) & (dataset.age < 80)).then("60-79"),
-    when(dataset.age >= 80).then("80+"),
-    when(dataset.age.is_null()).then("Missing"),
-)
-
-age_band_naive = case(
-    when(dataset.age < 16).then("<16"),
-    when((dataset.age >= 16) & (dataset.age <= 64)).then("16-64"),
-    when(dataset.age > 64).then("65+"),
-    when(dataset.age.is_null()).then("Missing"),
-)
-
 '''
 Checks:
 1. PF consultation count
