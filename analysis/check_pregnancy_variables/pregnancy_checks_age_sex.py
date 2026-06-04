@@ -38,8 +38,8 @@ def rename_code_column(df):
     return df
 
 # create function to link snomed descriptions
-def link_codelists(file, codelist):
-    input_file = f"output/measures/{file}.csv"
+def link_codelists(file, codelist, ageband):
+    input_file = f"output/measures/{file}_{age_str}.csv"
     # Read patient-level SNOMED count dataset
     df = pd.read_csv(input_file)
     df = rename_code_column(df)
@@ -77,7 +77,7 @@ for age_str in ["o65", "u16"]:
         desc = file_descriptions.get(file, ["Unknown check", ""])[0]
         
         codelist = file_descriptions.get(file, ["Unknown check", ""])[1]
-        df = link_codelists(file, codelist)
+        df = link_codelists(file, codelist, age_str)
         print(f"Processing {file}: {desc}")
 
         # Extract year from interval_start
