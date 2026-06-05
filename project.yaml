@@ -22,11 +22,17 @@ actions:
       highly_sensitive:
         dataset: output/dataset_preg_2025_11_01.csv.gz
 
-  generate_dataset_preg_measures:
-    run: ehrql:v1 generate-measures analysis/check_pregnancy_variables/dataset_definition_pregnancy_measures.py --output output/measures/:csv
+  generate_dataset_preg_measures_u16: 
+    run: ehrql:v1 generate-measures analysis/check_pregnancy_variables/dataset_definition_pregnancy_measures.py --output output/measures/:csv -- --age_band "<16"
     outputs:
       moderately_sensitive:
-        dataset: output/measures/*.csv
+        dataset: output/measures/*_u16.csv
+
+  generate_dataset_preg_measures_o65:
+    run: ehrql:v1 generate-measures analysis/check_pregnancy_variables/dataset_definition_pregnancy_measures.py --output output/measures/:csv -- --age_band "65+"
+    outputs:
+      moderately_sensitive:
+        dataset: output/measures/*_o65.csv
 
 #analyse_preg_measures:
 #   run: python:v2 analysis/check_pregnancy_variables/pregnancy_checks.py --output output/measures/pregnancy_checks.csv --input output/measures/*.csv
@@ -38,13 +44,13 @@ actions:
 #       charts: output/measures/*by_year.png
 
   analyse_preg_measures_agesex:
-    run: python:v2 analysis/check_pregnancy_variables/pregnancy_checks_age_sex.py --output output/measures/flag_source_u16_summary_by_sex.csv --input output/measures/*.csv
+    run: python:v2 analysis/check_pregnancy_variables/pregnancy_checks_age_sex.py --output output/measures/:csv --input output/measures/*.csv
     needs: 
-      [generate_dataset_preg_measures]
+      [generate_dataset_preg_measures_u16, generate_dataset_preg_measures_o65]
     outputs:
       moderately_sensitive:
-        dataset: output/measures/flag_source_u16_summary_by_sex.csv
-        charts: output/measures/flag_source_u16_summary_by_sex.png
+        dataset: output/measures/flag_source_*_summary_by_sex.csv
+        charts: output/measures/flag_source_*_summary_by_sex.png
         dataset2: output/measures/summary_*.csv
   
   #################################################################

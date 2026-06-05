@@ -6,6 +6,11 @@ dataset = create_dataset()
 start_date = "2023-05-01"
 #end_date = "2024-08-31"
 
+from ehrql import get_parameter
+age_input = get_parameter("age_band", default="<16")
+# convert parameter to text string for measure names
+age_str = age_input.replace("<", "u").replace("65+", "o65")
+print(age_str)
 # Here we want to create a flag for each female patient of childbearing age, to indicate if
 # they were pregnant on the index/start date, for each month the dataset definition is run.
 # It will be an approximation only, as we will never know what date someone first knew they 
@@ -58,7 +63,6 @@ dataset.pregnancy_edd = clinical_events.where(
     clinical_events.snomedct_code.is_in(codelists.gp_snomed_codelist_pregnancy_edd)
     ).sort_by(clinical_events.date).first_for_patient().date
     
-
 # recent "pregnant" codes - this is to be used where no delivery or EDD recorded
 # note some patients may have an unrecorded miscarriage or termination soon after pregnancy recorded
 # but we will be excluding those with recorded end-of-pregnancy prior to this step
@@ -140,11 +144,11 @@ dataset.age_band = case(
     when(dataset.age.is_null()).then("Missing"),
 )
 
-dataset.define_population(
-    dataset.has_recorded_sex #(dataset.sex == "female") #& (dataset.age <=50) & (dataset.age >=11)
-)
+#dataset.define_population(
+#    dataset.has_recorded_sex #(dataset.sex == "female") #& (dataset.age <=50) & (dataset.age >=11)
+#)
 
-#show(dataset)
+
 
 measures = create_measures()
 measures.define_defaults(
@@ -158,9 +162,9 @@ measures.configure_disclosure_control(enabled=False)
 # need to check why this is
 
 measures.define_measure(
-    name="pregnant_source",
+    name=f"pregnant_source_{age_str}",
     numerator=dataset.pregnant!= "0",
-    denominator=(dataset.age <=15) & (dataset.age >=1) & (dataset.has_recorded_sex),
+    denominator=(dataset.age_band == age_input) & (dataset.age >=1) & (dataset.has_recorded_sex),
     group_by={
         "source": dataset.pregnant,
         "sex": dataset.sex,
@@ -169,9 +173,9 @@ measures.define_measure(
 )
 
 measures.define_measure(
-    name="pregnant_recent_end_code",
+    name=f"pregnant_recent_end_code_{age_str}",
     numerator=(dataset.pregnant!= "0"),
-    denominator=(dataset.age <=15) & (dataset.age >=1) & (dataset.has_recorded_sex) & (dataset.pregnancy_end_code.is_not_null()),
+    denominator= (dataset.age_band == age_input) & (dataset.age >=1) & (dataset.has_recorded_sex) & (dataset.pregnancy_end_code.is_not_null()),
     group_by={
         #"source": dataset.pregnant
         "recent_end_code": dataset.pregnancy_end_code,
@@ -181,9 +185,9 @@ measures.define_measure(
 )
 
 measures.define_measure(
-    name="pregnant_future_end_code",
+    name=f"pregnant_future_end_code_{age_str}",
     numerator=(dataset.pregnant!= "0"),
-    denominator=(dataset.age <=15) & (dataset.age >=1) & (dataset.has_recorded_sex) & (dataset.pregnancy_future_end_code.is_not_null()),
+    denominator=(dataset.age_band == age_input) & (dataset.age >=1) & (dataset.has_recorded_sex) & (dataset.pregnancy_future_end_code.is_not_null()),
     group_by={
         #"source": dataset.pregnant
         "future_end_code": dataset.pregnancy_future_end_code,
@@ -193,9 +197,9 @@ measures.define_measure(
 )
 
 measures.define_measure(
-    name="pregnant_pregnancy_code",
+    name=f"pregnant_pregnancy_code_{age_str}",
     numerator=(dataset.pregnant!= "0"),
-    denominator=(dataset.age <=15) & (dataset.age >=1) & (dataset.has_recorded_sex) & (dataset.pregnancy_code_snomed.is_not_null()),
+    denominator=(dataset.age_band == age_input) & (dataset.age >=1) & (dataset.has_recorded_sex) & (dataset.pregnancy_code_snomed.is_not_null()),
     group_by={
         #"source": dataset.pregnant
         "pregnancy_code": dataset.pregnancy_code_snomed,
