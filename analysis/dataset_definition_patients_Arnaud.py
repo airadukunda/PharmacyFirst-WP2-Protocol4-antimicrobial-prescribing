@@ -90,6 +90,8 @@ dataset.define_population(base_population) # include all patients or those alive
 
 dataset.start_date = case(when(base_population).then(start_date))
 dataset.index_date = case(when(base_population).then(index_date))
+
+#Demographic variables 
 dataset.registered_start = registered_start
 dataset.registered_index = registered_index
 dataset.alive = alive
