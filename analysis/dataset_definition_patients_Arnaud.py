@@ -96,12 +96,12 @@ dataset.registered_start = registered_start
 dataset.registered_index = registered_index
 dataset.alive = alive
 dataset.sex = sex
-dataset.female = case(
+dataset.female = case(                  #airadukunda
     when(dataset.sex == "female").then(1),
-    default=0,
+    default=0, 
 )
 dataset.age = age
-dataset.age_band = case(                         #Age band (15-49) for women
+dataset.age_band = case(                         #Age band (15-49) for women.airadukunda
         when(age < 15).then("0-14"),
         when(age < 50).then("15-49"),
         when(age >= 50).then("50+"),
