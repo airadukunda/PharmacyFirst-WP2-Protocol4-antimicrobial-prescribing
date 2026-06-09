@@ -15,13 +15,13 @@ from ehrql import claim_permissions
 claim_permissions("appointments")
 
 dataset = create_dataset()
-dataset.configure_dummy_data(population_size=1000)
+dataset.configure_dummy_data(population_size=1000) # The size was increased from 500 to 1000 pop.airadukunda
 
 # One month time period (to start with this is Nov 25) 
 # start_date = "2025-10-31"     
 # index_date = "2025-11-30"  
 #start_date = get_parameter("start_date", default="2024-02-01")
-start_date = get_parameter("start_date", default="2022-02-01") # 2 years before PF.Arnaud
+start_date = get_parameter("start_date", default="2022-02-01") # 2 years before PF.airadukunda
 index_date = start_date + months(1) - days(1)
 # index_date = start_date + years(1)
 
@@ -129,13 +129,13 @@ selected_pf_id_events = select_events_by_consultation_id(selected_events, pf_ids
 dataset.pf_consultation_general = pf_consultation_events.consultation_id.count_distinct_for_patient()
 
 pf_conditions_pf_codes = {
-    "uti": codelists.uti_code,
+    "uti": codelists.uti_code,                     
     "sinusitis": codelists.sinusitis_code,
     "insectbite": codelists.insectbite_code,
     "otitismedia": codelists.otitismedia_code,
     "sorethroat": codelists.sorethroat_code,
     "shingles": codelists.shingles_code,
-    "impetigo": codelists.impetigo_code,
+    "impetigo": codelists.impetigo_code, # I will need to add controls as for our analysis will use Compartive XTITSA 
 }
 
 # a set of codes for any PF condition
