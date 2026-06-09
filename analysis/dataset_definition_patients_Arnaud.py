@@ -96,6 +96,10 @@ dataset.registered_start = registered_start
 dataset.registered_index = registered_index
 dataset.alive = alive
 dataset.sex = sex
+dataset.female = case(
+    when(dataset.sex == "female").then(1),
+    default=0,
+)
 dataset.age = age
 dataset.age_band = case(                         #Age band (15-49) for women
         when(age < 15).then("0-14"),
