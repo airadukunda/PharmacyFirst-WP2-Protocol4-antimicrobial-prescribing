@@ -10,7 +10,7 @@ The content has ONLY been made public to support the OpenSAFELY [open science an
 No clinical, policy or safety conclusions must be drawn from the contents of this repository.
 
 # Project oververview
->Last updates : June 4, 2026.
+>Last updates : June 9, 2026.
 
 >This repository contains the analytical code and study materials for Protocol 4 (P4) of Work Package 2 (WP2) within the Pharmacy First Evaluation programme.
 
@@ -40,8 +40,8 @@ The repository will be organised around several core components:
 
 >## Core patient-level dataset definitions
 
-- [dataset_definition_patients_ai](analysis/dataset_definition_patients_ai.py): Main patient-level dataset definition used to generate monthly datasets for downstream analyses. Monthly datasets are generated separately for each study month.
-- [dataset_definition_patients_measures_ai](analysis/dataset_definition_patients_measures_ai.py): Separate patient-level dataset definition used specifically for generating measures and validation outputs. This dataset is primarily used for measure generation, exploratory summaries and validation, and practice-level aggregation.
+- [dataset_definition_patients_Arnaud](analysis/dataset_definition_patients_Arnaud.py): Main patient-level dataset definition used to generate monthly datasets for downstream analyses. Monthly datasets are generated separately for each study month.
+- [dataset_definition_patients_measures_Arnaud](analysis/dataset_definition_patients_measures_Arnaud.py): Separate patient-level dataset definition used specifically for generating measures and validation outputs. This dataset is primarily used for measure generation, exploratory summaries and validation, and practice-level aggregation.
 
 # About the OpenSAFELY framework
 
