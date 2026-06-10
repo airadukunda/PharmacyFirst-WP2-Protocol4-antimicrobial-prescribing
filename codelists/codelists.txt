@@ -25,3 +25,4 @@ pharmacy-first-project/telephone-consultation-codes-for-pharmacy-first/20cc5238
 pharmacy-first-project/lower-back-pain-for-pf-control/47b82a84
 pharmacy-first-project/aciclovir/0f6d109f/
 pharmacy-first-project/amoxicillin/4252aa98/
+dpharmacy-first-project/cefalexin/7a9dc47d/
