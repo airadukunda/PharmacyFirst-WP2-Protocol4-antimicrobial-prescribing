@@ -27,3 +27,7 @@ pharmacy-first-project/aciclovir/0f6d109f/
 pharmacy-first-project/amoxicillin/4252aa98/
 dpharmacy-first-project/cefalexin/7a9dc47d/
 pharmacy-first-project/cefalexin/7a9dc47d/
+pharmacy-first-project/clarithromycin/2f6f6
+pharmacy-first-project/clarithromycin/2f6f6
+pharmacy-first-project/clarithromycin/2f6f6
+pharmacy-first-project/clarithromycin/2f6f6ade/
