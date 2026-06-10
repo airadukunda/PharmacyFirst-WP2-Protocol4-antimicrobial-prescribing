@@ -1,5 +1,11 @@
 {
   "files": {
+    "pharmacy-first-project-fosfomycin.csv": {
+      "id": "pharmacy-first-project/fosfomycin/494591a2",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/fosfomycin/494591a2/",
+      "downloaded_at": "2026-06-10 12:06:11.176041Z",
+      "sha": "11bb6020e02da871efc1ea60bba9859d3095611e"
+    },
     "pharmacy-first-project-flucloxacillin.csv": {
       "id": "pharmacy-first-project/flucloxacillin/1912b79f",
       "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/flucloxacillin/1912b79f/",
