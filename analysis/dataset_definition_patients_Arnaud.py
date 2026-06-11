@@ -36,6 +36,7 @@ from codelists import (
     pivmecillinam_codelist,
     trimethoprim_codelist,
     valaciclovir_codelist,
+    uti_codelist
 )
 
 dataset = create_dataset()
@@ -169,35 +170,38 @@ dataset.age_band = case(                         #Age band (15-49) for women.air
         when(age >= 50).then("50+"),
         otherwise="missing",
 )
-
 dataset.date_of_birth = patients.date_of_birth  # debug
-
 dataset.imd = get_imd(addresses, index_date)
 dataset.ethnicity = get_latest_ethnicity(index_date,clinical_events,codelists.ethnicity_group16_codelist,ethnicity_from_sus,grouping=16,)
 # Patient identifiers: practice_id, stp, region
 dataset.practice = practice_registrations.for_patient_on(index_date).practice_pseudo_id
-
 dataset.stp = practice_registrations.for_patient_on(index_date).practice_stp
 # dataset.region = practice_registrations.for_patient_on(index_date).practice_nuts1_region_name
 dataset.region = case(
     when(practice_registrations.for_patient_on(index_date).practice_nuts1_region_name.is_null()).then("Missing"),
     otherwise=practice_registrations.for_patient_on(index_date).practice_nuts1_region_name,
 )
-#Medication
-recent_meds = medications.where(medications.date.is_on_or_between(index_date , index_date +days(1)))
-dataset.aciclovir = (
-    recent_meds
-    .where(recent_meds.dmd_code.is_in(aciclovir_codelist))
-    .exists_for_patient()
-    .as_int()
-)
+#Medication and conditions
 dataset.medication = medications.exists_for_patient()
 # Most recent medication date
 dataset.medication_date = medications.sort_by(medications.date).last_for_patient().date
-#Medication on index date
-dataset.has_medication = medications.where(
-    medications.date == index_date
-).exists_for_patient()
+#Medication and condition on index date
+recent_medication = medications.where(medications.date.is_on_or_between(index_date , index_date +days(1)))
+recent_PF_envent = clinical_events.where(clinical_events.date.is_on_or_before(index_date))
+#treatment
+dataset.aciclovir = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(aciclovir_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+#uti_codelist
+dataset.uti = (
+    recent_PF_envent
+    .where(clinical_events.snomedct_code.is_in(proteinuria_codes))
+    .exists_for_patient()
+    .as_int()
+)
 
 ########################################################
 '''

@@ -24,6 +24,7 @@ phenoxymethylpenicillin_codelist = codelist_from_csv("codelists/pharmacy-first-p
 pivmecillinam_codelist = codelist_from_csv("codelists/pharmacy-first-project-pivmecillinam.csv", column="code")
 trimethoprim_codelist = codelist_from_csv("codelists/pharmacy-first-project-trimethoprim.csv", column="code")
 valaciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-valaciclovir.csv", column="code")
+uti_codelist = codelist_from_csv("codelists/pharmacy-first-project-urinary-tract-infection-codes-for-pharmacy-first-clone.csv",column="code")
 #PF conditions :airadukunda
 # SNOMED UK ethnicity category codelist - latest version 22911876
 ethnicity_group6_codelist = codelist_from_csv(
