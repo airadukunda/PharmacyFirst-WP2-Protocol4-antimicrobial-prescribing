@@ -226,13 +226,55 @@ dataset.amoxicillin_uti = (
 #1.c.all antimicrobials (we can sum all 1.b)
 
 #2.Impetigo
-#2.1.Clinical event
+#2.a.Clinical event
 dataset.has_impetigo = (  # This code check if the clinical event happened on index date was uti (i will need to add inclusion and exclusion criteria)
     recent_clinical_envent
     .where(clinical_events.snomedct_code.is_in(impetigo_codelist))
     .exists_for_patient()
     .as_int()
 )
+#2.b.Treatment 
+#2.b.1. Fusidic_acid_cream
+dataset.Fusidic_acid_cream_impetigo = (
+    recent_medication
+
+    .where(recent_medication.dmd_code.is_in(fusidic_acid_cream_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+#2.b.2.Flucloxacillin
+dataset.flucloxacillin_impetigo = (
+    recent_medication
+
+    .where(recent_medication.dmd_code.is_in(flucloxacillin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+#2.b.3.Clarithromycin
+dataset.clarithromycin_impetigo = (
+    recent_medication
+
+    .where(recent_medication.dmd_code.is_in(clarithromycin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+#2.b.4.Erythromycin
+dataset.erythromycin_impetigo = (
+    recent_medication
+
+    .where(recent_medication.dmd_code.is_in(erythromycin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+#2.b.5.Mupirocin 2%
+dataset.mupirocin_impetigo = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(mupirocin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+#2.c.All antimicrobial ( we can sum)
 
 ########################################################
 '''
