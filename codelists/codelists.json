@@ -1,5 +1,11 @@
 {
   "files": {
+    "pharmacy-first-project-clarithromycin.csv": {
+      "id": "pharmacy-first-project/clarithromycin/2f6f6ade",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/clarithromycin/2f6f6ade/",
+      "downloaded_at": "2026-06-11 11:47:46.586765Z",
+      "sha": "8be738c0ed2841a8bebc2f644b2d7101b84fab0f"
+    },
     "pharmacy-first-project-cefalexin.csv": {
       "id": "pharmacy-first-project/cefalexin/7a9dc47d",
       "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/cefalexin/7a9dc47d/",

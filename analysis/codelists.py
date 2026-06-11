@@ -8,7 +8,7 @@ from ehrql import codelist_from_csv
 aciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-aciclovir.csv", column="code")
 amoxicillin_codelist = codelist_from_csv("codelists/pharmacy-first-project-amoxicillin.csv", column="code")
 cefalexin_codelist = codelist_from_csv("codelists/pharmacy-first-project-cefalexin.csv", column="code")
-#clarithromycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-clarithromycin.csv", column="code")
+clarithromycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-clarithromycin.csv", column="code")
 clindamycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-clindamycin.csv", column="code")
 co_amoxiclav_codelist = codelist_from_csv("codelists/pharmacy-first-project-co-amoxiclav-oral-preparations.csv", column="code")
 doxycycline_codelist = codelist_from_csv("codelists/pharmacy-first-project-doxycycline.csv", column="code")

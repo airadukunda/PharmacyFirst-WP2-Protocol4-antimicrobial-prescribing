@@ -46,4 +46,3 @@ pharmacy-first-project/conjunctivitis-allergic-as-infected-insect-bites-control/
 pharmacy-first-project/vulvovaginal-candidiasis-as-uti-control/1287dedb/
 pharmacy-first-project/cefalexin/7a9dc47d/
 pharmacy-first-project/clarithromycin/2f6f6ade/
-pharmacy-first-project/clarithromycin/2f6f6ade/
