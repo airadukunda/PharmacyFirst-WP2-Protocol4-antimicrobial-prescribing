@@ -15,6 +15,29 @@ from analysis.pf_variable_library import (get_imd, get_latest_ethnicity,
 from ehrql import claim_permissions
 claim_permissions("appointments")
 
+
+from codelists import (
+    aciclovir_codelist,
+    amoxicillin_codelist,
+    cefalexin_codelist,
+    clarithromycin_codelist,
+    clindamycin_codelist,
+    co_amoxiclav_codelist,
+    doxycycline_codelist,
+    erythromycin_codelist,
+    famciclovir_codelist,
+    flucloxacillin_codelist,
+    fosfomycin_codelist,
+    fusidic_acid_cream_codelist,
+    metronidazole_codelist,
+    mupirocin_codelist,
+    nitrofurantoin_codelist,
+    phenoxymethylpenicillin_codelist,
+    pivmecillinam_codelist,
+    trimethoprim_codelist,
+    valaciclovir_codelist,
+)
+
 dataset = create_dataset()
 dataset.configure_dummy_data(population_size=1000) # The size was increased from 500 to 1000 pop.airadukunda
 
@@ -97,28 +120,6 @@ dataset.registered_start = registered_start
 dataset.registered_index = registered_index
 dataset.alive = alive
 dataset.sex = sex 
-from codelists import (
-    aciclovir_codelist,
-    amoxicillin_codelist,
-    cefalexin_codelist,
-    clarithromycin_codelist,
-    clindamycin_codelist,
-    co_amoxiclav_codelist,
-    doxycycline_codelist,
-    erythromycin_codelist,
-    famciclovir_codelist,
-    flucloxacillin_codelist,
-    fosfomycin_codelist,
-    fusidic_acid_cream_codelist,
-    metronidazole_codelist,
-    mupirocin_codelist,
-    nitrofurantoin_codelist,
-    phenoxymethylpenicillin_codelist,
-    pivmecillinam_codelist,
-    trimethoprim_codelist,
-    valaciclovir_codelist,
-)
-
 #Attach medication to the dataset:I will need to add medications (importation section)
 # Here we can automate the code , to avoid repetitions.
 #dataset.aciclovir = medications.dmd_code.is_in(aciclovir_codelist)
