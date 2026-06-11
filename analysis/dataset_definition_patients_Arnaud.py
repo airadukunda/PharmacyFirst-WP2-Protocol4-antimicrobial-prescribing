@@ -36,8 +36,18 @@ from codelists import (
     pivmecillinam_codelist,
     trimethoprim_codelist,
     valaciclovir_codelist,
+    #2.PF control conditions :airadukunda
+    acute_bronchitis_control_codelist,
+    conjunctivitis_allergic_control_codelist,
+    vulvovaginal_candidiasis_control_codelist,
+    #3.PF conditions : airadukunda 
+    impetigo_codelist,
+    infected_insect_bites_codelist,
+    otitis_media_codelist,
+    shingles_codelist,
+    sore_throat_codelist,
     uti_codelist
-)
+    )
 
 dataset = create_dataset()
 dataset.configure_dummy_data(population_size=1000) # The size was increased from 500 to 1000 pop.airadukunda
@@ -139,7 +149,10 @@ dataset.region = case(
     when(practice_registrations.for_patient_on(index_date).practice_nuts1_region_name.is_null()).then("Missing"),
     otherwise=practice_registrations.for_patient_on(index_date).practice_nuts1_region_name,
 )
-
+dataset.protocol = case(
+    when(patients.exists_for_patient()).then("Protocol4"),
+    otherwise="Protocol4",
+)
 #P conditions and their medications
 #We will need to have codelists for both 
 #dataset.clinical_event = clinical_events.where( clinical_events.date == index_date)
@@ -205,7 +218,18 @@ dataset.cefalexin_uti = (
 #1.b.7.Amoxicillin
 dataset.amoxicillin_uti = (
     recent_medication
+
     .where(recent_medication.dmd_code.is_in(amoxicillin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+#1.c.all antimicrobials (we can sum all 1.b)
+
+#2.Impetigo
+#2.1.Clinical event
+dataset.has_impetigo = (  # This code check if the clinical event happened on index date was uti (i will need to add inclusion and exclusion criteria)
+    recent_clinical_envent
+    .where(clinical_events.snomedct_code.is_in(impetigo_codelist))
     .exists_for_patient()
     .as_int()
 )
