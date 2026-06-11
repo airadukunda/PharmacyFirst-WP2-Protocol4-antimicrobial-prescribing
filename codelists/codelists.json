@@ -1,5 +1,35 @@
 {
   "files": {
+    "pharmacy-first-project-sore-throat-codes-for-pharmacy-first-clone.csv": {
+      "id": "pharmacy-first-project/sore-throat-codes-for-pharmacy-first-clone/0061e9b3",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/sore-throat-codes-for-pharmacy-first-clone/0061e9b3/",
+      "downloaded_at": "2026-06-11 14:43:45.060887Z",
+      "sha": "84daa5b5d93ab9def0acdee872ce0215d456f13e"
+    },
+    "pharmacy-first-project-shingles-for-pharmacy-first-clone.csv": {
+      "id": "pharmacy-first-project/shingles-for-pharmacy-first-clone/74d99f48",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/shingles-for-pharmacy-first-clone/74d99f48/",
+      "downloaded_at": "2026-06-11 14:42:49.293134Z",
+      "sha": "6040ec32d7acf4e6c2f56bc2ab1410284636ca35"
+    },
+    "pharmacy-first-project-otitis-media-codes-for-pharmacy-first-clone.csv": {
+      "id": "pharmacy-first-project/otitis-media-codes-for-pharmacy-first-clone/3280d01d",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/otitis-media-codes-for-pharmacy-first-clone/3280d01d/",
+      "downloaded_at": "2026-06-11 14:42:05.955500Z",
+      "sha": "a9401076c3ca4322f4cc82b1f0847ef7a3318116"
+    },
+    "pharmacy-first-project-Infected-insect-bites-codes-for-pharmacy-first-clone.csv": {
+      "id": "pharmacy-first-project/Infected-insect-bites-codes-for-pharmacy-first-clone/456d78d4",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/Infected-insect-bites-codes-for-pharmacy-first-clone/456d78d4/",
+      "downloaded_at": "2026-06-11 14:41:17.989363Z",
+      "sha": "049ccecba23905d8c3bd3653c46a82f98b7c7848"
+    },
+    "pharmacy-first-project-impetigo-codes-for-pharmacy-first-clone.csv": {
+      "id": "pharmacy-first-project/impetigo-codes-for-pharmacy-first-clone/7daf29bc",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/impetigo-codes-for-pharmacy-first-clone/7daf29bc/",
+      "downloaded_at": "2026-06-11 14:40:35.419054Z",
+      "sha": "2e5e3605c3259aea7791052f0d2467808c5fcfe6"
+    },
     "pharmacy-first-project-urinary-tract-infection-codes-for-pharmacy-first-clone.csv": {
       "id": "pharmacy-first-project/urinary-tract-infection-codes-for-pharmacy-first-clone/6752767d",
       "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/urinary-tract-infection-codes-for-pharmacy-first-clone/6752767d/",

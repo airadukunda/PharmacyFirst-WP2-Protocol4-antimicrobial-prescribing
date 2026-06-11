@@ -46,4 +46,9 @@ pharmacy-first-project/conjunctivitis-allergic-as-infected-insect-bites-control/
 pharmacy-first-project/vulvovaginal-candidiasis-as-uti-control/1287dedb/
 pharmacy-first-project/cefalexin/7a9dc47d/
 pharmacy-first-project/clarithromycin/2f6f6ade/ 
+pharmacy-first-project/impetigo-codes-for-pharmacy-first-clone/7daf29bc/
+pharmacy-first-project/Infected-insect-bites-codes-for-pharmacy-first-clone/456d78d4/
+pharmacy-first-project/otitis-media-codes-for-pharmacy-first-clone/3280d01d/
+pharmacy-first-project/shingles-for-pharmacy-first-clone/74d99f48/
+pharmacy-first-project/sore-throat-codes-for-pharmacy-first-clone/0061e9b3/
 pharmacy-first-project/urinary-tract-infection-codes-for-pharmacy-first-clone/6752767d/
