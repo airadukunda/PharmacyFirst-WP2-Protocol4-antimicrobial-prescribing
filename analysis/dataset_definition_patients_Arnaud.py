@@ -21,6 +21,7 @@ from codelists import (
     amoxicillin_codelist,
     cefalexin_codelist,
     clindamycin_codelist,
+    clarithromycin_codelist,
     co_amoxiclav_codelist,
     doxycycline_codelist,
     erythromycin_codelist,
