@@ -1,49 +1,30 @@
 from ehrql import codelist_from_csv
 
  ####################################################
-#Here i will add a codelist for medication and conditions for P4
+#Here i will add a codelist for medication and conditions for P4 : airadukunda
 # Additional variables on medication (specific antimicrobial for the P4).For medicine we fir need to make sure if the fx  codelist_from_csv is colled at the begining as: 
 #from ehrql import create_dataset, codelist_from_csv ( read the Using ehrQL to answer specific questions in OS documentation)
-
-aciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-aciclovir-0f6d109f.csv", column="code")
-
-amoxicillin_codelist = codelist_from_csv("codelists/pharmacy-first-project-amoxicillin-4252aa98.csv", column="code")
-
-cefalexin_codelist = codelist_from_csv("codelists/pharmacy-first-project-cefalexin-7a9dc47d.csv", column="code")
-
-clarithromycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-clarithromycin-2f6f6ade.csv", column="code")
-
-clindamycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-clindamycin-165ff7a9.csv", column="code")
-
-co_amoxiclav_codelist = codelist_from_csv("codelists/pharmacy-first-project-co-amoxiclav-oral-preparations-7d508473.csv", column="code")
-
-doxycycline_codelist = codelist_from_csv("codelists/pharmacy-first-project-doxycycline-6441113e.csv", column="code")
-
-erythromycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-erythromycin-4b319e09.csv", column="code")
-
-famciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-famciclovir-32222ad4.csv", column="code")
-
-flucloxacillin_codelist = codelist_from_csv("codelists/pharmacy-first-project-flucloxacillin-1912b79f.csv", column="code")
-
-fosfomycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-fosfomycin-494591a2.csv", column="code")
-
-fusidic_acid_cream_codelist = codelist_from_csv("codelists/pharmacy-first-project-fusidic-acid-cream-67ba84c3.csv", column="code")
-
-metronidazole_codelist = codelist_from_csv("codelists/pharmacy-first-project-metronidazole-58af5dd7.csv", column="code")
-
-mupirocin_codelist = codelist_from_csv("codelists/pharmacy-first-project-mupirocin-037cb7ef.csv", column="code")
-
-nitrofurantoin_codelist = codelist_from_csv("codelists/pharmacy-first-project-nitrofurantoin-081b844c.csv", column="code")
-
-phenoxymethylpenicillin_codelist = codelist_from_csv("codelists/pharmacy-first-project-phenoxymethylpenicillin-66f3d134.csv", column="code")
-
-pivmecillinam_codelist = codelist_from_csv("codelists/pharmacy-first-project-pivmecillinam-34d4eaca.csv", column="code")
-
-trimethoprim_codelist = codelist_from_csv("codelists/pharmacy-first-project-trimethoprim-1bc57795.csv", column="code")
-
-valaciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-valaciclovir-3f9feaa2.csv", column="code")
-
-
+#a.Treatment 
+aciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-aciclovir.csv", column="code")
+amoxicillin_codelist = codelist_from_csv("codelists/pharmacy-first-project-amoxicillin.csv", column="code")
+cefalexin_codelist = codelist_from_csv("codelists/pharmacy-first-project-cefalexin.csv", column="code")
+clarithromycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-clarithromycin.csv", column="code")
+clindamycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-clindamycin.csv", column="code")
+co_amoxiclav_codelist = codelist_from_csv("codelists/pharmacy-first-project-co-amoxiclav-oral-preparations.csv", column="code")
+doxycycline_codelist = codelist_from_csv("codelists/pharmacy-first-project-doxycycline.csv", column="code")
+erythromycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-erythromycin.csv", column="code")
+famciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-famciclovir.csv", column="code")
+flucloxacillin_codelist = codelist_from_csv("codelists/pharmacy-first-project-flucloxacillin.csv", column="code")
+fosfomycin_codelist = codelist_from_csv("codelists/pharmacy-first-project-fosfomycin.csv", column="code")
+fusidic_acid_cream_codelist = codelist_from_csv("codelists/pharmacy-first-project-fusidic-acid-cream.csv", column="code")
+metronidazole_codelist = codelist_from_csv("codelists/pharmacy-first-project-metronidazole.csv", column="code")
+mupirocin_codelist = codelist_from_csv("codelists/pharmacy-first-project-mupirocin.csv", column="code")
+nitrofurantoin_codelist = codelist_from_csv("codelists/pharmacy-first-project-nitrofurantoin.csv", column="code")
+phenoxymethylpenicillin_codelist = codelist_from_csv("codelists/pharmacy-first-project-phenoxymethylpenicillin.csv", column="code")
+pivmecillinam_codelist = codelist_from_csv("codelists/pharmacy-first-project-pivmecillinam.csv", column="code")
+trimethoprim_codelist = codelist_from_csv("codelists/pharmacy-first-project-trimethoprim.csv", column="code")
+valaciclovir_codelist = codelist_from_csv("codelists/pharmacy-first-project-valaciclovir.csv", column="code")
+#PF conditions :airadukunda
 # SNOMED UK ethnicity category codelist - latest version 22911876
 ethnicity_group6_codelist = codelist_from_csv(
     "codelists/opensafely-ethnicity-snomed-0removed.csv",
