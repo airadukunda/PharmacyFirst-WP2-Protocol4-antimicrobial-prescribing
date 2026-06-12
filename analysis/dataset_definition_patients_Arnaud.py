@@ -226,6 +226,48 @@ dataset.amoxicillin_uti = (
 )
 #1.c.all antimicrobials (we can sum all 1.b)
 
+uti_all_treatment_codelist = (  # source : https://docs.opensafely.org/ehrql/how-to/codelists/
+    nitrofurantoin_codelist
+    + trimethoprim_codelist
+    + fosfomycin_codelist
+    + pivmecillinam_codelist
+    + co_amoxiclav_codelist
+    + cefalexin_codelist
+    + amoxicillin_codelist
+)
+
+dataset.uti_all_treatment = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(uti_all_treatment_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+# count of the number of UTI antimicrobial categories prescribed : number of UTI antimicrobial categories prescribed
+dataset.uti_treatment_count = (
+    dataset.nitrofurantoin_uti
+    + dataset.trimethoprim_uti
+    + dataset.fosfomycin_uti
+    + dataset.pivmecillinam_uti
+    + dataset.co_amoxiclav_uti
+    + dataset.cefalexin_uti
+    + dataset.amoxicillin_uti
+)
+#Binary indicator for whether any UTI treatment was prescribed : 1 if any UTI antimicrobial was prescribed, otherwise 0
+dataset.uti_treated = (
+    (
+        dataset.nitrofurantoin_uti
+        + dataset.trimethoprim_uti
+        + dataset.fosfomycin_uti
+        + dataset.pivmecillinam_uti
+        + dataset.co_amoxiclav_uti
+        + dataset.cefalexin_uti
+        + dataset.amoxicillin_uti
+    ) > 0
+).as_int()
+
+
+
+
 #2.Impetigo
 #2.a.Clinical event
 dataset.has_impetigo = (  # This code check if the clinical event happened on index date was uti (i will need to add inclusion and exclusion criteria)
@@ -236,7 +278,7 @@ dataset.has_impetigo = (  # This code check if the clinical event happened on in
 )
 #2.b.Treatment 
 #2.b.1. Fusidic_acid_cream
-dataset.Fusidic_acid_cream_impetigo = (
+dataset.fusidic_acid_cream_impetigo = (
     recent_medication
 
     .where(recent_medication.dmd_code.is_in(fusidic_acid_cream_codelist))
@@ -275,7 +317,42 @@ dataset.mupirocin_impetigo = (
     .exists_for_patient()
     .as_int()
 )
-#2.c.All antimicrobial ( we can sum)
+#2.c.All recommended impetigo treatments ( we can sum all the antimicrobial)
+
+impetigo_all_treatment_codelist = (  #source : https://docs.opensafely.org/ehrql/how-to/codelists/
+    fusidic_acid_cream_codelist
+    + flucloxacillin_codelist
+    + clarithromycin_codelist
+    + erythromycin_codelist
+    + mupirocin_codelist
+)
+#Any recommended impetigo antimicrobial was prescribed 
+dataset.impetigo_all_treatment = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(impetigo_all_treatment_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+#counting how many different impetigo treatments were prescribed on the index date
+#number of treatment categories prescribed
+dataset.impetigo_treatment_count = (     
+    dataset.fusidic_acid_cream_impetigo
+    + dataset.flucloxacillin_impetigo
+    + dataset.clarithromycin_impetigo
+    + dataset.erythromycin_impetigo
+    + dataset.mupirocin_impetigo
+)
+#Impetigo treated :1 if any treatment was prescribed, 0 otherwise. 
+dataset.impetigo_treated = (
+    (
+        dataset.fusidic_acid_cream_impetigo
+        + dataset.flucloxacillin_impetigo
+        + dataset.clarithromycin_impetigo
+        + dataset.erythromycin_impetigo
+        + dataset.mupirocin_impetigo
+    ) > 0
+).as_int()
+
 
 ########################################################
 '''
