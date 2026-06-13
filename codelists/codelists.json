@@ -1,5 +1,11 @@
 {
   "files": {
+    "pharmacy-first-project-sinusitis-codes-for-pharmacy-first-clone.csv": {
+      "id": "pharmacy-first-project/sinusitis-codes-for-pharmacy-first-clone/4e430348",
+      "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/sinusitis-codes-for-pharmacy-first-clone/4e430348/",
+      "downloaded_at": "2026-06-13 22:01:37.616736Z",
+      "sha": "c2570a1e53b4b270b09f5cb7aefb69667a07a16d"
+    },
     "pharmacy-first-project-sore-throat-codes-for-pharmacy-first-clone.csv": {
       "id": "pharmacy-first-project/sore-throat-codes-for-pharmacy-first-clone/0061e9b3",
       "url": "https://www.opencodelists.org/codelist/pharmacy-first-project/sore-throat-codes-for-pharmacy-first-clone/0061e9b3/",

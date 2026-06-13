@@ -46,7 +46,7 @@ from codelists import (
     infected_insect_bites_codelist,
     otitis_media_codelist,
     shingles_codelist,
-    #sinusitis_codelist,
+    sinusitis_codelist,
     sore_throat_codelist,
     uti_codelist
     )
@@ -612,8 +612,95 @@ dataset.shingles_treated = (
         + dataset.famciclovir_shingles
     ) > 0
 ).as_int()
-
 #6.Sinusitis
+
+#6.a.Clinical event
+dataset.has_sinusitis = (
+    recent_clinical_event
+    .where(clinical_events.snomedct_code.is_in(sinusitis_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+#6.b.Treatment
+# (Phenoxymethylpenicillin/Clarithromycin/Erythromycin/Doxycycline/Co-amoxiclav)
+
+#6.b.1.Phenoxymethylpenicillin
+dataset.phenoxymethylpenicillin_sinusitis = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(phenoxymethylpenicillin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+#6.b.2.Clarithromycin
+dataset.clarithromycin_sinusitis = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(clarithromycin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+#6.b.3.Erythromycin
+dataset.erythromycin_sinusitis = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(erythromycin_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+#6.b.4.Doxycycline
+dataset.doxycycline_sinusitis = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(doxycycline_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+#6.b.5.Co-amoxiclav
+dataset.co_amoxiclav_sinusitis = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(co_amoxiclav_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+#6.c.All recommended sinusitis treatments
+sinusitis_all_treatment_codelist = (
+    phenoxymethylpenicillin_codelist
+    + clarithromycin_codelist
+    + erythromycin_codelist
+    + doxycycline_codelist
+    + co_amoxiclav_codelist
+)
+
+# Any recommended sinusitis antimicrobial was prescribed
+dataset.sinusitis_all_treatment = (
+    recent_medication
+    .where(recent_medication.dmd_code.is_in(sinusitis_all_treatment_codelist))
+    .exists_for_patient()
+    .as_int()
+)
+
+# Counting how many different treatment categories were prescribed
+dataset.sinusitis_treatment_count = (
+    dataset.phenoxymethylpenicillin_sinusitis
+    + dataset.clarithromycin_sinusitis
+    + dataset.erythromycin_sinusitis
+    + dataset.doxycycline_sinusitis
+    + dataset.co_amoxiclav_sinusitis
+)
+
+# Sinusitis treated: 1 if any recommended treatment was prescribed, 0 otherwise
+dataset.sinusitis_treated = (
+    (
+        dataset.phenoxymethylpenicillin_sinusitis
+        + dataset.clarithromycin_sinusitis
+        + dataset.erythromycin_sinusitis
+        + dataset.doxycycline_sinusitis
+        + dataset.co_amoxiclav_sinusitis
+    ) > 0
+).as_int()
 
 #7.Sore throat
 #7.a.Clinical event

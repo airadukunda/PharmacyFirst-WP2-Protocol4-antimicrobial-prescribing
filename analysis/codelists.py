@@ -33,6 +33,7 @@ impetigo_codelist = codelist_from_csv("codelists/pharmacy-first-project-impetigo
 infected_insect_bites_codelist = codelist_from_csv("codelists/pharmacy-first-project-Infected-insect-bites-codes-for-pharmacy-first-clone.csv",column="code")
 otitis_media_codelist = codelist_from_csv("codelists/pharmacy-first-project-otitis-media-codes-for-pharmacy-first-clone.csv",column="code")
 shingles_codelist = codelist_from_csv("codelists/pharmacy-first-project-shingles-for-pharmacy-first-clone.csv",column="code")
+sinusitis_codelist = codelist_from_csv("codelists/pharmacy-first-project-sinusitis-for-pharmacy-first-clone.csv",column="code")
 sore_throat_codelist = codelist_from_csv("codelists/pharmacy-first-project-sore-throat-codes-for-pharmacy-first-clone.csv",column="code")
 uti_codelist = codelist_from_csv("codelists/pharmacy-first-project-urinary-tract-infection-codes-for-pharmacy-first-clone.csv",column="code")
 
